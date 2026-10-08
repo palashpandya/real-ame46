@@ -112,7 +112,12 @@ contains either a single non-zero entry $6/6=1$, or two entries $\pm6/\sqrt{72}=
 entries come in pairs that use the same two columns.  After permuting rows and columns, $O$ is therefore a direct
 sum of twelve blocks $(1)$ and twelve blocks
 $\frac1{\sqrt2}\bigl(\begin{smallmatrix}s_1&s_2\\ s_3&s_4\end{smallmatrix}\bigr)$, $s_i=\pm1$.  In each of these
-$s_1s_3+s_2s_4=0$ (Appendix~\ref{app:blocks}), so every block, and hence $O$, is orthogonal.  Orthogonality of the
+$s_1s_3+s_2s_4=0$, so every block, and hence $O$, is orthogonal.  For $12|34$ the rows of $O$ are the states
+$\ket{\phi_{ab}}/\sqrt2$ of Table~\ref{tab:state}, and the blocks can be read off directly: two cells with the same two
+kets form a $2\times2$ block, e.g.\ $(a,b)=(0,0)$ and $(5,5)$ give
+$\frac1{\sqrt2}\bigl(\begin{smallmatrix}-1&1\\ 1&1\end{smallmatrix}\bigr)$.  The rows of the other two reshapings are
+obtained from Table~\ref{tab:state} by collecting the kets with given labels of parties $1,3$ or $1,4$; their complete
+block lists are part of the exact check in Ref.~\cite{repo}.  Orthogonality of the
 three reshapings is two-unitarity, which is equivalent to $\rho_{AB}=\mathbb I/36$ for all pairs of parties.
 \end{proof}
 
@@ -383,11 +388,6 @@ Ref.~\cite{repo}.
 
 \onecolumngrid
 \appendix
-\section{Block decomposition of the three reshapings}\label{app:blocks}
-Labels are pairs of levels in the order of the parties of the bipartition; entries are those of $O=6M$.  Each
-$2\times2$ block is $1/\sqrt2$ times the sign matrix shown.
-\input{inputs/blocks.tex}
-
 \section{Phase directions and branches}\label{app:K}
 The sets $O$ and $N$ are
 \input{inputs/family_sets.tex}

@@ -10,8 +10,50 @@
 [PASS] (1) rho_23 = I/36 exactly
 [PASS] (1) rho_24 = I/36 exactly
 [PASS] (1) rho_34 = I/36 exactly
+    cut 12|34: 1x1 blocks (row->column, entry 1 of O = 6M): 03->44, 04->55, 05->33, 30->34, 33->50, 35->05, 40->53, 44->04, 45->40, 50->45, 53->03, 54->30
+    cut 12|34: 2x2 blocks (1/sqrt2 x sign matrix):
+        rows 00,55 cols 12,21 [[-,+],[+,+]]
+        rows 01,20 cols 02,20 [[-,+],[+,+]]
+        rows 02,10 cols 01,10 [[-,+],[-,-]]
+        rows 11,22 cols 00,54 [[+,+],[+,-]]
+        rows 12,21 cols 35,43 [[+,+],[-,+]]
+        rows 13,41 cols 15,32 [[-,-],[+,-]]
+        rows 14,31 cols 23,41 [[-,+],[-,-]]
+        rows 15,52 cols 24,52 [[-,+],[+,+]]
+        rows 23,42 cols 25,31 [[-,+],[+,+]]
+        rows 24,32 cols 13,42 [[-,+],[+,+]]
+        rows 25,51 cols 14,51 [[+,+],[-,+]]
+        rows 34,43 cols 11,22 [[-,+],[+,+]]
 [PASS] (2) cut 12|34: 12 blocks (1) + 12 orthogonal signed 2x2 Hadamard blocks  (12 + 12)
+    cut 13|24: 1x1 blocks (row->column, entry 1 of O = 6M): 03->53, 04->34, 05->45, 30->55, 33->04, 35->30, 40->44, 44->50, 45->03, 50->33, 53->40, 54->05
+    cut 13|24: 2x2 blocks (1/sqrt2 x sign matrix):
+        rows 00,43 cols 12,21 [[-,-],[-,+]]
+        rows 01,20 cols 02,20 [[-,+],[+,+]]
+        rows 02,10 cols 01,10 [[+,+],[-,+]]
+        rows 11,22 cols 00,35 [[-,-],[+,-]]
+        rows 12,21 cols 43,54 [[-,-],[-,+]]
+        rows 13,42 cols 25,32 [[+,-],[+,+]]
+        rows 14,31 cols 23,41 [[+,+],[+,-]]
+        rows 15,51 cols 14,52 [[+,+],[-,+]]
+        rows 23,41 cols 15,31 [[-,+],[+,+]]
+        rows 24,32 cols 13,42 [[+,+],[-,+]]
+        rows 25,52 cols 24,51 [[-,+],[+,+]]
+        rows 34,55 cols 11,22 [[-,+],[+,+]]
 [PASS] (2) cut 13|24: 12 blocks (1) + 12 orthogonal signed 2x2 Hadamard blocks  (12 + 12)
+    cut 14|23: 1x1 blocks (row->column, entry 1 of O = 6M): 03->53, 04->34, 05->45, 30->35, 34->03, 35->50, 40->54, 43->05, 44->40, 50->43, 53->30, 55->04
+    cut 14|23: 2x2 blocks (1/sqrt2 x sign matrix):
+        rows 00,33 cols 12,21 [[+,+],[-,+]]
+        rows 01,20 cols 02,20 [[+,-],[+,+]]
+        rows 02,10 cols 01,10 [[-,-],[-,+]]
+        rows 11,22 cols 00,44 [[-,+],[+,+]]
+        rows 12,21 cols 33,55 [[-,+],[+,+]]
+        rows 13,32 cols 24,42 [[+,-],[+,+]]
+        rows 14,51 cols 15,52 [[+,-],[+,+]]
+        rows 15,41 cols 23,31 [[+,-],[+,+]]
+        rows 23,31 cols 14,41 [[+,-],[-,-]]
+        rows 24,52 cols 25,51 [[-,+],[+,+]]
+        rows 25,42 cols 13,32 [[-,-],[-,+]]
+        rows 45,54 cols 11,22 [[+,+],[-,+]]
 [PASS] (2) cut 14|23: 12 blocks (1) + 12 orthogonal signed 2x2 Hadamard blocks  (12 + 12)
 [PASS] (3) cut 12|34, rows: 12 classical officers + 24 Bell-type officers  (12 + 24)
 [PASS] (3) cut 12|34, columns: 12 classical officers + 24 Bell-type officers  (12 + 24)

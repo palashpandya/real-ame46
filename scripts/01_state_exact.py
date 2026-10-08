@@ -42,19 +42,29 @@ for r in (1, 2):
         ok &= all((x, x) in rho for x in itertools.product(range(D), repeat=r))
         check(f"(1) rho_{''.join(str(a + 1) for a in A)} = I/{D ** r} exactly", ok)
 
-# (2) block structure
+# (2) block structure; the complete block lists are printed (they replace the table of the paper's first draft)
 for cut in CUTS:
     nb1 = nb2 = 0
+    name = "".join(str(a + 1) for a in cut[0]) + "|" + "".join(str(a + 1) for a in cut[1])
+    ones, twos = [], []
     for R, C in blocks(state.keys(), cut):
         pt = lambda r, c: point(r, c, cut)
+        lab2 = lambda t: "%d%d" % t
         if len(R) == len(C) == 1:
             nb1 += state[pt(R[0], C[0])] == (0, 1)
+            ones.append(f"{lab2(R[0])}->{lab2(C[0])}")
         elif len(R) == len(C) == 2:
             M = [[state.get(pt(r, c)) for c in C] for r in R]
             if all(m is not None and m[1] == 0 and abs(m[0]) == 1 for row in M for m in row):
-                s = [[m[0] for m in row] for row in M]
-                nb2 += s[0][0] * s[1][0] + s[0][1] * s[1][1] == 0
-    name = "".join(str(a + 1) for a in cut[0]) + "|" + "".join(str(a + 1) for a in cut[1])
+                sg = [[m[0] for m in row] for row in M]
+                nb2 += sg[0][0] * sg[1][0] + sg[0][1] * sg[1][1] == 0
+                sym = lambda v: "+" if v > 0 else "-"
+                twos.append(f"rows {lab2(R[0])},{lab2(R[1])} cols {lab2(C[0])},{lab2(C[1])} "
+                            f"[[{sym(sg[0][0])},{sym(sg[0][1])}],[{sym(sg[1][0])},{sym(sg[1][1])}]]")
+    print(f"    cut {name}: 1x1 blocks (row->column, entry 1 of O = 6M): {', '.join(ones)}")
+    print(f"    cut {name}: 2x2 blocks (1/sqrt2 x sign matrix):")
+    for t in twos:
+        print("        " + t)
     check(f"(2) cut {name}: 12 blocks (1) + 12 orthogonal signed 2x2 Hadamard blocks", nb1 == 12 and nb2 == 12,
           f"{nb1} + {nb2}")
 

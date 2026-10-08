@@ -2,9 +2,6 @@
 [PASS] sets O and N
 [PASS] table of K
 [PASS] branch table
-[PASS] Appendix A block table for 12|34
-[PASS] Appendix A block table for 13|24
-[PASS] Appendix A block table for 14|23
-[PASS] Table I (classes) = data/real_classes.json  (20 rows)
+[PASS] class table of Theorem 1 (Table II) = data/real_classes.json  (20 rows)
 
 ALL CHECKS PASSED

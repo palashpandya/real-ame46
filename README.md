@@ -59,7 +59,7 @@ officers and 24 officers in two-term Bell-type states.
 | 12 | Discovery, step 0: of the order ≤ 6 local-symmetry classes, 204 pass the spectral test and 121 also the population LP; the order-4 class of u (eigenvalue −1, dimension 360) is one of them | `09_sector_filters.py` | exact |
 | 13 | Discovery, step 1: a random-start search in the 360-dim sector of u^⊗4 finds AME states within a few restarts; most hits have deformation dimension 10, like the family (about 1 in 8 lie on a different, 3-parameter family) | `08_sector_search.py` | stochastic demonstration |
 | 14 | Discovery, step 2: smoothed-L1 minimisation over commutant frames brings a dimension-10 hit to exactly 72 coefficients; after a Gauss–Newton polish it is an exact AME state whose support is L ∪ O ∪ N up to relabelling, with the moduli of the family | `10_sparsify.py` | numerical (seeded) |
-| 15 | The tables printed in the paper (state, O and N, K, branches, Appendix A blocks, Table I) agree with the data | `11_paper_tables.py` | exact |
+| 15 | The tables printed in the paper (the state as Table I, O and N, K, branches, the class table) agree with the data; the complete block lists of the three reshapings are printed by `01` | `11_paper_tables.py`, `01` | exact |
 
 **Real classes** (data/real_classes.json). Face +: representative = ψ with the listed coefficients 1/6 negated.
 Face −: representative = ψ₋ with the listed coefficients 1/6 negated.

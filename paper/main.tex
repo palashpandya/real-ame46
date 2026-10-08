@@ -1,0 +1,96 @@
+\documentclass[aps,pra,reprint,superscriptaddress,amsmath,amssymb,longbibliography]{revtex4-2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle#1|}
+\newcommand{\AME}{\mathrm{AME}}
+\newcommand{\todo}[1]{\textcolor{red}{[#1]}}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+% Working title.  Alternatives:
+%   "Euler's thirty-six officers need no complex numbers"
+%   "Real absolutely maximally entangled states of four quhexes: families and classification"
+\title{Real absolutely maximally entangled states of four six-level systems}
+\author{Palash Pandya}
+\affiliation{\todo{affiliation}}
+\date{\today}
+
+\begin{abstract}
+\todo{~150 words: problem (T2 / conjecture of Rather et al.); explicit real state, hand-checkable proof;
+order-four symmetry sector and linearization; two closed-form families incl.\ 2-unitary weighing matrices;
+2048 real states, isolated, exactly 8 LU classes (certified); code and data.}
+\end{abstract}
+\maketitle
+
+% ---------------------------------------------------------------------------------------------------------
+\section{Introduction}
+% - AME(N,d): all floor(N/2)-party marginals maximally mixed; AME(4,d) <-> 2-unitary U (U, U^R, U^Gamma unitary).
+% - Euler's 36 officers: no pair of orthogonal Latin squares of order 6 (Tarry); quantum solution = AME(4,6)
+%   (golden state, RBB22), further complex solutions: RRKL23, BZ24, Rat24, GG25; no stabilizer one (WMBA26),
+%   entanglement necessary (BS26).
+% - All known solutions complex; conjecture (RBB22 SM, verbatim quote) and open problem T2 (RBRLZ26).
+%   Corollary of our result: real AME(4,d) exist iff d >= 3 (HS2000, BSP1960).
+% - Summary of results (one paragraph): (i) state; (ii) symmetry; (iii) families; (iv) classification.
+\todo{Introduction.}
+
+% ---------------------------------------------------------------------------------------------------------
+\section{A real AME(4,6) state}\label{sec:state}
+% - display (inputs/state_display.tex); 48 entries +-1, 12 entries sqrt2.
+% - Proposition 1 + hand proof: each reshaping = 12 (1) + 12 signed 2x2 Hadamard blocks (Appendix A).
+% - Fig. 1 (figures/amplitudes.pdf).
+% - officers: 12 classical + 24 Bell-type in every reshaping; product overlap 1/6 is maximal.
+\todo{The state, Proposition 1, proof, Fig.~1, officers.}
+
+% ---------------------------------------------------------------------------------------------------------
+\section{Symmetry and linearization}\label{sec:symmetry}
+% - search in eigenspaces of local symmetries U^{\otimes4}, inputs N and d only; sector of
+%   u = diag(i,-1,-1,-i,-i,-i), eigenvalue -1, dim 360; hit; sparsest frame in the commutant U(1)xU(2)xU(3): support 72,
+%   an orthogonal array OA(72,4,6,2) of index 2.
+% - Lemma 1 (block reduction): if every reshaping of the support splits into 1x1 and 2x2 blocks, AME <=> linear
+%   equations for s_x = 72|psi_x|^2 and phase congruences phi_a - phi_b - phi_c + phi_e = pi; real <=> GF(2).
+% - Every state below lies in the -1 sector of u^{\otimes 4}.
+\todo{Symmetry sector, search, Lemma 1.}
+
+% ---------------------------------------------------------------------------------------------------------
+\section{Two families through the real state}\label{sec:families}
+% - sets L, O, N; Eq. (F72) psi_sigma(delta,theta); Eq. (F60) psi_face(theta); K in Appendix B.
+% - Proposition 2: AME; all AME states on these supports (up to diagonal LU); 10 and 11 parameters; components.
+% - meeting: C = {theta10 = theta11 = 0}; eight branches end at psi; delta = 0: 2-unitary complex weighing
+%   matrices sqrt2*6M in {0,+-1,+-i}; no real state on support 72.
+% - Fig. 2 (inputs/family_figure.tex); deformation dimensions 14 / 11 / 10.
+\todo{Families, Proposition 2, Fig.~2.}
+
+% ---------------------------------------------------------------------------------------------------------
+\section{Classification of the real states}\label{sec:real}
+% - 2048 real points (GF(2) + Smith form), Aut(S60) order 192, 16 orbits.
+% - Theorem 1: exactly 8 classes under LU and party permutations; Table I; proof: H_12^{\otimes4} merges pairs;
+%   N(41/8) separates (certified with Arb + Sylvester inertia).
+% - isolation modulo O(6)^4 (first order / second-order obstruction for class 2).
+% - inequivalence to golden (dim 4) and H(0) (dim 3).
+\todo{Real states, Theorem 1, Table~I.}
+
+% ---------------------------------------------------------------------------------------------------------
+\section{Discussion}\label{sec:discussion}
+% - support 60 vs 112 (golden); lower bound support >= 72 - t >= 38 (officers form a distance-3 code).
+% - open: minimal support; real states outside these families; Hadamard (flat) form; other sectors.
+\todo{Discussion and open problems.}
+
+\begin{acknowledgments}
+\todo{Acknowledgments.}
+\end{acknowledgments}
+
+\paragraph*{Data and code availability.} All statements are verified by the scripts in Ref.~\cite{repo}.
+
+\appendix
+\section{Block decomposition of the three reshapings}\label{app:blocks}
+\todo{blocks table}
+\section{Phase directions of the families}\label{app:K}
+\todo{sets $O$, $N$; table of $K$; branch table}
+
+\bibliography{references}
+\end{document}

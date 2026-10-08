@@ -124,6 +124,11 @@ scripts/01..08                  the verifications listed above
 wolfram/verify_families.wls     symbolic check of the closed forms
 ```
 
+## Licence
+
+Code (`ame46real/`, `scripts/`, `wolfram/`, `run_all.sh`): MIT, see `LICENSE`. Data and results: CC BY 4.0,
+see `LICENSE-DATA.md` (which also lists the sources of `data/reference/`). The manuscript in `paper/` is not covered.
+
 ## References
 
 - D. Goyeneche et al., PRA 92, 032316 (2015): AME states and multi-unitary matrices.

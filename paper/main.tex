@@ -30,9 +30,9 @@ $60$ non-zero coefficients in $\{\pm1,\sqrt2\}/\sqrt{72}$, together with a proof
 They lie in the $-1$ eigenspace of an order-four local symmetry, and on their support the AME conditions become linear.
 This yields two families of AME$(4,6)$ states in closed form: a ten-parameter family that contains two-unitary
 complex weighing matrices with uniform amplitudes, and an eleven-parameter family on $60$ basis states.  The real
-states sit where the two families meet.  On this support there are $2048$ real AME states up to local phases.  They
-are isolated, and they fall into exactly eight classes under local unitaries and permutations of the parties; we
-certify the separation of the classes with interval arithmetic.  Code and data are public.
+states sit where the families meet.  The two sixty-term faces of the ten-parameter family carry $4096$ real AME states
+up to local phases.  They are isolated, and they fall into exactly twenty classes under local unitaries and
+permutations of the parties; we certify the separation of the classes with interval arithmetic.  Code and data are public.
 \end{abstract}
 \maketitle
 
@@ -70,8 +70,8 @@ $u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$, and on its support the AME 
 (Sec.~\ref{sec:symmetry}).
 (iii)~Two continuous families of AME$(4,6)$ states in closed form that meet at the real state; one contains
 two-unitary complex weighing matrices (Sec.~\ref{sec:families}).
-(iv)~A complete classification of the real AME states on this support: $2048$ states, all isolated, in exactly
-eight classes under local unitaries and party permutations (Sec.~\ref{sec:real}).
+(iv)~A complete classification of the real AME states on the two sixty-term faces of the family: $4096$ states,
+all isolated, in exactly twenty classes under local unitaries and party permutations (Sec.~\ref{sec:real}).
 All statements are verified by self-contained scripts~\cite{repo}.
 
 % =========================================================================================================
@@ -220,7 +220,14 @@ Each of the eight branches passes, at $\delta=0$, through a state with uniform a
 $\theta=0$ the coefficients are $\varepsilon_x$ on $L$, $1$ on $O$ and $i\sigma$ on $N$, so $W=\sqrt2\cdot6M$ has
 entries in $\{0,\pm1,\pm i\}$, two per row and column, and $WW^\dagger=2\,\mathbb I$ in all three reshapings.  These
 are two-unitary complex weighing matrices.  As $\delta$ increases to $1$, the weight of each entry of $N$ moves to
-its partner in $O$, and the state stays AME until it becomes real at $\ket\psi$.
+its partner in $O$, and the state stays AME until it becomes real at $\ket\psi$.  At the other end, $\delta=-1$, the
+roles of $O$ and $N$ are exchanged: the coefficients on $O$ vanish and those on $N$ have modulus $1/6$.  The support
+$L\cup N$ carries its own $11$-parameter torus of AME states, and every branch ends, up to diagonal local unitaries, at
+a real state on it; the simplest branch ends at
+\begin{equation}\label{eq:psiminus}
+\ket{\psi_-}=\frac1{\sqrt{72}}\sum_{x\in L}\varepsilon_x\ket x+\frac16\sum_{x\in N}\ket x .
+\end{equation}
+The two faces are not related by any relabelling of parties and levels.
 
 The first-order deformations of an AME state, modulo the tangent space of its local-unitary orbit, are a local-unitary
 invariant.  Their dimension is $10$ for a generic member of~\eqref{eq:F72} and $11$ for a generic face state.  At
@@ -233,8 +240,8 @@ singular point at which the $11$-dimensional face and both $10$-dimensional comp
 \caption{The families of Proposition~\ref{prop:families}.  The face $\mathcal F_{60}$ (top) is an $11$-dimensional
 phase torus.  The two components $\mathcal F_{72}^\pm$ ($\sigma=\pm1$, complex conjugate to each other) are
 $10$-dimensional and attach to the face along the $9$-torus $\mathcal C=\{\theta_{10}=\theta_{11}=0\}$; $\delta$ runs
-vertically.  Eight straight branches start at the real state $\ket\psi\in\mathcal C$ and cross the
-uniform-amplitude slice $\delta=0$.}
+vertically.  Eight straight branches start at the real state $\ket\psi\in\mathcal C$, cross the
+uniform-amplitude slice $\delta=0$ and end at real states of the opposite face $\delta=-1$.}
 \label{fig:families}
 \end{figure*}
 
@@ -242,58 +249,75 @@ uniform-amplitude slice $\delta=0$.}
 \section{Classification of the real states}\label{sec:real}
 
 By Lemma~\ref{lem:blocks}, a real state with support exactly $L\cup O$ is determined by signs that solve the $36$
-congruences over $\mathbb F_2$.  There are $2^{32}$ such sign patterns.  Modulo diagonal local unitaries they give
-exactly $2048$ distinct real AME states, of which $512$ lie on $\mathcal C$ and are limits of the support-$72$
-family.  Flipping the sign of any coefficient $1/6$ keeps a state AME, since these are $1\times1$ blocks.  The level
-relabellings and party permutations that preserve $L\cup O$ form a group of order $192$, which has $16$ orbits on
-the $2048$ states, eight of size $64$ and eight of size $192$.
+light-block congruences over $\mathbb F_2$, and the same holds for $L\cup N$.  On each face there are $2^{32}$ such sign
+patterns.  Modulo diagonal local unitaries they give exactly $2048$ distinct real AME states, of which $512$ are
+limits of the support-$72$ family.  Flipping the sign of a coefficient $1/6$ keeps a state AME, since these are
+$1\times1$ blocks.  On each face the level relabellings and party permutations that preserve the support and its
+coefficients $1/6$ form a group of order $192$.  It has $16$ orbits on the real states of $L\cup O$ (eight of size
+$64$, eight of size $192$) and $24$ on those of $L\cup N$ (four of size $32$, twenty of size $96$).
 
 \begin{theorem}\label{thm:classes}
-The $2048$ real AME$(4,6)$ states with support $L\cup O$ fall into exactly eight classes under local unitaries and
-permutations of the parties.  The representatives are listed in Table~\ref{tab:classes}.
+The $4096$ real AME$(4,6)$ states with support $L\cup O$ or $L\cup N$ fall into exactly twenty classes under local
+unitaries and permutations of the parties, eight on the face of $\ket\psi$ and twelve on that of $\ket{\psi_-}$.  The
+representatives are listed in Table~\ref{tab:classes}.
 \end{theorem}
 
 \begin{proof}
-\emph{At most eight.}  States in one orbit are related by monomial local unitaries and party permutations.  The
-orbits pair up: within each pair, the real local orthogonal map $H_{12}^{\otimes4}$, a $2\times2$ Hadamard rotation on
-the levels $\{1,2\}$ of every party, followed by a monomial map, takes one orbit to the other~\cite{repo}.\\
-\emph{At least eight.}  Let $J$ be the real Jacobian of the map $\psi\mapsto(\rho_A)_{|A|=2}$ to all six
+\emph{At most twenty.}  States in one orbit are related by monomial local unitaries and party permutations.  On each
+face, orbits are further joined by the real local orthogonal map $H_{12}^{\otimes4}$, a $2\times2$ Hadamard rotation on
+the levels $\{1,2\}$ of every party, followed by a monomial map.  This leaves eight classes on $L\cup O$ and twelve on
+$L\cup N$~\cite{repo}.\\
+\emph{At least twenty.}  Let $J$ be the real Jacobian of the map $\psi\mapsto(\rho_A)_{|A|=2}$ to all six
 two-party marginals, and $N(t)$ the number of eigenvalues of $72J^{T}J$ below $t$.  A local unitary acts orthogonally
 on the state and on each marginal; a party permutation permutes the marginals.  The spectrum of $J^TJ$, and so
-$N(t)$, is therefore invariant under both.  The values $N(41/8)$ on the eight representatives are pairwise different
-(Table~\ref{tab:classes}).  We certify them rigorously.  $72J^TJ$ has entries in $\mathbb Z[\sqrt2]$ and splits into
-blocks of size at most $160$.  For each block $G$ we form $X=V^T(G-t\mathbb I)V$ in ball arithmetic~\cite{Arb2017},
-with $V$ its numerical eigenvectors, and check that every Gershgorin interval of $X$ excludes $0$.  By Sylvester's law
-of inertia, the number of negative intervals then equals the number of eigenvalues of $G$ below $t$.
+$N(t)$, is therefore invariant under both.  The pairs $\bigl(N(149/8),N(3/2)\bigr)$ on the twenty representatives are
+pairwise different (Table~\ref{tab:classes}).  We certify them rigorously.  $72J^TJ$ has entries in
+$\mathbb Z[\sqrt2]$ and splits into blocks of size at most $160$.  For each block $G$ we form $X=V^T(G-t\mathbb I)V$
+in ball arithmetic~\cite{Arb2017}, with $V$ its numerical eigenvectors, and check that every Gershgorin interval of
+$X$ excludes $0$.  By Sylvester's law of inertia, the number of negative intervals then equals the number of
+eigenvalues of $G$ below $t$.
 \end{proof}
 
-\begin{table}[t]
-\caption{The eight classes of Theorem~\ref{thm:classes}.  Representative: $\ket\psi$ with the listed coefficients
-$1/6$ negated.  ``On $\mathcal C$'': limits of the support-$72$ family.  Dim: first-order deformations modulo local
-unitaries.  $N(41/8)$: the certified invariant of the proof.}
+\begin{table*}[t]
+\caption{The twenty classes of Theorem~\ref{thm:classes}.  Face $+$: representative $\ket\psi$ with the listed
+coefficients $1/6$ negated; face $-$: the same for $\ket{\psi_-}$, Eq.~\eqref{eq:psiminus}.  ``Limit'': limits of the
+support-$72$ family.  Dim: first-order deformations modulo local unitaries.  $N(t)$: the certified invariants of the
+proof.}
 \label{tab:classes}
 \begin{ruledtabular}
-\begin{tabular}{clcccc}
-class & flipped & states & on $\mathcal C$ & dim & $N(41/8)$\\
+\begin{tabular}{clcccccc}
+class & face & flipped & states & limit & dim & $N(149/8)$ & $N(3/2)$\\
 \hline
-1 & -- & $128$ & yes & $14$ & $261$\\
-2 & $0344$, $3505$ & $384$ & yes & $14$ & $265$\\
-3 & $5303$ & $128$ & no & $11$ & $255$\\
-4 & $5430$ & $128$ & no & $11$ & $256$\\
-5 & $5045$ & $128$ & no & $11$ & $264$\\
-6 & $0533$ & $384$ & no & $11$ & $254$\\
-7 & $0455$ & $384$ & no & $11$ & $257$\\
-8 & $0344$ & $384$ & no & $11$ & $258$
+1 & $+$ & -- & $128$ & yes & $14$ & $1048$ & $157$\\
+2 & $+$ & $0344$, $3505$ & $384$ & yes & $14$ & $1046$ & $157$\\
+3 & $+$ & $5303$ & $128$ & no & $11$ & $1050$ & $153$\\
+4 & $+$ & $5430$ & $128$ & no & $11$ & $1044$ & $152$\\
+5 & $+$ & $5045$ & $128$ & no & $11$ & $1053$ & $153$\\
+6 & $+$ & $0533$ & $384$ & no & $11$ & $1055$ & $153$\\
+7 & $+$ & $0455$ & $384$ & no & $11$ & $1052$ & $153$\\
+8 & $+$ & $0344$ & $384$ & no & $11$ & $1052$ & $152$\\
+9 & $-$ & -- & $288$ & yes & $14$ & $1021$ & $157$\\
+10 & $-$ & $0434$, $3055$ & $96$ & yes & $14$ & $1029$ & $173$\\
+11 & $-$ & $0434$, $5340$ & $96$ & yes & $14$ & $1025$ & $159$\\
+12 & $-$ & $0353$, $4044$ & $32$ & yes & $14$ & $985$ & $155$\\
+13 & $-$ & $0353$ & $288$ & no & $11$ & $1004$ & $152$\\
+14 & $-$ & $0434$ & $288$ & no & $11$ & $1032$ & $160$\\
+15 & $-$ & $0545$ & $288$ & no & $11$ & $1022$ & $152$\\
+16 & $-$ & $3055$ & $288$ & no & $11$ & $1026$ & $152$\\
+17 & $-$ & $0434$, $5405$ & $96$ & no & $11$ & $1038$ & $168$\\
+18 & $-$ & $5033$ & $96$ & no & $11$ & $1020$ & $152$\\
+19 & $-$ & $5340$ & $96$ & no & $11$ & $1012$ & $152$\\
+20 & $-$ & $5405$ & $96$ & no & $11$ & $1030$ & $152$\\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
-Simpler invariants do not separate the classes: all polynomial local-unitary invariants of degree four that we
+Simpler invariants do not separate the classes: the polynomial local-unitary invariants of degree four that we
 evaluated, and the power traces $\mathrm{Tr}(J^TJ)^k$ for $k\le8$, take equal values on classes $3$--$8$.
 
 The real states are isolated: no continuous family of real AME states passes through any of them, modulo local
-orthogonal maps.  For $14$ of the $16$ orbits there is no real first-order deformation.  For the two orbits of
-class~2 the two real first-order deformations are obstructed at second order (numerical)~\cite{repo}.  Within the
+orthogonal maps.  For most orbits there is no real first-order deformation.  For the remaining six (two on $L\cup O$, four on
+$L\cup N$) the two real first-order deformations are obstructed at second order (numerical)~\cite{repo}.  Within the
 families of Sec.~\ref{sec:families} the real states are therefore isolated points of complex continua.
 
 The deformation dimensions also separate our states from the known solutions.  They are $14$ and $11$ for the real

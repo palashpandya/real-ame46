@@ -1,0 +1,14 @@
+class  N(41/8)  N(1/2)
+    1      261     155
+    2      265     155
+    3      255     152
+    4      256     152
+    5      264     152
+    6      254     152
+    7      257     152
+    8      258     152
+[PASS] every count certified (no Gershgorin interval touches 0)
+[PASS] N(41/8) = 261, 265, 255, 256, 264, 254, 257, 258: eight distinct values -> 8 pairwise LU-inequivalent classes
+[PASS] N(1/2) = 141 + deformation dim (155 for classes 1-2, 152 for 3-8)
+
+ALL CHECKS PASSED

@@ -1,0 +1,15 @@
+[PASS] lower bound: 8 distinct spectra on the 16 orbits, each shared by exactly 2 orbits  (separation 5.04e-01, noise 1.6e-13)
+[PASS] upper bound: H_12^(x)4 + a monomial map joins the two orbits of each pair -> exactly 8 classes
+
+class  representative (officer signs flipped)  states  orbits      on C  N(41/8)
+    1  -                                         128  64+64       yes      261
+    2  0344 3505                                 384  192+192     yes      265
+    3  5303                                      128  64+64        no      255
+    4  5430                                      128  64+64        no      256
+    5  5045                                      128  64+64        no      264
+    6  0533                                      384  192+192      no      254
+    7  0455                                      384  192+192      no      257
+    8  0344                                      384  192+192      no      258
+[PASS] the 8 representatives are AME, lie in 8 different classes, and match the class table
+
+ALL CHECKS PASSED

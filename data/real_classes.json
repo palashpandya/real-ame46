@@ -1,0 +1,108 @@
+{
+ "description": "The 8 LU classes (local unitaries and party permutations) of the 2048 real points of the support-60 face. Representative = psi with the listed officer coefficients (1/6) negated.",
+ "classes": [
+  {
+   "cls": 1,
+   "flip": [],
+   "states": 128,
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "aut_orbit_sizes": [
+    64,
+    64
+   ]
+  },
+  {
+   "cls": 2,
+   "flip": [
+    "0344",
+    "3505"
+   ],
+   "states": 384,
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "aut_orbit_sizes": [
+    192,
+    192
+   ]
+  },
+  {
+   "cls": 3,
+   "flip": [
+    "5303"
+   ],
+   "states": 128,
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "aut_orbit_sizes": [
+    64,
+    64
+   ]
+  },
+  {
+   "cls": 4,
+   "flip": [
+    "5430"
+   ],
+   "states": 128,
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "aut_orbit_sizes": [
+    64,
+    64
+   ]
+  },
+  {
+   "cls": 5,
+   "flip": [
+    "5045"
+   ],
+   "states": 128,
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "aut_orbit_sizes": [
+    64,
+    64
+   ]
+  },
+  {
+   "cls": 6,
+   "flip": [
+    "0533"
+   ],
+   "states": 384,
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "aut_orbit_sizes": [
+    192,
+    192
+   ]
+  },
+  {
+   "cls": 7,
+   "flip": [
+    "0455"
+   ],
+   "states": 384,
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "aut_orbit_sizes": [
+    192,
+    192
+   ]
+  },
+  {
+   "cls": 8,
+   "flip": [
+    "0344"
+   ],
+   "states": 384,
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "aut_orbit_sizes": [
+    192,
+    192
+   ]
+  }
+ ]
+}

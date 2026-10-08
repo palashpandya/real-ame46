@@ -1,0 +1,31 @@
+state                                     AME err  dim  nullity  gap (largest zero / smallest nonzero eigenvalue)
+psi                                       8.3e-17   14      155  1.7e-15 / 3.1e-02
+[PASS] deformation dim of psi = 14
+real class 2 (flip 0344 3505)             8.3e-17   14      155  6.4e-16 / 3.1e-02
+[PASS] deformation dim of real class 2 (flip 0344 3505) = 14
+real class 3 (flip 5303)                  8.3e-17   11      152  1.0e-15 / 3.1e-02
+[PASS] deformation dim of real class 3 (flip 5303) = 11
+real class 4 (flip 5430)                  8.3e-17   11      152  1.4e-15 / 3.4e-02
+[PASS] deformation dim of real class 4 (flip 5430) = 11
+real class 5 (flip 5045)                  8.3e-17   11      152  7.8e-16 / 3.1e-02
+[PASS] deformation dim of real class 5 (flip 5045) = 11
+real class 6 (flip 0533)                  8.3e-17   11      152  9.7e-16 / 3.1e-02
+[PASS] deformation dim of real class 6 (flip 0533) = 11
+real class 7 (flip 0455)                  8.3e-17   11      152  1.5e-15 / 3.1e-02
+[PASS] deformation dim of real class 7 (flip 0455) = 11
+real class 8 (flip 0344)                  8.3e-17   11      152  1.3e-15 / 3.4e-02
+[PASS] deformation dim of real class 8 (flip 0344) = 11
+face, random theta                        8.3e-17   11      152  1.7e-15 / 3.9e-02
+[PASS] deformation dim of face, random theta = 11
+support 72, sigma=+1, random              8.3e-17   10      151  2.3e-15 / 4.5e-02
+[PASS] deformation dim of support 72, sigma=+1, random = 10
+support 72, sigma=-1, random              8.3e-17   10      151  1.9e-15 / 3.1e-02
+[PASS] deformation dim of support 72, sigma=-1, random = 10
+uniform psi_+(0, 0)                       8.3e-17   10      151  1.0e-15 / 3.4e-02
+[PASS] deformation dim of uniform psi_+(0, 0) = 10
+golden (Rather et al. 2022)               1.1e-16    4      145  7.4e-16 / 3.2e-02
+[PASS] deformation dim of golden (Rather et al. 2022) = 4
+H(0) (Bruzda-Zyczkowski 2024)             1.7e-16    3      144  1.8e-15 / 2.3e-02
+[PASS] deformation dim of H(0) (Bruzda-Zyczkowski 2024) = 3
+
+ALL CHECKS PASSED

@@ -1,0 +1,5 @@
+psi_+(delta, theta), delta = cos 2al: {0, 0, 0}  -> AME for all parameters: True
+psi_-(delta, theta): {0, 0, 0}  -> AME for all parameters: True
+psi_face(theta): {0, 0, 0}  -> AME for all parameters: True
+negative control (one entry times i; must FAIL): {1/(36*Sqrt[2]), 1/(36*Sqrt[2]), Max[0, Abs[(-1 - I)*Cos[th1] - (1 - I)*Sin[th1]]/72, Abs[Cos[th1] + I*Sin[th1]]/(36*Sqrt[2])]}  -> AME for all parameters: False
+ALL SYMBOLIC CHECKS PASSED

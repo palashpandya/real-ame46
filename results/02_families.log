@@ -1,0 +1,29 @@
+[PASS] (a) S72: each cut is 18 blocks 2x2
+[PASS] (a) moduli s = 72|a|^2: affine solution set is {1 + delta (O), 1 - delta (N), 1 (L)}
+[PASS] (a) phase congruences: kernel 30, local phases 21 -> 9 parameters; K spans the rest  (rank M = 42)
+[PASS] (a) invariant factors -> exactly 2 components  (factors [1, 2])
+[PASS] (a) sigma = +1 base point solves the congruences
+[PASS] (a) sigma = -1 base point solves the congruences
+[PASS] (a) sigma = +1 and sigma = -1 lie in different components
+[PASS] (a) complex conjugation maps component sigma=+1 to sigma=-1
+[PASS] (b) S60: per cut 12 blocks 2x2 (L) + 12 blocks 1x1 (O)
+[PASS] (b) moduli rigid: officers alone in row and column (s = 2), L blocks force s = 1
+[PASS] (b) kernel 32, local phases 21 -> 11 parameters; K' spans; one component
+[PASS] (b) psi = psi_face(0) = psi_{+}(1, 0) = psi_{-}(1, 0)
+[PASS] (c) solvability for the N phases depends only on theta_10, theta_11
+[PASS] (c) ... and holds iff theta_10, theta_11 in 2 pi Z (invariant factors 1, 1)
+[PASS] (d) 54 x 12 system: invariant factors 1^9 2^3 -> 8 solutions, all phases +-i
+[PASS] (d) each solution gives an AME curve delta in [-1, 1] ending at psi (numerical)  (max error 1.4e-16)
+[PASS] (d) the local phases fixing psi (a finite group, factors [2, 2, 4]) act trivially on N
+[PASS] (d) the 8 table rows are the 8 branches, 4 in each component
+[PASS] (e) no real point on support 72: M x = 1 has no solution over GF(2)
+[PASS] (e) real points exist on the face: psi's signs solve M60 x = 1 over GF(2)
+[PASS] (f) psi_+1(0, 0): sqrt2*6M in {0, +-1, +-i}, W W^dag = 2 I in all cuts
+[PASS] (f) psi_-1(0, 0): sqrt2*6M in {0, +-1, +-i}, W W^dag = 2 I in all cuts
+[PASS] (f) stored uniform state (68 x +-1, 4 x +-i): exact weighing 2-unitary
+[PASS] (f) it equals psi_sigma(0, theta') up to local phases (exact)
+[PASS] (f) straight path t -> psi_sigma(t, (1-t) theta') is AME and ends at psi (numerical)  (max error 1.4e-16)
+[PASS] random members of both families are AME (numerical, 40 + 20 points)  (max errors 1.4e-16, 1.1e-16)
+[PASS] psi_sigma(1, theta) = psi_face(theta, 0, 0)
+
+ALL CHECKS PASSED

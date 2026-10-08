@@ -1,0 +1,12 @@
+[PASS] (1) dim of the -1 eigenspace of u^(x)4  (360)
+[PASS] (2) all 72 support points lie in the sector
+[PASS] (2) u^(x)4 |phi> = -|phi> for psi (real) (numerical)
+[PASS] (2) u^(x)4 |phi> = -|phi> for psi_sigma(delta, theta), random (numerical)
+[PASS] (2) u^(x)4 |phi> = -|phi> for psi_face(theta), random (numerical)
+[PASS] (2) u^(x)4 |phi> = -|phi> for uniform psi_-(0, 0) (numerical)
+[PASS] (3) diagonal symmetry group of the support-72 array  (Z2 x Z2 x Z4)
+[PASS] (3) diagonal symmetry group of the support-60 face  (Z2 x Z2 x Z4)
+[PASS] (3) u^(x)4 has order 4 in this group (u, u^2, u^3 are not scalar on a party; u^4 = 1)
+[PASS] (4) diagonal symmetries of this spectral type containing the support: 4, all with -1 on levels {1,2}; they differ only in which level of {0,3,4,5} carries i (u is one of them)
+
+ALL CHECKS PASSED

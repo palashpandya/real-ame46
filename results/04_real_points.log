@@ -1,0 +1,11 @@
+[PASS] (1) 2^32 real sign patterns, gauge part 2^21 -> 2048 real states
+[PASS] (1) theta_j in {0, pi} reach only 256 of them
+[PASS] (2) 512 real states on the gluing locus C
+[PASS] (3) |Aut(S60)| = 192
+[PASS] (3) 16 orbits: 8 x 64 + 8 x 192
+[PASS] (3) psi lies in an orbit of size 64
+    real first-order deformations per orbit: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2]
+[PASS] (4) psi: no real first-order deformation
+[PASS] (4) every orbit: no real deformation, or all of them obstructed at second order (numerical)  (min obstruction 0.354, 0.354 on orbits with [2] directions)
+
+ALL CHECKS PASSED

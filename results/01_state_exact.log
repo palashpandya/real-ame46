@@ -1,0 +1,24 @@
+[PASS] support 60 = 48 x (+-1) + 12 x sqrt2
+[PASS] (1) <psi|psi> = 1 exactly
+[PASS] (1) rho_1 = I/6 exactly
+[PASS] (1) rho_2 = I/6 exactly
+[PASS] (1) rho_3 = I/6 exactly
+[PASS] (1) rho_4 = I/6 exactly
+[PASS] (1) rho_12 = I/36 exactly
+[PASS] (1) rho_13 = I/36 exactly
+[PASS] (1) rho_14 = I/36 exactly
+[PASS] (1) rho_23 = I/36 exactly
+[PASS] (1) rho_24 = I/36 exactly
+[PASS] (1) rho_34 = I/36 exactly
+[PASS] (2) cut 12|34: 12 blocks (1) + 12 orthogonal signed 2x2 Hadamard blocks  (12 + 12)
+[PASS] (2) cut 13|24: 12 blocks (1) + 12 orthogonal signed 2x2 Hadamard blocks  (12 + 12)
+[PASS] (2) cut 14|23: 12 blocks (1) + 12 orthogonal signed 2x2 Hadamard blocks  (12 + 12)
+[PASS] (3) cut 12|34, rows: 12 classical officers + 24 Bell-type officers  (12 + 24)
+[PASS] (3) cut 12|34, columns: 12 classical officers + 24 Bell-type officers  (12 + 24)
+[PASS] (3) cut 13|24, rows: 12 classical officers + 24 Bell-type officers  (12 + 24)
+[PASS] (3) cut 13|24, columns: 12 classical officers + 24 Bell-type officers  (12 + 24)
+[PASS] (3) cut 14|23, rows: 12 classical officers + 24 Bell-type officers  (12 + 24)
+[PASS] (3) cut 14|23, columns: 12 classical officers + 24 Bell-type officers  (12 + 24)
+[PASS] (4) 12 product states with overlap 1/6 (the AME maximum)  (0344 0455 0533 3034 3350 3505 4053 4404 4540 5045 5303 5430)
+
+ALL CHECKS PASSED

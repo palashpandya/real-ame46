@@ -1,0 +1,33 @@
+restart   0: AME error 4.6e-02
+restart   1: HIT  AME error 1.1e-16, support 348, deformation dim 10
+restart   2: AME error 4.1e-02
+restart   3: AME error 3.7e-02
+restart   4: AME error 4.1e-02
+restart   5: AME error 4.1e-02
+restart   6: AME error 4.0e-02
+restart   7: HIT  AME error 1.1e-16, support 348, deformation dim 10
+restart   8: AME error 4.0e-02
+restart   9: AME error 4.8e-02
+restart  10: AME error 3.7e-02
+restart  11: AME error 4.2e-02
+restart  12: AME error 2.5e-02
+restart  13: AME error 3.7e-02
+restart  14: HIT  AME error 1.4e-16, support 348, deformation dim 3
+restart  15: AME error 1.1e-01
+restart  16: AME error 4.1e-02
+restart  17: AME error 1.5e-01
+restart  18: AME error 4.1e-02
+restart  19: AME error 5.0e-02
+restart  20: AME error 3.7e-02
+restart  21: AME error 3.7e-02
+restart  22: AME error 4.0e-02
+restart  23: AME error 4.3e-02
+restart  24: AME error 3.9e-02
+restart  25: AME error 1.2e-01
+restart  26: HIT  AME error 1.1e-16, support 348, deformation dim 10
+restart  27: AME error 4.1e-02
+restart  28: HIT  AME error 7.9e-15, support 348, deformation dim 10
+restart  29: AME error 4.0e-02
+
+5 hits in 30 restarts (10 s); deformation dims [3, 10, 10, 10, 10]
+dimension 10 = the support-72 family; other values are AME states of other families in the same sector

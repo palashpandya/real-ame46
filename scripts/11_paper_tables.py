@@ -12,18 +12,13 @@ from ame46real import core, family as fam
 P = os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "paper")
 read = lambda f: open(os.path.join(P, f)).read()
 
-txt, terms = read("inputs/state_display.tex"), {}
-for line in txt.split("\\\\"):
-    line = line.replace("\\,", "")
-    m = re.search(r"\\sqrt2\s*\\big\((.*?)\\big\)", line)
-    if m:
-        sign = "-" if re.search(r"-\s*\\sqrt2", line) else "+"
-        for k in re.findall(r"\\ket\{(\d{4})\}", m.group(1)):
-            terms[k] = sign + "sqrt2"
-        line = line.replace(m.group(0), "")
-    for s, k in re.findall(r"([+-]?)\s*\\ket\{(\d{4})\}", line):
-        terms[k] = (s or "+") + "1"
-check("displayed state = data/psi_terms.json", terms == dict(core.load_json("psi_terms.json")["terms"]), f"{len(terms)} terms")
+terms = {}
+for row in re.findall(r"^\$a=(\d)\$ & (.*?)\\\\$", read("inputs/state_display.tex"), re.M):
+    a, cells = row
+    for b, cell in enumerate(cells.split(" & ")):
+        for sign, root, cd in re.findall(r"([+-]?)(\\sqrt2\\,)?\\ket\{(\d\d)\}", cell):
+            terms[a + str(b) + cd] = (sign or "+") + ("sqrt2" if root else "1")
+check("displayed state (officer table) = data/psi_terms.json", terms == dict(core.load_json("psi_terms.json")["terms"]), f"{len(terms)} terms")
 
 st = read("inputs/family_sets.tex")
 O = sorted(core.lab(fam.POINTS[q]) for q in fam.S72 if fam.TYPE[q] == "O")

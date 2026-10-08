@@ -1,4 +1,4 @@
-[PASS] displayed state = data/psi_terms.json  (60 terms)
+[PASS] displayed state (officer table) = data/psi_terms.json  (60 terms)
 [PASS] sets O and N
 [PASS] table of K
 [PASS] branch table

@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{colortbl}
 \usepackage{amsthm}
 \usepackage[hidelinks]{hyperref}
 \newcommand{\ket}[1]{|#1\rangle}
@@ -81,10 +82,21 @@ All statements are verified by self-contained scripts~\cite{repo}.
 % =========================================================================================================
 \section{A real AME(4,6) state}\label{sec:state}
 
-Label the levels of each party by $0,\dots,5$ and let
-\begin{widetext}
+Label the levels of each party by $0,\dots,5$.  We write the state as Euler's array of officers: the first two
+parties carry rank $a$ and regiment $b$, and the remaining two the state $\ket{\phi_{ab}}$ attached to them,
+\begin{equation}\label{eq:state}
+\sqrt{72}\,\ket\psi=\sum_{a,b=0}^{5}\ket{ab}\otimes\ket{\phi_{ab}},
+\end{equation}
+with the $36$ states $\ket{\phi_{ab}}$ listed in Table~\ref{tab:state}.
+
+\begin{table*}[t]
+\caption{The real AME$(4,6)$ state of Eq.~\eqref{eq:state} as Euler's array of officers: row $a$ (rank), column $b$
+(regiment), entry $\ket{\phi_{ab}}$, the unnormalized state of the third and fourth party.  Shaded: the twelve classical
+officers $\sqrt2\,\ket{cd}$; all other entries are two-term states $\pm\ket{cd}\pm\ket{c'd'}$.}
+\label{tab:state}
 \input{inputs/state_display.tex}
-\end{widetext}
+\end{table*}
+
 The $60$ basis states fall into two sets.  The $48$ states of $L$ carry coefficients $\varepsilon_x/\sqrt{72}$ with
 $\varepsilon_x=\pm1$; each has exactly two labels in $\{1,2\}$.  The $12$ states of $O$ carry the coefficient
 $\sqrt2/\sqrt{72}=1/6$; their labels lie in $\{0,3,4,5\}$, exactly one of them $0$.
@@ -116,9 +128,10 @@ entries $\pm1$ form twelve $2\times2$ blocks, each proportional to an orthogonal
 \label{fig:amplitudes}
 \end{figure*}
 
-In the language of the officers~\cite{RBB22}, each row (and each column) of $O$ is the state of one officer.  In every
-one of the three reshapings, $12$ officers are classical, i.e.\ product basis states $\ket{kl}$, and the remaining
-$24$ are two-term states $(\ket{kl}\pm\ket{k'l'})/\sqrt2$ with $k\neq k'$ and $l\neq l'$: Bell-type states of rank and
+In the language of the officers~\cite{RBB22}, each row (and each column) of $O$ is the state of one officer; for the
+bipartition $12|34$ the rows are the states $\ket{\phi_{ab}}/\sqrt2$ of Eq.~\eqref{eq:state}.  In every one of the
+three reshapings, $12$ officers are classical, i.e.\ product basis states $\ket{kl}$, and the remaining $24$ are
+two-term states $(\ket{kl}\pm\ket{k'l'})/\sqrt2$ with $k\neq k'$ and $l\neq l'$: Bell-type states of rank and
 regiment.  In the golden solution, by contrast, all $36$ officers are entangled~\cite{RBB22}.  The twelve classical
 officers also show that $\ket\psi$ is as close to a product state as an AME$(4,6)$
 state can be.  For any AME$(4,6)$ state, $|\langle abce|\psi\rangle|^2\le\langle ab|\rho_{12}|ab\rangle=1/36$, and

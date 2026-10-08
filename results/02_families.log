@@ -1,4 +1,6 @@
 [PASS] (a) S72: each cut is 18 blocks 2x2
+[PASS] (a) S72 is an orthogonal array OA(72,4,6,2) of index 2
+[PASS] (a) blocks: 36 with four L-states, 18 with O on one diagonal and N on the other  ({'LLLL': 36, 'ONNO': 9, 'NOON': 9})
 [PASS] (a) moduli s = 72|a|^2: affine solution set is {1 + delta (O), 1 - delta (N), 1 (L)}
 [PASS] (a) phase congruences: kernel 30, local phases 21 -> 9 parameters; K spans the rest  (rank M = 42)
 [PASS] (a) invariant factors -> exactly 2 components  (factors [1, 2])
@@ -26,6 +28,9 @@
 [PASS] (f) stored uniform state (68 x +-1, 4 x +-i): exact weighing 2-unitary
 [PASS] (f) it equals psi_sigma(0, theta') up to local phases (exact)
 [PASS] (f) straight path t -> psi_sigma(t, (1-t) theta') is AME and ends at psi (numerical)  (max error 1.4e-16)
+[PASS] support-72 family: its 10 parameters are independent modulo local unitaries
+[PASS] face: its 11 parameters are independent modulo local unitaries
+[PASS] at psi: 11 face directions + 3 more spanned by the 8 branch tangents = 14, all first-order deformations
 [PASS] random members of both families are AME (numerical, 40 + 20 points)  (max errors 1.4e-16, 1.1e-16)
 [PASS] psi_sigma(1, theta) = psi_face(theta, 0, 0)
 

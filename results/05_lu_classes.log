@@ -4,6 +4,7 @@
 [PASS] face -: upper bound: H_12^(x)4 merges 24 orbits into 12 classes  (12 merges)
 [PASS] face -: the spectrum is constant on each class (consistency)  (max deviation 1.1e-13)
 [PASS] face -: the 12 representatives are AME, in different classes, and match the class table
+[PASS] power traces Tr (72 J^T J)^k, k <= 8, do not separate classes 3-8 (numerical)
 [PASS] lower bound: the 20 class representatives have 20 distinct spectra (both faces together)  (min separation 5.04e-01)
 
 class face  flipped        states  orbits     on C  dim  N(149/8) N(3/2)

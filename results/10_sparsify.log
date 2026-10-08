@@ -1,0 +1,8 @@
+sector hit with deformation dim 10 at restart 1: support 348 (1 s)
+L1 attempt 0: support 72 at 1e-6; |coefficients| 72nd / 73rd: 1.15e-01 / 9.99e-08 (2 s)
+[PASS] commutant frame with support 72 found
+[PASS] Gauss-Newton gives an exact AME state with exactly these 72 coefficients  (AME error 8.3e-17, moved 4.4e-07 from the L1 frame)
+[PASS] the support is the array L u O u N up to a relabelling of parties and levels
+[PASS] moduli: 1 on L, 1 + delta on O, 1 - delta on N (a member of the support-72 family)  (delta = -0.0557)
+
+ALL CHECKS PASSED

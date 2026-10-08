@@ -29,5 +29,5 @@ restart  27: AME error 4.1e-02
 restart  28: HIT  AME error 7.9e-15, support 348, deformation dim 10
 restart  29: AME error 4.0e-02
 
-5 hits in 30 restarts (10 s); deformation dims [3, 10, 10, 10, 10]
+5 hits in 30 restarts (12 s); deformation dims [3, 10, 10, 10, 10]
 dimension 10 = the support-72 family; other values are AME states of other families in the same sector

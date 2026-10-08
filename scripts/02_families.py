@@ -16,7 +16,9 @@ Exact (integer / rational arithmetic):
   (f) uniform amplitudes: at delta = 0, sqrt2 * 6M has entries in {0, +-1, +-i} and W W^dag = 2 I in all three cuts
       (a 2-unitary complex weighing matrix); the same for the stored state with only 4 imaginary entries, which
       equals psi_sigma(0, theta') up to local phases.
-Numerical: AME of both families at random parameters, along all 8 branches, and along the path theta' -> psi.
+Numerical: AME of both families at random parameters, along all 8 branches, and along the path theta' -> psi;
+  the 10 (11) parameters are independent modulo local unitaries; at psi the 14 first-order deformations are the 11
+  face directions plus 3 spanned by the branch tangents.
 """
 from fractions import Fraction as Fr
 
@@ -34,6 +36,14 @@ t60 = [Fr(0) if fam.EPS[q] > 0 else Fr(1, 2) for q in fam.S60]          # phases
 M72, quads72, singles72 = fam.congruence_matrix(fam.S72)
 G72 = fam.gauge_matrix(fam.S72)
 check("(a) S72: each cut is 18 blocks 2x2", len(quads72) == 54 and not singles72)
+import itertools as _it
+from collections import Counter
+oa = all(sorted(sum(1 for x in fam.POINTS if (x[i], x[j]) == (a_, b_)) for a_ in range(6) for b_ in range(6)) == [2] * 36
+         for i, j in _it.combinations(range(4), 2))
+kinds = Counter("".join(fam.TYPE[fam.POS[x]] for x in q) for q in quads72)
+check("(a) S72 is an orthogonal array OA(72,4,6,2) of index 2", oa)
+check("(a) blocks: 36 with four L-states, 18 with O on one diagonal and N on the other",
+      kinds == Counter({"LLLL": 36, "ONNO": 9, "NOON": 9}), str(dict(kinds)))
 rows = []
 for a, b, c, e in quads72:
     for u, w, sgn, rhs in ((a, e, -1, 0), (b, c, -1, 0), (a, b, 1, 2)):
@@ -153,6 +163,42 @@ th = np.pi * np.array([float(Fr(v)) for v in cf["theta_over_pi"]])
 path = [core.ame_error(fam.psi72(cf["sigma"], t, (1 - t) * th)) for t in np.linspace(0, 1, 21)]
 check("(f) straight path t -> psi_sigma(t, (1-t) theta') is AME and ends at psi (numerical)",
       max(path) < 1e-14 and np.allclose(fam.psi72(cf["sigma"], 1.0, np.zeros(9)), psi), f"max error {max(path):.1e}")
+
+# parameters independent modulo local unitaries; 14 = 11 + 3 at psi (numerical ranks) -----------------------------
+from ame46real.jacobian import lu_tangent, gram
+
+
+def rank(A, tol):
+    sv = np.linalg.svd(A, compute_uv=False); return int((sv > tol * sv[0]).sum())
+
+
+def realvec(v):
+    return np.column_stack([v.real, v.imag]).ravel()
+
+
+def mod_lu(v, tangents):
+    T = lu_tangent(v)
+    return rank(np.hstack([T, np.array(tangents).T]), 1e-6) - rank(T, 1e-8)
+
+
+rng_t = np.random.default_rng(5); h = 1e-6
+d0, th0 = 0.37, rng_t.uniform(0, 6, 9)
+tang = [realvec((fam.psi72(1, d0 + h, th0) - fam.psi72(1, d0 - h, th0)) / (2 * h))]
+tang += [realvec((fam.psi72(1, d0, th0 + h * e) - fam.psi72(1, d0, th0 - h * e)) / (2 * h)) for e in np.eye(9)]
+check("support-72 family: its 10 parameters are independent modulo local unitaries", mod_lu(fam.psi72(1, d0, th0), tang) == 10)
+thf = rng_t.uniform(0, 6, 11)
+tf = [realvec((fam.psi_face(thf + h * e) - fam.psi_face(thf - h * e)) / (2 * h)) for e in np.eye(11)]
+check("face: its 11 parameters are independent modulo local unitaries", mod_lu(fam.psi_face(thf), tf) == 11)
+tp = [realvec((fam.psi_face(h * e) - fam.psi_face(-h * e)) / (2 * h)) for e in np.eye(11)]
+tb = []
+for y in sols:                                              # branch tangents (in sqrt(1 - delta)) at psi
+    w = np.zeros(core.DIM, complex)
+    w[[fam.FLAT[q] for q in fam.NPTS]] = np.exp(2j * np.pi * np.array([float(t) for t in y]))
+    tb.append(realvec(w))
+G3 = gram(psi.astype(complex), [(0, 1), (0, 2), (0, 3)])
+check("at psi: 11 face directions + 3 more spanned by the 8 branch tangents = 14, all first-order deformations",
+      mod_lu(psi.astype(complex), tp) == 11 and mod_lu(psi.astype(complex), tp + tb) == 14
+      and max(np.linalg.norm(G3 @ t) for t in tp + tb) < 1e-12)
 
 # numerical AME at random parameters ---------------------------------------------------------------------------
 rng = np.random.default_rng(2026)

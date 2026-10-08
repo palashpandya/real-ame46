@@ -19,20 +19,21 @@
 %   "Real absolutely maximally entangled states of four quhexes: families and classification"
 \title{Real absolutely maximally entangled states of four six-level systems}
 \author{Palash Pandya}
-\affiliation{\todo{affiliation}}
+\affiliation{Center for Theoretical Physics, Polish Academy of Sciences, Aleja Lotnik\'{o}w 32/46, 02-668 Warsaw, Poland}
+\affiliation{Center for Quantum-Enabled Computing, Center for Theoretical Physics, Polish Academy of Sciences, Aleja Lotnik\'{o}w 32/46, 02-668 Warsaw, Poland}
 \date{\today}
 
 \begin{abstract}
 Absolutely maximally entangled states of four six-level systems, AME$(4,6)$, are the quantum solutions of Euler's
-problem of the thirty-six officers.  All solutions found so far have complex coefficients, and it has been
+problem of the thirty-six officers.  All solutions reported so far have complex coefficients, and it has been
 conjectured that no real orthogonal two-unitary matrix of order $36$ exists.  We give real AME$(4,6)$ states with
 $60$ non-zero coefficients in $\{\pm1,\sqrt2\}/\sqrt{72}$, together with a proof that can be checked by hand.
 They lie in the $-1$ eigenspace of an order-four local symmetry, and on their support the AME conditions become linear.
 This yields two families of AME$(4,6)$ states in closed form: a ten-parameter family that contains two-unitary
 complex weighing matrices with uniform amplitudes, and an eleven-parameter family on $60$ basis states.  The real
 states sit where the families meet.  The two sixty-term faces of the ten-parameter family carry $4096$ real AME states
-up to local phases.  They are isolated, and they fall into exactly twenty classes under local unitaries and
-permutations of the parties; we certify the separation of the classes with interval arithmetic.  Code and data are public.
+up to local phases.  They fall into exactly twenty classes under local unitaries and permutations of the parties,
+whose separation we certify with interval arithmetic, and numerically they are isolated.  Code and data are public.
 \end{abstract}
 \maketitle
 
@@ -41,8 +42,8 @@ permutations of the parties; we certify the separation of the classes with inter
 
 A pure state of $N$ parties with $d$ levels each is absolutely maximally entangled, AME$(N,d)$, if every reduction
 to $\lfloor N/2\rfloor$ parties is maximally mixed~\cite{Helwig2012,GALRZ15}.  Such states are perfect tensors; they
-underlie quantum secret sharing~\cite{Helwig2012}, holographic codes~\cite{PYHP2015} and dual-unitary
-circuits~\cite{BKP2019}.  For four parties, writing $U_{(ij),(kl)}=d\,\psi_{ijkl}$, the state is AME if and only if
+underlie quantum secret sharing~\cite{Helwig2012} and holographic codes~\cite{PYHP2015}, and two-unitary matrices
+are dual-unitary gates of maximal entangling power~\cite{RAL20,BKP2019}.  For four parties, writing $U_{(ij),(kl)}=d\,\psi_{ijkl}$, the state is AME if and only if
 $U$ is \emph{two-unitary}: $U$, its realignment $U^R$ and its partial transpose $U^\Gamma$ are all
 unitary~\cite{GALRZ15}.  Up to permutations of rows and columns, these three matrices are the reshapings of
 $d\,\psi$ along the three bipartitions $12|34$, $13|24$ and $14|23$.
@@ -52,8 +53,9 @@ $d\ge3$ except $d=6$~\cite{BSP1960}: Euler's problem of the $36$ officers has no
 solution~\cite{Euler1782,Tarry1900}.  AME$(4,2)$ states do not exist at all~\cite{HS2000}.  An AME$(4,6)$ state, a
 quantum solution of Euler's problem, was found by Rather \emph{et al.}~\cite{RBB22}.  Further solutions include
 continuous families obtained from it~\cite{RRKL23}, two-unitary complex Hadamard matrices~\cite{BZ24}, constructions
-from biunimodular vectors~\cite{Rat24} and hand-made solutions~\cite{GG25}.  No stabilizer AME$(4,6)$ state
-exists~\cite{WMBA26}, and quantum solutions are necessarily entangled~\cite{BS26}.
+from biunimodular vectors~\cite{Rat24} and hand-made solutions~\cite{GG25}.  No pure stabilizer AME$(4,6)$ state
+exists~\cite{WMBA26,Cha26}, and every quantum solution requires entanglement: mutually orthogonal quantum Latin
+squares of order six without entanglement do not exist~\cite{BS26}.
 
 All of these solutions are complex.  In the Supplemental Material of Ref.~\cite{RBB22} the authors write:
 ``Further numerical results suggest that any 2-unitary matrix $U_{36}$ has complex entries.  Therefore, it is
@@ -115,7 +117,8 @@ entries $\pm1$ form twelve $2\times2$ blocks, each proportional to an orthogonal
 In the language of the officers~\cite{RBB22}, each row (and each column) of $O$ is the state of one officer.  In every
 one of the three reshapings, $12$ officers are classical, i.e.\ product basis states $\ket{kl}$, and the remaining
 $24$ are two-term states $(\ket{kl}\pm\ket{k'l'})/\sqrt2$ with $k\neq k'$ and $l\neq l'$: Bell-type states of rank and
-regiment.  The twelve classical officers also show that $\ket\psi$ is as close to a product state as an AME$(4,6)$
+regiment.  In the golden solution, by contrast, all $36$ officers are entangled~\cite{RBB22}.  The twelve classical
+officers also show that $\ket\psi$ is as close to a product state as an AME$(4,6)$
 state can be.  For any AME$(4,6)$ state, $|\langle abce|\psi\rangle|^2\le\langle ab|\rho_{12}|ab\rangle=1/36$, and
 $\ket\psi$ attains this bound at the twelve basis states of $O$.
 
@@ -124,13 +127,16 @@ $\ket\psi$ attains this bound at the twelve basis states of $O$.
 
 The state was found by a search that uses only $N=4$ and $d=6$ as input.  We looked for AME states inside
 eigenspaces of local symmetries $U^{\otimes4}$, $U=VDV^\dagger$, with $V$ Haar random and $D$ diagonal of finite
-order; the spectra of $D$ were restricted by necessary conditions for an AME state to exist in the
-eigenspace~\cite{repo}.  For $D=u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$ and eigenvalue $-1$, the eigenspace of
+order.  The spectra of $D$ were restricted by two necessary conditions for an AME state in the eigenspace: a
+condition on the spectra of $U_A$ and $U_{A^c}$ for every cut, and the feasibility of a linear program for the
+populations $|\psi_x|^2$ in the eigenbasis.  Up to order six, $121$ of the $204$ symmetry classes that pass the first
+condition also pass the second~\cite{repo}.  For $D=u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$ and eigenvalue $-1$, the eigenspace of
 $u^{\otimes4}$ is spanned by the $360$ basis states $\ket{x_1x_2x_3x_4}$ with $e_{x_1}+\dots+e_{x_4}\equiv2\pmod 4$,
 where $e=(1,2,2,3,3,3)$.  A random-start optimization in this eigenspace finds AME states within a few
 restarts~\cite{repo}.  The commutant of $u$, $U(1)\times U(2)\times U(3)$ on the levels $\{0\}$, $\{1,2\}$,
-$\{3,4,5\}$, preserves the eigenspace.  Minimizing the number of non-zero coefficients over local frames in the
-commutant, and then over all of $U(6)$, brought the state found to $72$ non-zero coefficients.  Their basis states
+$\{3,4,5\}$, preserves the eigenspace.  Minimizing a smoothed $\ell_1$ norm of the coefficients over local frames in the
+commutant brings a typical state found to exactly $72$ non-zero coefficients; a Gauss--Newton polish on that support
+then gives an exact AME state~\cite{repo}.  Their basis states
 form an orthogonal array of strength $2$ and index $2$~\cite{HSS1999}: every pair of parties sees every pair of levels
 exactly twice.
 
@@ -148,8 +154,8 @@ s_a=s_e,\quad s_b=s_c,\quad s_a+s_b=2,\\
 \varphi_a-\varphi_b-\varphi_c+\varphi_e\equiv\pi\pmod{2\pi}.
 \end{gathered}
 \end{equation}
-In particular, there is a real AME state with support $S$ if and only if the congruences are solvable over
-$\mathbb F_2$.
+In particular, if the moduli equations have a positive solution, there is a real AME state with support $S$ if and
+only if the congruences are solvable over $\mathbb F_2$.
 \end{lemma}
 
 \begin{proof}
@@ -186,7 +192,10 @@ and for $\theta\in\mathbb R^{11}$
 +\frac16\sum_{x\in O}e^{i(K'\theta)_x}\ket x ,
 \end{multline}
 where $K'$ is $K$ restricted to $L\cup O$, extended by two columns: $\theta_{10}$ acts on $\ket{3505}$ alone and
-$\theta_{11}$ on $\ket{5045}$ alone.  Clearly $\ket\psi=\ket{\psi_{\rm face}(0)}=\ket{\psi_\pm(1,0)}$.
+$\theta_{11}$ on $\ket{5045}$ alone.  Clearly $\ket\psi=\ket{\psi_{\rm face}(0)}=\ket{\psi_\pm(1,0)}$.  As $\delta$ runs over $[-1,1]$ the moduli in
+Eq.~\eqref{eq:F72} trace a segment, and at its two ends twelve coefficients vanish.  We call the AME states supported
+on the corresponding $60$ basis states the \emph{faces} of the family: $L\cup O$ at $\delta=1$, described by
+Eq.~\eqref{eq:F60}, and $L\cup N$ at $\delta=-1$.
 
 \begin{proposition}\label{prop:families}
 (a) Every $\ket{\psi_\sigma(\delta,\theta)}$ is an AME$(4,6)$ state.  Up to diagonal local unitaries, every AME state
@@ -196,9 +205,10 @@ local unitaries.\\
 (b) Every $\ket{\psi_{\rm face}(\theta)}$ is AME.  Up to diagonal local unitaries, every AME state with support
 exactly $L\cup O$ is of this form; the moduli are rigid and the phases form one $11$-dimensional torus.\\
 (c) $\ket{\psi_\sigma(1,\theta)}=\ket{\psi_{\rm face}(\theta,0,0)}$.  A state of the face is a limit of AME states
-with support $L\cup O\cup N$ if and only if $\theta_{10},\theta_{11}\in2\pi\mathbb Z$.  Exactly eight such curves end
-at $\ket\psi$, four in each component; they are $\delta\mapsto\ket{\psi_\sigma(\delta,\theta)}$ with $\theta$ from
-Table~\ref{tab:branches}.\\
+with support $L\cup O\cup N$ if and only if $\theta_{10},\theta_{11}\in2\pi\mathbb Z$.  AME states with support
+$L\cup O\cup N$ that converge to $\ket\psi$ have one of exactly eight limiting phase patterns on $N$; these are
+realized by the eight straight branches $\delta\mapsto\ket{\psi_\sigma(\delta,\theta)}$ with $\theta$ from
+Table~\ref{tab:branches}, four in each component.\\
 (d) No AME state with support exactly $L\cup O\cup N$ is real, even up to diagonal local unitaries.
 \end{proposition}
 
@@ -231,8 +241,9 @@ The two faces are not related by any relabelling of parties and levels.
 
 The first-order deformations of an AME state, modulo the tangent space of its local-unitary orbit, are a local-unitary
 invariant.  Their dimension is $10$ for a generic member of~\eqref{eq:F72} and $11$ for a generic face state.  At
-$\ket\psi$ it is $14$: $11$ directions along the face and $3$ spanned by the eight branches.  The real state is thus a
-singular point at which the $11$-dimensional face and both $10$-dimensional components meet (Fig.~\ref{fig:families}).
+$\ket\psi$ it is $14$: $11$ directions along the face and $3$ spanned by the eight branches.  These ranks are numerical, with gaps of $10^{-15}$ against $10^{-2}$.  The first-order deformation space thus jumps
+at $\ket\psi$: the real state is a singular point of the AME conditions, at which the $11$-dimensional face and both
+$10$-dimensional components meet (Fig.~\ref{fig:families}).
 
 \begin{figure*}[t]
 \centering
@@ -281,7 +292,7 @@ eigenvalues of $G$ below $t$.
 \begin{table*}[t]
 \caption{The twenty classes of Theorem~\ref{thm:classes}.  Face $+$: representative $\ket\psi$ with the listed
 coefficients $1/6$ negated; face $-$: the same for $\ket{\psi_-}$, Eq.~\eqref{eq:psiminus}.  ``Limit'': limits of the
-support-$72$ family.  Dim: first-order deformations modulo local unitaries.  $N(t)$: the certified invariants of the
+support-$72$ family.  Dim: first-order deformations modulo local unitaries (numerical).  $N(t)$: the certified invariants of the
 proof.}
 \label{tab:classes}
 \begin{ruledtabular}
@@ -312,8 +323,8 @@ class & face & flipped & states & limit & dim & $N(149/8)$ & $N(3/2)$\\
 \end{ruledtabular}
 \end{table*}
 
-Simpler invariants do not separate the classes: the polynomial local-unitary invariants of degree four that we
-evaluated, and the power traces $\mathrm{Tr}(J^TJ)^k$ for $k\le8$, take equal values on classes $3$--$8$.
+Simpler invariants do not separate the classes; for example, the power traces $\mathrm{Tr}(J^TJ)^k$ for $k\le8$
+take equal values on classes $3$--$8$ (numerical).
 
 The real states are isolated: no continuous family of real AME states passes through any of them, modulo local
 orthogonal maps.  For most orbits there is no real first-order deformation.  For the remaining six (two on $L\cup O$, four on
@@ -328,11 +339,12 @@ two-unitary Hadamard matrix $H(0)$ of Ref.~\cite{BZ24}.  None of our states is t
 % =========================================================================================================
 \section{Discussion}\label{sec:discussion}
 
-The real states have $60$ non-zero coefficients.  The golden state has $112$~\cite{RBB22}, the sparsest previously
-reported, and an entropy-optimal form of it has $144$~\cite{Ram25}.  A lower bound for the support of any AME$(4,6)$
+The real states have $60$ non-zero coefficients.  The golden state has $112$~\cite{RBB22,RRKL23}, the sparsest previously
+reported, and its representation minimizing the R\'enyi-2 decomposition entropy has $144$~\cite{Ram25}.  A lower bound for the support of any AME$(4,6)$
 state follows from the argument used above.  A coefficient of modulus $1/6$ exhausts the norm of its row and column
 in every reshaping, so these classical officers form a code of length $4$ and minimum distance $3$ over six symbols,
-with at most $34$ codewords~\todo{ref for $A_6(4,3)=34$}.  Every other row needs at least two entries, so the support
+with at most $34$ codewords: $36$ codewords would be a pair of orthogonal Latin squares of order six, and $35$
+codewords complete uniquely to $36$.  Every other row needs at least two entries, so the support
 is at least $72-t\ge38$, where $t$ is the number of classical officers.  Whether the gap between $38$ and $60$ can be
 closed is open.
 
@@ -340,7 +352,7 @@ Further questions remain.  Are there real AME$(4,6)$ states outside the families
 admit a form with all amplitudes of modulus $1/36$, i.e.\ a real-equivalent two-unitary Hadamard matrix?  Any such
 form would have to preserve the twelve product states of maximal overlap $1/6$.  The eigenspace of $u^{\otimes4}$ also
 contains AME states outside these families: about one in eight search hits lies on a three-parameter family of
-complex AME states with $348$ of the $360$ coefficients non-zero and deformation dimension $3$, which we did not
+complex AME states with $348$ of the $360$ coefficients in the eigenbasis non-zero and deformation dimension $3$, which we did not
 manage to bring to a sparse or a real form (numerical).  Whether it is related to the Hadamard family of
 Ref.~\cite{BZ24} is open.  Finally, a real two-unitary
 of order $36$ is a real perfect tensor, which can serve as a real dual-unitary gate or as the building block of a
@@ -350,8 +362,9 @@ holographic code with real amplitudes~\cite{PYHP2015,BKP2019}.
 \todo{Acknowledgments.}
 \end{acknowledgments}
 
-\paragraph*{Data and code availability.}  The state, the families, the class representatives and scripts verifying
-every statement of this paper are available in Ref.~\cite{repo}.
+\paragraph*{Data and code availability.}  The state, the families and the class representatives, scripts that verify
+every statement about them, and scripts that reproduce the two steps of the search are available in
+Ref.~\cite{repo}.
 
 \onecolumngrid
 \appendix

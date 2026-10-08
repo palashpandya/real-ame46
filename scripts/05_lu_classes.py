@@ -66,6 +66,10 @@ for s in "+-":
     check(f"face {s}: the {len(rows)} representatives are AME, in different classes, and match the class table",
           ok and len(seen) == len(rows) == n_expected)
 
+spec_of = dict(class_spec)
+pt = [[np.sum(spec_of[c] ** k) for c in range(3, 9)] for k in range(1, 9)]
+check("power traces Tr (72 J^T J)^k, k <= 8, do not separate classes 3-8 (numerical)",
+      all(np.ptp(t) <= 1e-9 * max(abs(t[0]), 1) for t in pt))
 sep = min(np.max(np.abs(a - b)) for (_, a), (_, b) in itertools.combinations(class_spec, 2))
 check("lower bound: the 20 class representatives have 20 distinct spectra (both faces together)", sep > 1e-6,
       f"min separation {sep:.2e}")

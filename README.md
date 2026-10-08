@@ -43,6 +43,7 @@ officers and 24 officers in two-term Bell-type states.
 |---|---|---|---|
 | 1 | ψ is AME(4,6): all 1- and 2-party marginals are maximally mixed | `01_state_exact.py` | exact, ℚ(√2) |
 | 2 | Block structure above; 12 classical + 24 Bell-type officers in every reshaping (rows and columns); 12 product states with overlap 1/6, the maximum for any AME(4,6) state | `01` | exact |
+| 2b | The 72 states L ∪ O ∪ N form an orthogonal array OA(72,4,6,2) of index 2; per cut 12 L-blocks and 6 blocks with O on one diagonal and N on the other. The 10 (resp. 11) parameters of the families are independent modulo local unitaries; at ψ the 14 deformations are 11 face directions + 3 spanned by the branch tangents | `02` | exact; independence and 11 + 3 numerical |
 | 3 | **Support-72 family** ψ_σ(δ, θ), δ ∈ [−1, 1], θ ∈ ℝ⁹, σ = ±1 (Eq. F72) consists of AME states. Up to diagonal local unitaries it contains every AME state with that support. It has two components, exchanged by complex conjugation, and 10 parameters modulo local unitaries | `02_families.py` | exact (Smith normal form) + numerical spot checks |
 | 4 | **Support-60 face** ψ_face(θ), θ ∈ ℝ¹¹ (Eq. F60): AME, all AME states on supp ψ up to diagonal local unitaries, moduli rigid, one component; ψ = ψ_face(0) | `02` | exact + numerical |
 | 5 | The families meet exactly along the 9-torus C = {θ₁₀ = θ₁₁ = 0}. **Eight branches** of the support-72 family end at ψ, four in each component, with phases ±i on the 12 vanishing entries | `02` | exact |
@@ -53,7 +54,10 @@ officers and 24 officers in two-term Bell-type states.
 | 9 | The real states are **isolated** modulo local orthogonal maps. Most orbits have no real first-order deformation; at the others (2 + 4 orbits), the 2-dim space of real first-order deformations is obstructed at second order | `04` | numerical (obstruction ≥ 0.35, noise ~10⁻¹⁵) |
 | 10 | **Exactly 20 classes** under local unitaries and party permutations (8 + 12). Upper bound: H₁₂^⊗4 plus a monomial map merges orbits of the same face. Lower bound: the pair (N(149/8), N(3/2)), N(t) = number of eigenvalues below t of 72·JᵀJ (J = Jacobian of the six 2-party marginals), takes 20 distinct values | `05_lu_classes.py`, `07_certify_classes.py` | upper bound exact; lower bound **rigorous** (Arb interval arithmetic + Sylvester inertia) |
 | 11 | First-order deformation dimensions (LU invariant): ψ and the real classes on the gluing locus: 14; the other real classes and generic face points: 11; support-72 family: 10; golden state: 4; Bruzda–Życzkowski H(0): 3. So no state here is LU-equivalent to those | `06_deformations.py` | numerical (gap 10⁻¹⁵ vs 10⁻²); for the real classes N(1/2) = 141 + dim is certified in `07` |
-| 12 | Discovery: a random-start search in the 360-dim sector of u^⊗4 finds AME states within a few restarts; most hits have deformation dimension 10, like the family | `08_sector_search.py` | stochastic demonstration |
+| 12 | Discovery, step 0: of the order ≤ 6 local-symmetry classes, 204 pass the spectral test and 121 also the population LP; the order-4 class of u (eigenvalue −1, dimension 360) is one of them | `09_sector_filters.py` | exact |
+| 13 | Discovery, step 1: a random-start search in the 360-dim sector of u^⊗4 finds AME states within a few restarts; most hits have deformation dimension 10, like the family (about 1 in 8 lie on a different, 3-parameter family) | `08_sector_search.py` | stochastic demonstration |
+| 14 | Discovery, step 2: smoothed-L1 minimisation over commutant frames brings a dimension-10 hit to exactly 72 coefficients; after a Gauss–Newton polish it is an exact AME state whose support is L ∪ O ∪ N up to relabelling, with the moduli of the family | `10_sparsify.py` | numerical (seeded) |
+| 15 | The tables printed in the paper (state, O and N, K, branches, Appendix A blocks, Table I) agree with the data | `11_paper_tables.py` | exact |
 
 **Real classes** (data/real_classes.json). Face +: representative = ψ with the listed coefficients 1/6 negated.
 Face −: representative = ψ₋ with the listed coefficients 1/6 negated.
@@ -108,7 +112,7 @@ conditions (121 classes). One sector, with spectrum {i, −1, −1, −i, −i, 
 over local frames inside the commutant U(1) × U(2) × U(3) of u (and over U(6)) gave support 72, an orthogonal array
 of strength 2 and index 2. On it the AME conditions are linear, which gives the family in closed form. At δ = ±1
 twelve entries vanish, and the remaining congruences have a solution over GF(2): ψ. Script 08 reproduces the first
-step.
+step, 09 the choice of the sector, and 10 the step from a search hit to the support-72 family.
 
 ## Running
 
@@ -116,11 +120,11 @@ Python ≥ 3.10 with `numpy` and `scipy`; `07_certify_classes.py` also needs `py
 
 ```bash
 pip install -r requirements.txt
-./run_all.sh            # runs 01–07 and writes results/*.log (about 6 minutes); 08 is optional
+./run_all.sh            # runs 01–07 and 09–11, writes results/*.log (about 7 minutes); 08 is optional
 python scripts/08_sector_search.py 30 0
 ```
 
-Scripts 01–07 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a reference
+Scripts 01–07 and 09–11 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a reference
 run.
 
 ## Layout
@@ -134,8 +138,9 @@ data/real_classes.json          the 20 classes of real states (both faces)
 data/reference/                 golden 2-unitary of Rather et al. (numerical, support 112);
                                 matrix B of Bruzda–Życzkowski, H(0) = exp(iπB/3)/36
 ame46real/                      core (cuts, AME test, blocks), lattice (Smith form, GF(2)), family (closed forms),
-                                jacobian (deformations, LU-invariant spectrum), realpoints (real points, automorphisms of both faces)
-scripts/01..08                  the verifications listed above
+                                jacobian (deformations, LU-invariant spectrum), realpoints (real points, automorphisms of both faces),
+                                sector (search in the u-sector, support minimisation over commutant frames)
+scripts/01..11                  the verifications listed above
 wolfram/verify_families.wls     symbolic check of the closed forms
 ```
 

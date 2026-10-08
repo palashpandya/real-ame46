@@ -11,6 +11,8 @@ Exact (integer / rational arithmetic):
   (d) eight branches: with psi's 60 phases fixed, the 54 x 12 system for the vanishing phases has invariant factors
       1^9 2^3 -> exactly 8 solutions, all +-i; they are the 8 rows of the branch table (4 per component).
   (e) no real state has support exactly L u O u N, even up to local phases (GF(2)); psi's face does have real points.
+  (g) the other end: at delta = -1 every branch ends at a REAL state of the opposite face (support L u N) up to
+      local phases; the simplest one ends at psi_minus = (sum_L eps|x>)/sqrt72 + (sum_N |x>)/6;
   (f) uniform amplitudes: at delta = 0, sqrt2 * 6M has entries in {0, +-1, +-i} and W W^dag = 2 I in all three cuts
       (a 2-unitary complex weighing matrix); the same for the stored state with only 4 imaginary entries, which
       equals psi_sigma(0, theta') up to local phases.
@@ -22,6 +24,7 @@ import numpy as np
 
 from _common import check, done
 from ame46real import core, family as fam
+from ame46real.realpoints import Face
 from ame46real.lattice import all_solutions_mod1, invariant_factors, snf, solve_mod1, gf2_solvable
 
 psi = core.psi()
@@ -107,6 +110,19 @@ for b in fam.F["branches"]:
     if list(y) in sols:
         hit.add(y); per_sigma[b["sigma"]] += 1
 check("(d) the 8 table rows are the 8 branches, 4 in each component", len(hit) == 8 and per_sigma == {1: 4, -1: 4})
+
+# (g) delta = -1 ends -------------------------------------------------------------------------------------------
+Fm = Face("-")
+ends = [Fm.real_up_to_phases([fam.turns72(b["sigma"], b["theta_over_pi"])[q] for q in Fm.qs]) for b in fam.F["branches"]]
+check("(g) all 8 branches end (delta = -1) at real states of the opposite face, up to local phases", all(ends))
+Mm = fam.congruence_matrix(Fm.qs)[0]
+check("(g) the opposite face is also an 11-parameter phase torus with one component (36 congruences, kernel 32)",
+      Mm.shape[0] == 36 and 60 - np.linalg.matrix_rank(Mm) == 32 and np.linalg.matrix_rank(fam.gauge_matrix(Fm.qs)) == 21
+      and set(invariant_factors(Mm.tolist())) == {1})
+tm = [Fr(0) if x == 0 else Fr(1, 2) for x in Fm.X0]
+check("(g) psi_+(-1, 0) and psi_-(-1, 0) equal psi_minus up to local phases; psi_minus is AME",
+      all(fam.equal_up_to_local_phases([fam.turns72(sg, [0] * 9)[q] for q in Fm.qs], tm, Fm.qs) for sg in (1, -1))
+      and core.ame_error(Fm.state(Fm.X0)) < 1e-14)
 
 # (e) reality ------------------------------------------------------------------------------------------------
 check("(e) no real point on support 72: M x = 1 has no solution over GF(2)", not gf2_solvable(M72 % 2, np.ones(54, int)))

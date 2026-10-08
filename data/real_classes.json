@@ -1,108 +1,326 @@
 {
- "description": "The 8 LU classes (local unitaries and party permutations) of the 2048 real points of the support-60 face. Representative = psi with the listed officer coefficients (1/6) negated.",
+ "description": "The 20 LU classes (local unitaries and party permutations) of the 4096 real AME states on the two support-60 faces. Face '+': support L u O, representative = psi with the listed O-coefficients negated. Face '-': support L u N, representative = psi_minus = (sum_L eps |x>)/sqrt72 + (sum_N |x>)/6 with the listed N-coefficients negated. N_t = number of eigenvalues < t of 72 J^T J (certified).",
  "classes": [
   {
    "cls": 1,
+   "face": "+",
    "flip": [],
    "states": 128,
-   "on_gluing_locus": true,
-   "deformation_dim": 14,
    "aut_orbit_sizes": [
     64,
     64
-   ]
+   ],
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "N_149_8": 1048,
+   "N_3_2": 157
   },
   {
    "cls": 2,
+   "face": "+",
    "flip": [
     "0344",
     "3505"
    ],
    "states": 384,
-   "on_gluing_locus": true,
-   "deformation_dim": 14,
    "aut_orbit_sizes": [
     192,
     192
-   ]
+   ],
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "N_149_8": 1046,
+   "N_3_2": 157
   },
   {
    "cls": 3,
+   "face": "+",
    "flip": [
     "5303"
    ],
    "states": 128,
-   "on_gluing_locus": false,
-   "deformation_dim": 11,
    "aut_orbit_sizes": [
     64,
     64
-   ]
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1050,
+   "N_3_2": 153
   },
   {
    "cls": 4,
+   "face": "+",
    "flip": [
     "5430"
    ],
    "states": 128,
-   "on_gluing_locus": false,
-   "deformation_dim": 11,
    "aut_orbit_sizes": [
     64,
     64
-   ]
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1044,
+   "N_3_2": 152
   },
   {
    "cls": 5,
+   "face": "+",
    "flip": [
     "5045"
    ],
    "states": 128,
-   "on_gluing_locus": false,
-   "deformation_dim": 11,
    "aut_orbit_sizes": [
     64,
     64
-   ]
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1053,
+   "N_3_2": 153
   },
   {
    "cls": 6,
+   "face": "+",
    "flip": [
     "0533"
    ],
    "states": 384,
-   "on_gluing_locus": false,
-   "deformation_dim": 11,
    "aut_orbit_sizes": [
     192,
     192
-   ]
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1055,
+   "N_3_2": 153
   },
   {
    "cls": 7,
+   "face": "+",
    "flip": [
     "0455"
    ],
    "states": 384,
-   "on_gluing_locus": false,
-   "deformation_dim": 11,
    "aut_orbit_sizes": [
     192,
     192
-   ]
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1052,
+   "N_3_2": 153
   },
   {
    "cls": 8,
+   "face": "+",
    "flip": [
     "0344"
    ],
    "states": 384,
-   "on_gluing_locus": false,
-   "deformation_dim": 11,
    "aut_orbit_sizes": [
     192,
     192
-   ]
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1052,
+   "N_3_2": 152
+  },
+  {
+   "cls": 9,
+   "face": "-",
+   "flip": [],
+   "states": 288,
+   "aut_orbit_sizes": [
+    96,
+    96,
+    96
+   ],
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "N_149_8": 1021,
+   "N_3_2": 157
+  },
+  {
+   "cls": 10,
+   "face": "-",
+   "flip": [
+    "0434",
+    "3055"
+   ],
+   "states": 96,
+   "aut_orbit_sizes": [
+    32,
+    32,
+    32
+   ],
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "N_149_8": 1029,
+   "N_3_2": 173
+  },
+  {
+   "cls": 11,
+   "face": "-",
+   "flip": [
+    "0434",
+    "5340"
+   ],
+   "states": 96,
+   "aut_orbit_sizes": [
+    96
+   ],
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "N_149_8": 1025,
+   "N_3_2": 159
+  },
+  {
+   "cls": 12,
+   "face": "-",
+   "flip": [
+    "0353",
+    "4044"
+   ],
+   "states": 32,
+   "aut_orbit_sizes": [
+    32
+   ],
+   "on_gluing_locus": true,
+   "deformation_dim": 14,
+   "N_149_8": 985,
+   "N_3_2": 155
+  },
+  {
+   "cls": 13,
+   "face": "-",
+   "flip": [
+    "0353"
+   ],
+   "states": 288,
+   "aut_orbit_sizes": [
+    96,
+    96,
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1004,
+   "N_3_2": 152
+  },
+  {
+   "cls": 14,
+   "face": "-",
+   "flip": [
+    "0434"
+   ],
+   "states": 288,
+   "aut_orbit_sizes": [
+    96,
+    96,
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1032,
+   "N_3_2": 160
+  },
+  {
+   "cls": 15,
+   "face": "-",
+   "flip": [
+    "0545"
+   ],
+   "states": 288,
+   "aut_orbit_sizes": [
+    96,
+    96,
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1022,
+   "N_3_2": 152
+  },
+  {
+   "cls": 16,
+   "face": "-",
+   "flip": [
+    "3055"
+   ],
+   "states": 288,
+   "aut_orbit_sizes": [
+    96,
+    96,
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1026,
+   "N_3_2": 152
+  },
+  {
+   "cls": 17,
+   "face": "-",
+   "flip": [
+    "0434",
+    "5405"
+   ],
+   "states": 96,
+   "aut_orbit_sizes": [
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1038,
+   "N_3_2": 168
+  },
+  {
+   "cls": 18,
+   "face": "-",
+   "flip": [
+    "5033"
+   ],
+   "states": 96,
+   "aut_orbit_sizes": [
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1020,
+   "N_3_2": 152
+  },
+  {
+   "cls": 19,
+   "face": "-",
+   "flip": [
+    "5340"
+   ],
+   "states": 96,
+   "aut_orbit_sizes": [
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1012,
+   "N_3_2": 152
+  },
+  {
+   "cls": 20,
+   "face": "-",
+   "flip": [
+    "5405"
+   ],
+   "states": 96,
+   "aut_orbit_sizes": [
+    96
+   ],
+   "on_gluing_locus": false,
+   "deformation_dim": 11,
+   "N_149_8": 1030,
+   "N_3_2": 152
   }
  ]
 }

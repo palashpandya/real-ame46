@@ -1,4 +1,4 @@
-# A real AME(4,6) state, its families, and the classification of its real points
+# Real AME(4,6) states: families, symmetry, and the classification of the real points
 
 Companion code and data for the article *(title and authors to be added)*.
 
@@ -16,9 +16,10 @@ This repository contains, with self-contained verification scripts:
   states (with uniform-amplitude members) and an 11-parameter family on the 60 basis states of ψ;
 * the **local symmetry** they all share: every state of both families lies in the −1 eigenspace of
   u^⊗4, u = diag(i, −1, −1, −i, −i, −i), the sector in which the family was discovered;
-* the **classification** of all real AME states on the support of ψ: 2048 states (up to local phases) in
-  **exactly 8 classes** under local unitaries and party permutations, with a rigorous (interval-arithmetic) proof
-  that the 8 classes are pairwise inequivalent.
+* the **classification** of all real AME states on the two support-60 faces of the family (the support of ψ and
+  the opposite face): 4096 states (up to local phases) in **exactly 20 classes** under local unitaries and party
+  permutations, 8 on ψ's face and 12 on the other, with a rigorous (interval-arithmetic) proof that the 20 classes
+  are pairwise inequivalent.
 
 ## The state
 
@@ -45,26 +46,40 @@ officers and 24 officers in two-term Bell-type states.
 | 3 | **Support-72 family** ψ_σ(δ, θ), δ ∈ [−1, 1], θ ∈ ℝ⁹, σ = ±1 (Eq. F72) consists of AME states. Up to diagonal local unitaries it contains every AME state with that support. It has two components, exchanged by complex conjugation, and 10 parameters modulo local unitaries | `02_families.py` | exact (Smith normal form) + numerical spot checks |
 | 4 | **Support-60 face** ψ_face(θ), θ ∈ ℝ¹¹ (Eq. F60): AME, all AME states on supp ψ up to diagonal local unitaries, moduli rigid, one component; ψ = ψ_face(0) | `02` | exact + numerical |
 | 5 | The families meet exactly along the 9-torus C = {θ₁₀ = θ₁₁ = 0}. **Eight branches** of the support-72 family end at ψ, four in each component, with phases ±i on the 12 vanishing entries | `02` | exact |
+| 6a | At δ = −1 every branch ends at a **real** state of the opposite face (support L ∪ N) up to local phases; the simplest ends at ψ₋ = (Σ_L ε\|x⟩)/√72 + (Σ_N \|x⟩)/6 | `02` | exact |
 | 6 | No state with support exactly 72 is real, even up to local phases (GF(2)). At δ = 0 the states have uniform amplitudes: √2·6M has entries in {0, ±1, ±i} with W W† = 2I, a 2-unitary complex weighing matrix. A straight path of AME states joins the uniform state with 4 imaginary entries to ψ | `02` | exact; path numerical |
 | 7 | **Symmetry:** all 72 support points lie in the 360-dim −1 eigenspace of u^⊗4, u = diag(i, −1, −1, −i, −i, −i), so every state of both families (ψ included) satisfies u^⊗4\|φ⟩ = −\|φ⟩. Diagonal symmetry group of the support: Z₂ × Z₂ × Z₄ | `03_symmetry.py` | exact |
-| 8 | 2³² real sign patterns on supp ψ give **2048 real AME states** modulo local phases (512 on C). The support automorphism group (party permutations × level relabellings) has order 192 and 16 orbits (8 × 64, 8 × 192) | `04_real_points.py` | exact |
-| 9 | The real states are **isolated** modulo local orthogonal maps. 14 orbits have no real first-order deformation; at the other 2, the 2-dim space of real first-order deformations is obstructed at second order | `04` | numerical (obstruction ≥ 0.35, noise ~10⁻¹⁵) |
-| 10 | **Exactly 8 classes** under local unitaries and party permutations. Upper bound: H₁₂^⊗4 plus a monomial map joins the paired orbits. Lower bound: the count N(41/8) of eigenvalues below 41/8 of 72·JᵀJ (J = Jacobian of the six 2-party marginals) takes 8 distinct values: 261, 265, 255, 256, 264, 254, 257, 258 | `05_lu_classes.py`, `07_certify_classes.py` | upper bound exact; lower bound **rigorous** (Arb interval arithmetic + Sylvester inertia) |
-| 11 | First-order deformation dimensions (LU invariant): ψ and class 2: 14; classes 3–8 and generic face points: 11; support-72 family: 10; golden state: 4; Bruzda–Życzkowski H(0): 3. So no state here is LU-equivalent to those | `06_deformations.py` | numerical (gap 10⁻¹⁵ vs 10⁻²); for the real classes N(1/2) = 141 + dim is certified in `07` |
+| 8 | On each face, 2³² real sign patterns give **2048 real AME states** modulo local phases (512 on the gluing locus). The support automorphism group (party permutations × level relabellings, officers to officers) has order 192, with 16 orbits on ψ's face (8 × 64, 8 × 192) and 24 on the opposite face (4 × 32, 20 × 96). No monomial map relates the two faces | `04_real_points.py` | exact |
+| 9 | The real states are **isolated** modulo local orthogonal maps. Most orbits have no real first-order deformation; at the others (2 + 4 orbits), the 2-dim space of real first-order deformations is obstructed at second order | `04` | numerical (obstruction ≥ 0.35, noise ~10⁻¹⁵) |
+| 10 | **Exactly 20 classes** under local unitaries and party permutations (8 + 12). Upper bound: H₁₂^⊗4 plus a monomial map merges orbits of the same face. Lower bound: the pair (N(149/8), N(3/2)), N(t) = number of eigenvalues below t of 72·JᵀJ (J = Jacobian of the six 2-party marginals), takes 20 distinct values | `05_lu_classes.py`, `07_certify_classes.py` | upper bound exact; lower bound **rigorous** (Arb interval arithmetic + Sylvester inertia) |
+| 11 | First-order deformation dimensions (LU invariant): ψ and the real classes on the gluing locus: 14; the other real classes and generic face points: 11; support-72 family: 10; golden state: 4; Bruzda–Życzkowski H(0): 3. So no state here is LU-equivalent to those | `06_deformations.py` | numerical (gap 10⁻¹⁵ vs 10⁻²); for the real classes N(1/2) = 141 + dim is certified in `07` |
 | 12 | Discovery: a random-start search in the 360-dim sector of u^⊗4 finds AME states within a few restarts; most hits have deformation dimension 10, like the family | `08_sector_search.py` | stochastic demonstration |
 
-**Real classes** (representative = ψ with the listed coefficients 1/6 negated; data/real_classes.json):
+**Real classes** (data/real_classes.json). Face +: representative = ψ with the listed coefficients 1/6 negated.
+Face −: representative = ψ₋ with the listed coefficients 1/6 negated.
 
-| class | flipped | states | Aut(S60) orbits | on C | deformation dim | N(41/8) |
-|---|---|---|---|---|---|---|
-| 1 | – (ψ) | 128 | 64 + 64 | yes | 14 | 261 |
-| 2 | 0344, 3505 | 384 | 192 + 192 | yes | 14 | 265 |
-| 3 | 5303 | 128 | 64 + 64 | no | 11 | 255 |
-| 4 | 5430 | 128 | 64 + 64 | no | 11 | 256 |
-| 5 | 5045 | 128 | 64 + 64 | no | 11 | 264 |
-| 6 | 0533 | 384 | 192 + 192 | no | 11 | 254 |
-| 7 | 0455 | 384 | 192 + 192 | no | 11 | 257 |
-| 8 | 0344 | 384 | 192 + 192 | no | 11 | 258 |
+| class | face | flipped | states | automorphism orbits | on C | deformation dim | N(149/8) | N(3/2) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | + | – | 128 | 64 + 64 | yes | 14 | 1048 | 157 |
+| 2 | + | 0344, 3505 | 384 | 192 + 192 | yes | 14 | 1046 | 157 |
+| 3 | + | 5303 | 128 | 64 + 64 | no | 11 | 1050 | 153 |
+| 4 | + | 5430 | 128 | 64 + 64 | no | 11 | 1044 | 152 |
+| 5 | + | 5045 | 128 | 64 + 64 | no | 11 | 1053 | 153 |
+| 6 | + | 0533 | 384 | 192 + 192 | no | 11 | 1055 | 153 |
+| 7 | + | 0455 | 384 | 192 + 192 | no | 11 | 1052 | 153 |
+| 8 | + | 0344 | 384 | 192 + 192 | no | 11 | 1052 | 152 |
+| 9 | - | – | 288 | 96 + 96 + 96 | yes | 14 | 1021 | 157 |
+| 10 | - | 0434, 3055 | 96 | 32 + 32 + 32 | yes | 14 | 1029 | 173 |
+| 11 | - | 0434, 5340 | 96 | 96 | yes | 14 | 1025 | 159 |
+| 12 | - | 0353, 4044 | 32 | 32 | yes | 14 | 985 | 155 |
+| 13 | - | 0353 | 288 | 96 + 96 + 96 | no | 11 | 1004 | 152 |
+| 14 | - | 0434 | 288 | 96 + 96 + 96 | no | 11 | 1032 | 160 |
+| 15 | - | 0545 | 288 | 96 + 96 + 96 | no | 11 | 1022 | 152 |
+| 16 | - | 3055 | 288 | 96 + 96 + 96 | no | 11 | 1026 | 152 |
+| 17 | - | 0434, 5405 | 96 | 96 | no | 11 | 1038 | 168 |
+| 18 | - | 5033 | 96 | 96 | no | 11 | 1020 | 152 |
+| 19 | - | 5340 | 96 | 96 | no | 11 | 1012 | 152 |
+| 20 | - | 5405 | 96 | 96 | no | 11 | 1030 | 152 |
 
 ## The closed forms
 
@@ -101,7 +116,7 @@ Python ≥ 3.10 with `numpy` and `scipy`; `07_certify_classes.py` also needs `py
 
 ```bash
 pip install -r requirements.txt
-./run_all.sh            # runs 01–07 and writes results/*.log (about 5 minutes); 08 is optional
+./run_all.sh            # runs 01–07 and writes results/*.log (about 6 minutes); 08 is optional
 python scripts/08_sector_search.py 30 0
 ```
 
@@ -115,11 +130,11 @@ data/psi_terms.json             exact coefficients of √72 ψ ("+1", "-1", "+sq
 data/psi.npy                    ψ as a float64 vector (index = 216a + 36b + 6c + d)
 data/family.json                the 72 points (type L/O/N, sign ε, row of K), face columns, branch table, θ′
 data/uniform_min_imag_terms.json  a uniform-amplitude member with only 4 imaginary entries (i^k / √72)
-data/real_classes.json          the 8 classes of real states
+data/real_classes.json          the 20 classes of real states (both faces)
 data/reference/                 golden 2-unitary of Rather et al. (numerical, support 112);
                                 matrix B of Bruzda–Życzkowski, H(0) = exp(iπB/3)/36
 ame46real/                      core (cuts, AME test, blocks), lattice (Smith form, GF(2)), family (closed forms),
-                                jacobian (deformations, LU-invariant spectrum), realpoints (real points, Aut(S60))
+                                jacobian (deformations, LU-invariant spectrum), realpoints (real points, automorphisms of both faces)
 scripts/01..08                  the verifications listed above
 wolfram/verify_families.wls     symbolic check of the closed forms
 ```

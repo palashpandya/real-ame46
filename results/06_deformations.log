@@ -1,20 +1,44 @@
 state                                     AME err  dim  nullity  gap (largest zero / smallest nonzero eigenvalue)
 psi                                       8.3e-17   14      155  1.7e-15 / 3.1e-02
 [PASS] deformation dim of psi = 14
-real class 2 (flip 0344 3505)             8.3e-17   14      155  6.4e-16 / 3.1e-02
-[PASS] deformation dim of real class 2 (flip 0344 3505) = 14
-real class 3 (flip 5303)                  8.3e-17   11      152  1.0e-15 / 3.1e-02
-[PASS] deformation dim of real class 3 (flip 5303) = 11
-real class 4 (flip 5430)                  8.3e-17   11      152  1.4e-15 / 3.4e-02
-[PASS] deformation dim of real class 4 (flip 5430) = 11
-real class 5 (flip 5045)                  8.3e-17   11      152  7.8e-16 / 3.1e-02
-[PASS] deformation dim of real class 5 (flip 5045) = 11
-real class 6 (flip 0533)                  8.3e-17   11      152  9.7e-16 / 3.1e-02
-[PASS] deformation dim of real class 6 (flip 0533) = 11
-real class 7 (flip 0455)                  8.3e-17   11      152  1.5e-15 / 3.1e-02
-[PASS] deformation dim of real class 7 (flip 0455) = 11
-real class 8 (flip 0344)                  8.3e-17   11      152  1.3e-15 / 3.4e-02
-[PASS] deformation dim of real class 8 (flip 0344) = 11
+real class 2 (+, flip 0344 3505)          8.3e-17   14      155  1.3e-15 / 3.1e-02
+[PASS] deformation dim of real class 2 (+, flip 0344 3505) = 14
+real class 3 (+, flip 5303)               8.3e-17   11      152  6.0e-16 / 3.1e-02
+[PASS] deformation dim of real class 3 (+, flip 5303) = 11
+real class 4 (+, flip 5430)               8.3e-17   11      152  1.1e-15 / 3.4e-02
+[PASS] deformation dim of real class 4 (+, flip 5430) = 11
+real class 5 (+, flip 5045)               8.3e-17   11      152  1.3e-15 / 3.1e-02
+[PASS] deformation dim of real class 5 (+, flip 5045) = 11
+real class 6 (+, flip 0533)               8.3e-17   11      152  1.4e-15 / 3.1e-02
+[PASS] deformation dim of real class 6 (+, flip 0533) = 11
+real class 7 (+, flip 0455)               8.3e-17   11      152  1.6e-15 / 3.1e-02
+[PASS] deformation dim of real class 7 (+, flip 0455) = 11
+real class 8 (+, flip 0344)               8.3e-17   11      152  7.2e-16 / 3.4e-02
+[PASS] deformation dim of real class 8 (+, flip 0344) = 11
+real class 9 (-, flip -)                  8.3e-17   14      155  1.1e-15 / 3.1e-02
+[PASS] deformation dim of real class 9 (-, flip -) = 14
+real class 10 (-, flip 0434 3055)         8.3e-17   14      155  1.3e-15 / 1.5e-02
+[PASS] deformation dim of real class 10 (-, flip 0434 3055) = 14
+real class 11 (-, flip 0434 5340)         8.3e-17   14      155  1.2e-15 / 2.7e-02
+[PASS] deformation dim of real class 11 (-, flip 0434 5340) = 14
+real class 12 (-, flip 0353 4044)         8.3e-17   14      155  8.4e-16 / 3.4e-02
+[PASS] deformation dim of real class 12 (-, flip 0353 4044) = 14
+real class 13 (-, flip 0353)              8.3e-17   11      152  1.1e-15 / 4.7e-02
+[PASS] deformation dim of real class 13 (-, flip 0353) = 11
+real class 14 (-, flip 0434)              8.3e-17   11      152  1.1e-15 / 2.0e-02
+[PASS] deformation dim of real class 14 (-, flip 0434) = 11
+real class 15 (-, flip 0545)              8.3e-17   11      152  1.2e-15 / 3.4e-02
+[PASS] deformation dim of real class 15 (-, flip 0545) = 11
+real class 16 (-, flip 3055)              8.3e-17   11      152  1.4e-15 / 3.3e-02
+[PASS] deformation dim of real class 16 (-, flip 3055) = 11
+real class 17 (-, flip 0434 5405)         8.3e-17   11      152  1.1e-15 / 1.1e-02
+[PASS] deformation dim of real class 17 (-, flip 0434 5405) = 11
+real class 18 (-, flip 5033)              8.3e-17   11      152  1.1e-15 / 4.7e-02
+[PASS] deformation dim of real class 18 (-, flip 5033) = 11
+real class 19 (-, flip 5340)              8.3e-17   11      152  1.4e-15 / 4.7e-02
+[PASS] deformation dim of real class 19 (-, flip 5340) = 11
+real class 20 (-, flip 5405)              8.3e-17   11      152  1.4e-15 / 4.1e-02
+[PASS] deformation dim of real class 20 (-, flip 5405) = 11
 face, random theta                        8.3e-17   11      152  1.7e-15 / 3.9e-02
 [PASS] deformation dim of face, random theta = 11
 support 72, sigma=+1, random              8.3e-17   10      151  2.3e-15 / 4.5e-02

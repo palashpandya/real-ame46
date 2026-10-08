@@ -16,6 +16,9 @@
 [PASS] (d) each solution gives an AME curve delta in [-1, 1] ending at psi (numerical)  (max error 1.4e-16)
 [PASS] (d) the local phases fixing psi (a finite group, factors [2, 2, 4]) act trivially on N
 [PASS] (d) the 8 table rows are the 8 branches, 4 in each component
+[PASS] (g) all 8 branches end (delta = -1) at real states of the opposite face, up to local phases
+[PASS] (g) the opposite face is also an 11-parameter phase torus with one component (36 congruences, kernel 32)
+[PASS] (g) psi_+(-1, 0) and psi_-(-1, 0) equal psi_minus up to local phases; psi_minus is AME
 [PASS] (e) no real point on support 72: M x = 1 has no solution over GF(2)
 [PASS] (e) real points exist on the face: psi's signs solve M60 x = 1 over GF(2)
 [PASS] (f) psi_+1(0, 0): sqrt2*6M in {0, +-1, +-i}, W W^dag = 2 I in all cuts

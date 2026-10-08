@@ -1,7 +1,8 @@
 """First-order deformation dimensions (an LU invariant; numerical with a large spectral gap).
 
 dim = nullity of the Jacobian of (rho_A - I/36) over the three cuts  -  rank of the local-unitary orbit tangent (141).
-Expected:  psi and real classes 1-2: 14 (= 11 face directions + 3 branch directions);  real classes 3-8: 11;
+Expected:  psi and the real classes on the gluing locus (1, 2, 9-12): 14 (= 11 face directions + 3 branch directions);
+the other real classes (3-8, 13-20): 11;
 generic face point: 11;  generic support-72 member and the uniform states: 10;
 golden state of Rather et al. (2022): 4;  two-unitary Hadamard H(0) of Bruzda-Zyczkowski (2024): 3.
 Different values prove LU inequivalence (even up to party permutations); in particular none of our states is
@@ -11,13 +12,17 @@ import numpy as np
 
 from _common import check, done
 from ame46real import core, family as fam
+from ame46real.realpoints import Face
 from ame46real.jacobian import deformation_dim
 
 rng = np.random.default_rng(7)
 psi = core.psi()
 states = {"psi": (core.psi(), 14)}
+faces = {s: Face(s) for s in "+-"}
 for c in core.load_json("real_classes.json")["classes"][1:]:
-    states[f"real class {c['cls']} (flip {' '.join(c['flip'])})"] = (core.flip(psi, c["flip"]), c["deformation_dim"])
+    F = faces[c["face"]]
+    states[f"real class {c['cls']} ({c['face']}, flip {' '.join(c['flip']) or '-'})"] = (F.state(F.flips(c["flip"])),
+                                                                                        c["deformation_dim"])
 states["face, random theta"] = (fam.psi_face(rng.uniform(0, 2 * np.pi, 11)), 11)
 states["support 72, sigma=+1, random"] = (fam.psi72(1, rng.uniform(-1, 1), rng.uniform(0, 2 * np.pi, 9)), 10)
 states["support 72, sigma=-1, random"] = (fam.psi72(-1, rng.uniform(-1, 1), rng.uniform(0, 2 * np.pi, 9)), 10)

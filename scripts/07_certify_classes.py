@@ -1,4 +1,4 @@
-"""Rigorous separation of the 8 real classes (needs python-flint; interval arithmetic with Arb).
+"""Rigorous separation of the 20 real classes (needs python-flint; interval arithmetic with Arb).
 
 Invariant: N(t) = number of eigenvalues < t of 72 J^T J, J the Jacobian of psi -> (rho_A) over all six 2-party
 marginals.  Local unitaries act orthogonally on the domain and on the target, party permutations permute the
@@ -10,15 +10,18 @@ G and threshold t, take floating-point eigenvectors V and form X = V^T (G - t I)
 Gershgorin interval of X excludes 0, then X (hence V) is nonsingular and, by Sylvester's law of inertia, the number of
 negative intervals equals the number of eigenvalues of G below t.  This is a proof, modulo the correctness of Arb.
 
-Result: N(41/8) takes 8 distinct values on the 8 class representatives, so the classes are pairwise
-LU-inequivalent (also up to party permutations); N(1/2) = 141 + first-order deformation dimension (upper bound).
+Result: the pair (N(149/8), N(3/2)) takes 20 distinct values on the 20 class representatives of both faces, so the
+classes are pairwise LU-inequivalent (also up to party permutations).  N(1/2) = 141 + first-order deformation dim.
 """
+from fractions import Fraction
+
 import numpy as np
 from scipy.sparse.csgraph import connected_components
 
 from _common import check, done
 from ame46real import core
 from ame46real.jacobian import _jac_block
+from ame46real.realpoints import Face
 
 try:
     from flint import arb, arb_mat, ctx
@@ -26,15 +29,15 @@ except ImportError:
     raise SystemExit("python-flint is required:  pip install python-flint")
 ctx.prec = 200
 SQRT2 = arb(2).sqrt()
+THRESHOLDS = (Fraction(149, 8), Fraction(3, 2), Fraction(1, 2))
 
 
-def exact_gram(flipped):
-    """72 J^T J = P + sqrt2 R for sqrt72 psi = a + b sqrt2 (psi with the given officer signs flipped), as integer
-    sparse matrices."""
+def exact_gram(F, x):
+    """72 J^T J = P + sqrt2 R for the real state of face F with sign pattern x (sqrt72 psi = a + b sqrt2)."""
     a, b = np.zeros(core.DIM), np.zeros(core.DIM)
-    for x, (p, q) in core.psi_terms().items():
-        s = -1 if core.lab(x) in flipped else 1
-        a[core.index(x)], b[core.index(x)] = s * p, s * q
+    sgn = 1 - 2 * np.asarray(x)
+    for i, flat in enumerate(F.FLAT):
+        (b if F.officer[i] else a)[flat] = sgn[i]
     P = R = 0
     for A in core.PAIRS:
         Ja, Jb = _jac_block(a, A), _jac_block(b, A)
@@ -71,19 +74,20 @@ def certified_count(P, R, t):
     return total
 
 
-psi = core.psi()
 classes = core.load_json("real_classes.json")["classes"]
-expected = {1: 261, 2: 265, 3: 255, 4: 256, 5: 264, 6: 254, 7: 257, 8: 258}
-from fractions import Fraction
+faces = {s: Face(s) for s in "+-"}
 counts = {}
-print("class  N(41/8)  N(1/2)")
+print("class face  N(149/8)  N(3/2)  N(1/2)")
 for c in classes:
-    P, R = exact_gram(set(c["flip"]))
-    counts[c["cls"]] = (certified_count(P, R, Fraction(41, 8)), certified_count(P, R, Fraction(1, 2)))
-    print(f"{c['cls']:>5}  {counts[c['cls']][0]!s:>7}  {counts[c['cls']][1]!s:>6}", flush=True)
+    F = faces[c["face"]]
+    P, R = exact_gram(F, F.flips(c["flip"]))
+    counts[c["cls"]] = tuple(certified_count(P, R, t) for t in THRESHOLDS)
+    print(f"{c['cls']:>5}  {c['face']}    {counts[c['cls']][0]!s:>8}  {counts[c['cls']][1]!s:>6}  {counts[c['cls']][2]!s:>6}",
+          flush=True)
 check("every count certified (no Gershgorin interval touches 0)", all(None not in v for v in counts.values()))
-check("N(41/8) = 261, 265, 255, 256, 264, 254, 257, 258: eight distinct values -> 8 pairwise LU-inequivalent classes",
-      {k: v[0] for k, v in counts.items()} == expected and len({v[0] for v in counts.values()}) == 8)
-check("N(1/2) = 141 + deformation dim (155 for classes 1-2, 152 for 3-8)",
-      all(counts[c["cls"]][1] == 141 + c["deformation_dim"] for c in classes))
+check("certified counts equal the class table", all(counts[c["cls"]][:2] == (c["N_149_8"], c["N_3_2"]) for c in classes))
+check("(N(149/8), N(3/2)) takes 20 distinct values -> 20 pairwise LU-inequivalent classes",
+      len({v[:2] for v in counts.values()}) == 20)
+check("N(1/2) = 141 + deformation dim (155 on the gluing locus, 152 off it)",
+      all(counts[c["cls"]][2] == 141 + c["deformation_dim"] for c in classes))
 done()

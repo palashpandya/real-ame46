@@ -166,29 +166,33 @@ support makes it exact~\cite{repo}.  These $72$ basis states form an orthogonal 
 $2$~\cite{HSS1999}: for any two parties $j\neq k$ and any $m,m'\in\{0,\dots,5\}$, exactly two of the $72$ basis states
 have $x_j=m$ and $x_k=m'$.
 
-On such a support the AME conditions linearize.
+On such a support the AME conditions linearize, and we can generalise Proposition \autoref{prop:state} to the following lemma.
 
 \begin{lemma}\label{lem:blocks}
-Let $S\subset\{0,\dots,5\}^4$ be such that, in each bipartition $\{a,b\}|\{c,d\}$, the bipartite graph with an edge from row
-$(x_a,x_b)$ to column $(x_c,x_d)$ for every $x\in S$ has only components of size $1\times1$ and $2\times2$.  A state with support exactly $S$ and
-coefficients $\sqrt{s_x/72}\,e^{i\varphi_x}$ is AME if and only if $s_x=2$ on every $1\times1$ block and, on every
-$2\times2$ block $\bigl(\begin{smallmatrix}w&x\\ y&z\end{smallmatrix}\bigr)$,
+Let $\ket\psi=\sum_{x\in S}\psi_x\ket x$ have support $S$, with $\psi_x=\sqrt{s_x/72}\,e^{i\varphi_x}$ and $s_x>0$.
+Suppose that in each of the three reshapings $U$, $U^R$, $U^\Gamma$ of $6\psi$ the non-zero entries form, after
+permuting rows and columns, $1\times1$ blocks and full $2\times2$ blocks; this depends only on $S$.  Then $\ket\psi$
+is AME if and only if $s_x=2$ on every $1\times1$ block and every $2\times2$ block, with rows $r,r'$ and columns
+$c,c'$, satisfies
 \begin{equation}\label{eq:congruence}
 \begin{gathered}
-s_w=s_z,\quad s_x=s_y,\quad s_w+s_x=2,\\
-\varphi_w-\varphi_x-\varphi_y+\varphi_z\equiv\pi\pmod{2\pi}.
+s_{rc}=s_{r'c'},\quad s_{rc'}=s_{r'c},\quad s_{rc}+s_{rc'}=2,\\
+\varphi_{rc}-\varphi_{rc'}-\varphi_{r'c}+\varphi_{r'c'}\equiv\pi\pmod{2\pi},
 \end{gathered}
 \end{equation}
-In particular, if the moduli equations have a positive solution, there is a real AME state with support $S$ if and
-only if the congruences are solvable over $\mathbb F_2$.
+where $s_{rc}$ and $\varphi_{rc}$ belong to the basis state in row $r$ and column $c$.  In particular, if these
+moduli equations have a positive solution, a real AME state with support $S$ exists if and only if the congruences
+have a solution with all $\varphi_x\in\{0,\pi\}$, i.e.\ over $\mathbb F_2$.
 \end{lemma}
 
 \begin{proof}
-Each reshaping of $6\psi$ is the direct sum of its blocks and is unitary if and only if every block is.  A $1\times1$
-block is unitary if and only if its entry has modulus $1$.  A $2\times2$ block is unitary if and only if its rows and
-columns have unit norm, which gives the three linear equations, and its columns are orthogonal, which, with all four
-entries non-zero, is the phase condition.  For phases in $\{0,\pi\}$ the congruences are linear equations over
-$\mathbb F_2$.
+Each of $U$, $U^R$, $U^\Gamma$ is the direct sum of its blocks and is unitary if and only if every block is; its
+entries have $|U_{rc}|^2=s_{rc}/2$.  A $1\times1$ block is unitary if and only if its entry has modulus $1$, i.e.\
+$s_x=2$.  A $2\times2$ block is unitary if and only if its two rows and two columns have unit norm,
+$s_{rc}+s_{rc'}=s_{r'c}+s_{r'c'}=s_{rc}+s_{r'c}=s_{rc'}+s_{r'c'}=2$, which is equivalent to the three linear
+equations, and its rows are orthogonal.  With these moduli, $U_{rc}\bar U_{r'c}+U_{rc'}\bar U_{r'c'}=0$ reads
+$e^{i(\varphi_{rc}-\varphi_{r'c})}=-e^{i(\varphi_{rc'}-\varphi_{r'c'})}$, which is the phase condition.  For
+$\varphi_x=\pi t_x$ with $t_x\in\mathbb F_2$ it becomes $t_{rc}+t_{rc'}+t_{r'c}+t_{r'c'}=1$.
 \end{proof}
 
 All $72$ points of the sparse support satisfy $\sum_jk_{x_j}\equiv2\pmod4$, so every state supported there, including

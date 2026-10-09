@@ -32,9 +32,11 @@ real orthogonal 2-unitary matrix of order $36$ exists.  We give real AME$(4,6)$ 
 coefficients in $\{\pm1,\sqrt2\}/\sqrt{72}$, with a proof that can be checked by hand.  They lie in the $-1$
 eigenspace of an order-$4$ local symmetry, and on their support the AME conditions become linear.  This gives two
 families of AME$(4,6)$ states in closed form that meet at the real state: a $10$-parameter family that contains
-2-unitary complex weighing matrices, and an $11$-parameter family on $60$ basis states.  The two $60$-term faces of
-the first family carry $4096$ real AME states up to local phases.  They fall into exactly $20$ classes under local
-unitaries and permutations of the parties, and we certify their separation with interval arithmetic.
+2-unitary complex weighing matrices, and an $11$-parameter family on $60$ basis states.  At each end of the first family the support drops to $60$ terms, and
+the AME states on it form an $11$-dimensional phase torus, one of them the second family.  Their real points, the
+points of order two of the tori, are $4096$ real AME states up to local phases, $1024$ of them limits of the first
+family.  They fall into exactly $20$ classes under local unitaries and permutations of the parties, and we certify
+their separation with interval arithmetic.
 \end{abstract}
 \maketitle
 
@@ -44,10 +46,10 @@ unitaries and permutations of the parties, and we certify their separation with 
 A pure state of $N$ parties with $d$ levels each is absolutely maximally entangled, AME$(N,d)$, if every reduction
 to $\lfloor N/2\rfloor$ parties is maximally mixed~\cite{Helwig2012,GALRZ15}.  Such states are perfect tensors; they
 underlie quantum secret sharing~\cite{Helwig2012} and holographic codes~\cite{PYHP2015}, and 2-unitary matrices
-are dual-unitary gates of maximal entangling power~\cite{RAL20,BKP2019}.  For four parties, write
-$U_{(ij),(kl)}=d\,\psi_{ijkl}$.  The state is AME if and only if $U$ is \emph{2-unitary}: $U$, its realignment $U^R$
-and its partial transpose $U^\Gamma$ are all unitary~\cite{GALRZ15}.  Up to permutations of rows and columns, these
-three matrices are the reshapings of $d\,\psi$ along the bipartitions $12|34$, $13|24$ and $14|23$.
+are dual-unitary gates of maximal entangling power~\cite{RAL20,BKP2019}.  For four parties, writing $U_{(ij),(kl)}=d\,\psi_{ijkl}$, the state is AME if and only if
+$U$ is \emph{2-unitary}: $U$, its realignment $U^R$ and its partial transpose $U^\Gamma$ are all
+unitary~\cite{GALRZ15}.  Up to permutations of rows and columns, these three matrices are the reshapings of
+$d\,\psi$ along the three bipartitions $12|34$, $13|24$ and $14|23$.
 
 A pair of orthogonal Latin squares of order $d$ gives a 2-unitary permutation matrix.  Such pairs exist for every
 $d\ge3$ except $d=6$~\cite{BSP1960}: Euler's problem of the $36$ officers has no
@@ -64,17 +66,19 @@ tempting to conjecture that there exists no solution in the set $O(36)$ of ortho
 recent review lists the question as open problem (T2)~\cite{RBRLZ26}: ``Is there an AME(4,6) state with real
 coefficients? Equivalently, is there an orthogonal 2-unitary matrix of order 36?''
 
-We answer this question in the affirmative.  With the permutation solutions for $d\neq2,6$, a real AME$(4,d)$ state
-exists if and only if $d\ge3$, exactly when a complex one does.  Our results are:
-(i)~an explicit real AME$(4,6)$ state with $60$ non-zero coefficients, the sparsest AME$(4,6)$ state we know of,
-whose 2-unitaries are direct sums of $1\times1$ and $2\times2$ blocks (Sec.~\ref{sec:state});
-(ii)~its origin in the $-1$ eigenspace of the local symmetry $u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$,
-where the AME conditions on its support are linear (Sec.~\ref{sec:symmetry});
-(iii)~two continuous families of AME$(4,6)$ states in closed form that meet at the real state, one of which contains
-2-unitary complex weighing matrices (Sec.~\ref{sec:families});
-(iv)~the classification of the real AME states on the two $60$-term faces of these families: $4096$ states in exactly
-$20$ classes, all of them isolated (Sec.~\ref{sec:real}).
-Self-contained scripts verify every statement~\cite{repo}.
+We answer this question in the affirmative.  With the permutation solutions for $d\neq2,6$, it follows that a real
+AME$(4,d)$ state exists if and only if $d\ge3$, exactly when a complex one does.  Our results are the following.
+(i)~An explicit real AME$(4,6)$ state with $60$ non-zero coefficients, the sparsest AME$(4,6)$ state we know of,
+whose 2-unitaries are direct sums of $1\times1$ and $2\times2$ blocks (Sec.~\ref{sec:state}).
+(ii)~Its origin: it lies in the $-1$ eigenspace of the local symmetry
+$u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$, and on its support the AME conditions are linear
+(Sec.~\ref{sec:symmetry}).
+(iii)~Two continuous families of AME$(4,6)$ states in closed form that meet at the real state; one contains
+2-unitary complex weighing matrices (Sec.~\ref{sec:families}).
+(iv)~A complete classification of the real AME states with the two sixty-term supports at the ends of the family: $4096$ states
+in exactly twenty classes under local unitaries and party permutations, all of them isolated (numerically;
+Sec.~\ref{sec:real}).
+All statements are verified by self-contained scripts~\cite{repo}.
 
 % =========================================================================================================
 \section{A real AME(4,6) state}\label{sec:state}
@@ -233,8 +237,8 @@ At $\delta=0$ each branch passes through a state with uniform amplitudes $1/\sqr
 coefficients are $\varepsilon_x$, $1$ and $i\sigma$ on $L$, $O$ and $O'$, so in every reshaping $W=\sqrt2\,U$ has
 entries in $\{0,\pm1,\pm i\}$, two per row and column, and $WW^\dagger=2\,\mathbb I$: these are 2-unitary complex
 weighing matrices.  As $\delta$ grows to $1$, the weight of each entry of $O'$ moves to its partner in $O$ until
-the state becomes real at $\ket\psi$.  At $\delta=-1$ the roles of $O$ and $O'$ are exchanged, and every branch ends, up
-to diagonal local unitaries, at a real state of $\mathcal F_{60}'$; the simplest branch ends at
+the state becomes real at $\ket\psi$.  At $\delta=-1$ the roles of $O$ and $O'$ are exchanged, and each of the eight branches
+through $\ket\psi$ ends, up to diagonal local unitaries, at a real state of $\mathcal F_{60}'$; the simplest ends at
 \begin{equation}\label{eq:psiminus}
 \ket{\psi_-}=\frac1{\sqrt{72}}\sum_{x\in L}\varepsilon_x\ket x+\frac16\sum_{x\in O'}\ket x .
 \end{equation}
@@ -260,10 +264,25 @@ $\delta=0$ and end at real states of the opposite face $\delta=-1$.}
 % =========================================================================================================
 \section{Classification of the real states}\label{sec:real}
 
-By Lemma~\ref{lem:blocks}, a real state of $\mathcal F_{60}$ is given by signs that solve the $36$ congruences of the
-$L$-blocks over $\mathbb F_2$, and likewise for $\mathcal F_{60}'$.  On each face there are $2^{32}$ such sign
-patterns.  Modulo diagonal local unitaries they give exactly $2048$ distinct real AME states, of which $512$ are limits
-of $\mathcal F_{72}^\pm$.  Negating a coefficient $1/6$ keeps a state AME, since these are $1\times1$ blocks.  On each
+\emph{Where the real states lie.}  None of them lies in $\mathcal F_{72}^\pm$
+(Proposition~\ref{prop:families}(d)); they lie on the two faces.  Up to diagonal local unitaries, $\mathcal F_{60}$ is
+the torus $\mathbb R^{11}/\Lambda$ of the parameters $(\theta,\theta_{10},\theta_{11})$ of Eq.~\eqref{eq:F60}, with
+origin $\ket\psi$, where $\Lambda$ is the lattice of parameters that change the state only by diagonal local
+unitaries.  By Lemma~\ref{lem:blocks}, a face state is real up to diagonal local unitaries if and only if its phases
+are $0$ or $\pi$ modulo local phases, i.e.\ if and only if twice its parameter lies in $\Lambda$.  The real states of
+$\mathcal F_{60}$ are therefore exactly its $2^{11}=2048$ points of order at most two.  Since $\Lambda$ strictly
+contains $2\pi\mathbb Z^{11}$, with $\Lambda/2\pi\mathbb Z^{11}\cong\mathbb Z_2^3$, only $256$ of them have all
+$\theta_j\in\{0,\pi\}$.  The same holds for $\mathcal F_{60}'$, with origin $\ket{\psi_-}$ and
+$\Lambda/2\pi\mathbb Z^{11}\cong\mathbb Z_2^2$.  The closures of $\mathcal F_{72}^\pm$ meet $\mathcal F_{60}$ only in the
+$9$-torus $\mathcal C=\{\theta_{10}=\theta_{11}=0\}$ (Proposition~\ref{prop:families}(c)) and $\mathcal F_{60}'$ only in
+the corresponding $9$-torus $\mathcal C'$.  The $2^9=512$ points of order two of each are the real states that are
+limits of $\mathcal F_{72}^\pm$; the other $3072$ real states lie only on the faces.  The eight straight branches through a
+real state of $\mathcal C$ end at real states of $\mathcal C'$ only for the $128$ states of class~$1$ below, the class
+of $\ket\psi$ (at states of classes $9$ and $10$); for the other $384$ they end at non-real states~\cite{repo}.
+
+Equivalently, a real state of $\mathcal F_{60}$ is given by signs that solve the $36$ congruences of the $L$-blocks over
+$\mathbb F_2$, and likewise for $\mathcal F_{60}'$: on each face there are $2^{32}$ such sign patterns, and modulo
+diagonal local unitaries they give the $2048$ real states.  Negating a coefficient $1/6$ keeps a state AME, since these are $1\times1$ blocks.  On each
 face, the level relabellings and party permutations that preserve the support and its officers form a group of order
 $192$, with $16$ orbits on the real states of $\mathcal F_{60}$ (eight of size $64$, eight of size $192$) and $24$ on
 those of $\mathcal F_{60}'$ (four of size $32$, $20$ of size $96$).

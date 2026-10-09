@@ -60,6 +60,7 @@ officers and 24 officers in two-term Bell-type states.
 | 13 | Discovery, step 1: a random-start search in the 360-dim sector of u^⊗4 finds AME states within a few restarts; most hits have deformation dimension 10, like the family (about 1 in 8 lie on a different, 3-parameter family) | `08_sector_search.py` | stochastic demonstration |
 | 14 | Discovery, step 2: smoothed-L1 minimisation over commutant frames brings a dimension-10 hit to exactly 72 coefficients; after a Gauss–Newton polish it is an exact AME state whose support is L ∪ O ∪ O′ up to relabelling, with the moduli of the family | `10_sparsify.py` | numerical (seeded) |
 | 15 | The tables printed in the paper (the state as Table I, O and O′, K, branches, the class table) agree with the data; the complete block lists of the three reshapings are printed by `01` | `11_paper_tables.py`, `01` | exact |
+| 16 | **Where the real states lie.** Each face is a torus ℝ¹¹/Λ (origin ψ, resp. ψ₋); its real states are exactly the 2¹¹ points of order ≤ 2. Λ/2πℤ¹¹ ≅ ℤ₂³ (face +; hence θⱼ ∈ {0, π} reach only 256) and ℤ₂² (face −). The closures of the support-72 family meet the faces in 9-tori C, C′ whose 2⁹ = 512 order-2 points are the real limits; the other 3072 real states lie only on the faces. Branches from real points of C end at real states only for class 1 (at classes 9 and 10) | `12_real_locations.py` | exact |
 
 **Real classes** (data/real_classes.json). Face +: representative = ψ with the listed coefficients 1/6 negated.
 Face −: representative = ψ₋ with the listed coefficients 1/6 negated.

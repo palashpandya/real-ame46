@@ -1,0 +1,13 @@
+[PASS] face +: (1) the face torus is R^11 / Lambda, Lambda contains Z^11  (Lambda / Z^11 has invariant factors [2, 2, 2])
+[PASS] face +: (2) the 2^11 points of order <= 2 are exactly the 2048 real states
+[PASS] face +: (3) the 2^9 points of order <= 2 of the gluing locus C are exactly the 512 real states on C
+[PASS] face -: (1) the face torus is R^11 / Lambda, Lambda contains Z^11  (Lambda / Z^11 has invariant factors [2, 2])
+[PASS] face -: (2) the 2^11 points of order <= 2 are exactly the 2048 real states
+[PASS] face -: (3) the 2^9 points of order <= 2 of the gluing locus C are exactly the 512 real states on C
+    starts on C whose 8 branches all end at real states: {1: 128} (class: count)
+    starts on C whose branches all end at non-real states: {2: 384}; mixed starts: 0
+    real branch ends on C': {9: 192, 10: 64} (class: count)
+[PASS] (4) branch ends are either all real or all non-real; the real ones lie on C'
+    branch graph: 512 real points of C, 257 real points of C' reached; distinct ends per start [1, 4]; starts per end [2, 384]
+
+ALL CHECKS PASSED

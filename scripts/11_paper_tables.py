@@ -1,6 +1,6 @@
 """The tables printed in the paper (paper/inputs/*.tex and Table I in paper/main.tex) agree with the data.
 
-Checks: the displayed state (Table I), the sets O and N, the table of K, the branch table, and the class table of
+Checks: the displayed state (Table I), the sets O and O' (data: N), the table of K, the branch table, and the class table of
 Theorem 1.  (The block lists of the three reshapings are printed and checked by 01_state_exact.py.)
 """
 import os
@@ -23,7 +23,7 @@ check("displayed state (officer table) = data/psi_terms.json", terms == dict(cor
 st = read("inputs/family_sets.tex")
 O = sorted(core.lab(fam.POINTS[q]) for q in fam.S72 if fam.TYPE[q] == "O")
 Nn = sorted(core.lab(fam.POINTS[q]) for q in fam.S72 if fam.TYPE[q] == "N")
-check("sets O and N", sorted(re.findall(r"\d{4}", st.split("N&")[0])) == O and sorted(re.findall(r"\d{4}", st.split("N&")[1])) == Nn)
+check("sets O and O' (the paper's O' = the N points of the data)", sorted(re.findall(r"\d{4}", st.split("O'&")[0])) == O and sorted(re.findall(r"\d{4}", st.split("O'&")[1])) == Nn)
 
 Kd = {}
 for j, plus, minus in re.findall(r"\$\\theta_\{(\d)\}\$ & (.*?) & (.*?)\\\\", read("inputs/family_K.tex")):

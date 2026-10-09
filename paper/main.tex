@@ -148,16 +148,17 @@ entries $\pm1$ form $12$ blocks of size $2\times2$, each proportional to an orth
 \section{Symmetry and linearization}\label{sec:symmetry}
 
 The state was found by a search that takes only $N=4$ and $d=6$ as input.  We looked for AME states in eigenspaces
-of local symmetries $U^{\otimes4}$, $U=VDV^\dagger$, with $V$ Haar random and $D$ diagonal of finite order.  Two
-necessary conditions restrict $D$ and the eigenvalue $\lambda$.  First, if $U^{\otimes4}\ket\psi=\lambda\ket\psi$, the
-reshaping of $\psi$ along a cut $A|A^c$ connects the $\mu$-eigenspace of $U^{\otimes|A|}$ only with the
-$\lambda\bar\mu$-eigenspace of $U^{\otimes|A^c|}$.  For $|A|=2$ the reshaping is proportional to a unitary, so these
+of local symmetries $u^{\otimes4}$, $u=VDV^\dagger$, with $V$ Haar random and $D$ diagonal of finite order.  Two
+necessary conditions restrict $D$ and the eigenvalue $\lambda$.  First, if $u^{\otimes4}\ket\psi=\lambda\ket\psi$, the
+reshaping of $\ket\psi$ along a cut $A|A^c$ connects the $\mu$-eigenspace of $u^{\otimes|A|}$ only with the
+$\lambda\bar\mu$-eigenspace of $u^{\otimes|A^c|}$.  For $|A|=2$ the reshaping is proportional to a unitary, so these
 eigenspaces must have equal dimensions for every $\mu$; for $|A|=1$ the second must be at least as large.  Second, in
-the eigenbasis of $U$ the populations $|\psi_x|^2$ must form a probability distribution on the basis states of the
-eigenspace with uniform two-party marginals, a linear feasibility problem.
+the eigenbasis of $u$ the populations $|\psi_x|^2$ must form a probability distribution on the basis states of the
+eigenspace with uniform two-party marginals (these are the diagonals of $\rho_{jk}=\mathbb I/36$), a linear
+feasibility problem.
 Up to order six,
 $121$ of the $204$ symmetry classes that pass the first condition also pass the second~\cite{repo}.
-Let $u=\mathrm{diag}(i^{k_0},\dots,i^{k_5})$ with $k=(1,2,2,3,3,3)$.  The $-1$ eigenspace of $u^{\otimes4}$ is spanned by the $360$ basis states $\ket{x_1x_2x_3x_4}$ with $k_{x_1}+\dots+k_{x_4}\equiv2\pmod4$, and a random-start optimization
+In particular, take $V=\mathbb I$ and $u=D=\mathrm{diag}(i^{k_0},\dots,i^{k_5})$ with $k=(1,2,2,3,3,3)$.  The $-1$ eigenspace of $u^{\otimes4}$ is spanned by the $360$ basis states $\ket{x_1x_2x_3x_4}$ with $k_{x_1}+\dots+k_{x_4}\equiv2\pmod4$, and a random-start optimization
 in it finds AME states within a few restarts.  The commutant of $u$, $U(1)\times U(2)\times U(3)$ on the basis states
 $\ket0$; $\ket1,\ket2$; and $\ket3,\ket4,\ket5$ of each party, preserves the eigenspace.  Minimizing a smoothed $\ell_1$ norm over local frames in
 the commutant brings a typical solution to exactly $72$ non-zero coefficients, and a Gauss--Newton polish on that

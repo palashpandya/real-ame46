@@ -4,9 +4,11 @@
 \usepackage{xcolor}
 \usepackage{colortbl}
 \usepackage{amsthm}
+\usepackage{physics2}
+\usephysicsmodule{braket}
 \usepackage[hidelinks]{hyperref}
-\newcommand{\ket}[1]{|#1\rangle}
-\newcommand{\bra}[1]{\langle#1|}
+%\newcommand{\ket}[1]{|#1\rangle}
+%\newcommand{\bra}[1]{\langle#1|}
 \newcommand{\AME}{\mathrm{AME}}
 \newcommand{\todo}[1]{\textcolor{red}{[#1]}}
 \theoremstyle{plain}
@@ -64,17 +66,12 @@ recent review lists the question as open problem (T2)~\cite{RBRLZ26}: ``Is there
 coefficients? Equivalently, is there an orthogonal 2-unitary matrix of order 36?''
 
 We answer this question in the affirmative.  With the permutation solutions for $d\neq2,6$, it follows that a real
-AME$(4,d)$ state exists if and only if $d\ge3$, exactly when a complex one does.  Our results are the following.
-(i)~An explicit real AME$(4,6)$ state with $60$ non-zero coefficients, the sparsest AME$(4,6)$ state we know of,
-whose 2-unitaries are direct sums of $1\times1$ and $2\times2$ blocks (Sec.~\ref{sec:state}).
-(ii)~Its origin: it lies in the $-1$ eigenspace of the local symmetry
-$u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$, and on its support the AME conditions are linear
-(Sec.~\ref{sec:symmetry}).
-(iii)~Two continuous families of AME$(4,6)$ states in closed form that meet at the real state; one contains
-2-unitary complex weighing matrices (Sec.~\ref{sec:families}).
-(iv)~A complete classification of the real AME states with the two sixty-term supports at the ends of the family: $4096$ states
-in exactly twenty classes under local unitaries and party permutations, all of them isolated (numerically;
-Sec.~\ref{sec:real}).
+AME$(4,d)$ state exists if and only if $d\ge3$, exactly when a complex one does. We present the following results in this work.
+In \autoref{sec:state} is our central result: an explicit real AME$(4,6)$ state with $60$ non-zero coefficients, the sparsest AME$(4,6)$ state we know of,
+whose 2-unitary representation consists of direct sums of $1\times1$ and $2\times2$ blocks.
+In \autoref{sec:symmetry} we describe its origin. It lies in the $-1$ eigenspace of the local symmetry
+$u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$, and we show that the AME conditions are linear on its support.
+In addition, \autoref{sec:families} two continuous families of AME$(4,6)$ states are presented in closed form, with supports on 72 and 60 basis states. The two families meet at the real state. In \autoref{sec:real} we show that the families allow a complete classification of the real AME states with the two sixty-term supports at the ends of the support-72 family: $4096$ states in exactly twenty classes under local unitaries and party permutations, all of them isolated (numerically).
 All statements are verified by self-contained scripts~\cite{repo}.
 
 % =========================================================================================================
@@ -83,7 +80,7 @@ All statements are verified by self-contained scripts~\cite{repo}.
 If we index the basis states of each party as $\ket{i}$, where $i = 0,\dots,5$, then we can write the state as array of Euler's officers where the first two
 parties carry rank $a$ and regiment $b$, and the last two parties carry the state $\ket{\phi_{ab}}$ attached to them:
 \begin{equation}\label{eq:state}
-\sqrt{72}\,\ket\psi=\sum_{a,b=0}^{5}\ket{ab}\otimes\ket{\phi_{ab}}\,.
+\ket\psi=\frac{1}{\sqrt{72}}\sum_{a,b=0}^{5}\ket{ab}\otimes\ket{\phi_{ab}}\,.
 \end{equation}
 
 \begin{table*}[t]
@@ -98,29 +95,38 @@ The $12$ shaded cells are \emph{classical} officers: a single
 basis state with coefficient $\sqrt2/\sqrt{72}=1/6$.  The other $24$ are \emph{entangled} officers, each a
 superposition of two basis states with coefficients $\pm1/\sqrt{72}$.  The support of $\ket\psi$ thus has
 $12+2\cdot24=60$ basis states $\ket x=\ket{x_1x_2x_3x_4}$, where $x_j\in\{0,\dots,5\}$ is the index of party $j$.
-With $\psi_x=\langle x|\psi\rangle$ we write
+With $\psi_x=\braket{x}{\psi}$ we write
 \[
 P=\{x:\psi_x=1/6\},\qquad E=\{x:\psi_x=\pm1/\sqrt{72}\}
 \]
-for the $12$ basis states of the classical officers ($P$) and the $48$ of the entangled ones ($E$), and $\psi_x=\varepsilon_x/\sqrt{72}$ with $\varepsilon_x=\pm1$ for $x\in E$ and $\varepsilon_x=\sqrt{2}$ for $x\in P$.  For $x\in P$ all four indices $x_j$ lie in $\{0,3,4,5\}$ and exactly one of them is $0$, e.g.\ $\ket{0344}$;
+for the $12$ basis states of the classical officers ($P$) and the $48$ of the entangled ones ($E$).
+%, and $\psi_x=\varepsilon_x/\sqrt{72}$ with $\varepsilon_x=\pm1$ for $x\in E$ and $\varepsilon_x=\sqrt{2}$ for $x\in P$.
+For $x\in P$ all four indices $x_j$ lie in $\{0,3,4,5\}$ and exactly one of them is $0$, e.g.\ $\ket{0344}$;
 for $x\in E$ exactly two of them lie in $\{1,2\}$, e.g.\ $\ket{0012}$.
 
 \begin{proposition}\label{prop:state}
-$\ket\psi$ is an AME$(4,6)$ state: six times each of its three reshapings is a real orthogonal 2-unitary matrix of
-order $36$.
+$\ket\psi$ is an AME$(4,6)$ state: The reshaped matrix $U_{(ij),(kl)} = 6(\ket\psi)_{ijkl}$ is a real orthogonal 2-unitary matrix of order $36$.
 \end{proposition}
 
 \begin{proof}
-Fix a bipartition and let $U$ be the corresponding reshaping of $6\psi$.  Each row and each column of $U$ contains
-either one entry $1$ or two entries $\pm1/\sqrt2$, and rows with two entries come in pairs that use the same two
-columns.  After permuting rows and columns, $U$ is therefore a direct sum of $12$ blocks $(1)$ and $12$ blocks
-$\frac1{\sqrt2}\bigl(\begin{smallmatrix}s_1&s_2\\ s_3&s_4\end{smallmatrix}\bigr)$ with $s_i=\pm1$ and
-$s_1s_3+s_2s_4=0$, all orthogonal.  For $12|34$ the rows of $U$ are the states $\ket{\phi_{ab}}/\sqrt2$, and two cells
-of Table~\ref{tab:state} with the same two kets form a $2\times2$ block; e.g.\ $(a,b)=(0,0)$ and $(5,5)$ give
-$\frac1{\sqrt2}\bigl(\begin{smallmatrix}-1&1\\ 1&1\end{smallmatrix}\bigr)$.  The rows of the other two reshapings
-collect the basis states $\ket x$ with given indices $(x_1,x_3)$ or $(x_1,x_4)$; their block lists are part of the exact check in
-Ref.~\cite{repo}.  Orthogonality of the three reshapings is 2-unitarity, which is equivalent to
-$\rho_{AB}=\mathbb I/36$ for all pairs of parties.
+%Fix a bipartition and let $U$ be the corresponding reshaping of $6\psi$.
+We first show that $U$ is orthogonal, i.e.\ that the bipartition $12|34$ is maximally entangled:
+$\rho_{12}=UU^T/36=\mathbb I/36$.  The row $(a,b)$ of $U$ is the officer $\ket{\phi_{ab}}/\sqrt2$ of
+Table~\ref{tab:state}, written in the basis $\ket{x_3x_4}$ of parties $3,4$.  A classical officer gives a row with one
+entry $1$, an entangled officer a row with two entries $\pm1/\sqrt2$.  Every ket $\ket{x_3x_4}$ appears either in
+exactly one cell, or in exactly two cells that contain the same two kets.  The rows of two such cells are therefore
+supported on the same two columns, which no other row uses, and after permuting rows and columns $U$ is a direct sum of
+$12$ blocks $(1)$ and $12$ blocks $\frac1{\sqrt2}\bigl(\begin{smallmatrix}s_1&s_2\\ s_3&s_4\end{smallmatrix}\bigr)$
+with $s_i=\pm1$; e.g.\ $(a,b)=(0,0)$ and $(5,5)$ give
+$\frac1{\sqrt2}\bigl(\begin{smallmatrix}-1&1\\ 1&1\end{smallmatrix}\bigr)$.  The two officers of a pair are
+orthogonal, $s_1s_3+s_2s_4=0$, so every block, and hence $U$, is orthogonal.
+
+The same argument applies to $U^R$ and $U^\Gamma$, the reshapings along $13|24$ and $14|23$, whose rows collect the
+basis states $\ket x$ with given indices $(x_1,x_3)$ or $(x_1,x_4)$.  Each of them again has $12$ rows with one entry
+$1$ and $24$ rows with two entries $\pm1/\sqrt2$, paired on the same two columns with orthogonal signs, so both are
+direct sums of $12$ blocks $(1)$ and $12$ orthogonal $2\times2$ blocks; their block lists are part of the exact check
+in Ref.~\cite{repo}.  Hence also $\rho_{13}=\rho_{14}=\mathbb I/36$, and the complementary pairs follow because
+$\ket\psi$ is pure.  So $U$ is 2-unitary and $\ket\psi$ is AME.
 \end{proof}
 
 All one- and two-party marginals have also been verified in exact arithmetic over $\mathbb Q(\sqrt2)$~\cite{repo};

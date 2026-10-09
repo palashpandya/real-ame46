@@ -30,11 +30,10 @@ Absolutely maximally entangled states of four six-level systems, AME$(4,6)$, are
 problem of the thirty-six officers.  All solutions reported so far are complex, and it has been conjectured that no
 real orthogonal 2-unitary matrix of order $36$ exists.  We give real AME$(4,6)$ states with $60$ non-zero
 coefficients in $\{\pm1,\sqrt2\}/\sqrt{72}$.  They lie in the $-1$
-eigenspace of an order-$4$ local symmetry, and on its support the AME conditions become linear.  We derive two closed-form families of AME$(4,6)$ states: a $10$-parameter family that contains
-2-unitary complex weighing matrices, and an $11$-parameter family on $60$ basis states, that meet at the real state.  At each of its two ends the first family loses twelve coefficients, and the AME states on the remaining $60$ basis states
-form an $11$-parameter family: the second family at one end, and an analogous family at the other.  Together these two
-contain $4096$ real AME states up to local phases, $1024$ of which are limits of the first family.  They fall into exactly $20$ classes under local unitaries and permutations of the parties, and we certify
-their separation with interval arithmetic.
+eigenspace of an order-$4$ local symmetry, and on its support the AME conditions become linear.  We derive two closed-form families of AME$(4,6)$ states: a $10$-parameter family that 
+%contains 2-unitary complex weighing matrices and 
+is supported on $72$ basis states, and an $11$-parameter family on $60$ basis states, that meet at the real state.  At each of its two ends the first family loses twelve coefficients, and the AME states on the remaining $60$ basis states
+form an $11$-parameter family: the second family at one end, and an analogous family at the other.  Together these two contain $4096$ real AME states up to local phases, $1024$ of which are limits of the first family.  They fall into exactly $20$ classes under local unitaries and permutations of the parties, and we certify their separation with interval arithmetic.
 \end{abstract}
 \maketitle
 
@@ -81,12 +80,12 @@ All statements are verified by self-contained scripts~\cite{repo}.
 % =========================================================================================================
 \section{A real AME(4,6) state}\label{sec:state}
 
-Label the levels of each party by $0,\dots,5$.  We write the state as Euler's array of officers: the first two
-parties carry rank $a$ and regiment $b$, the last two the state $\ket{\phi_{ab}}$ attached to them,
+If we index the basis states of each party as $\ket{i}$, where $i = 0,\dots,5$, then we can write the state as array of Euler's officers where the first two
+parties carry rank $a$ and regiment $b$, and the last two parties carry the state $\ket{\phi_{ab}}$ attached to them:
 \begin{equation}\label{eq:state}
-\sqrt{72}\,\ket\psi=\sum_{a,b=0}^{5}\ket{ab}\otimes\ket{\phi_{ab}},
+\sqrt{72}\,\ket\psi=\sum_{a,b=0}^{5}\ket{ab}\otimes\ket{\phi_{ab}}\,.
 \end{equation}
-with the $36$ states $\ket{\phi_{ab}}$ listed in Table~\ref{tab:state}.
+The $36$ states $\ket{\phi_{ab}}$ are listed in Table~\ref{tab:state}.
 
 \begin{table*}[t]
 \caption{The real AME$(4,6)$ state of Eq.~\eqref{eq:state} as Euler's array of officers: row $a$ (rank), column $b$
@@ -96,9 +95,15 @@ officers $\sqrt2\,\ket{cd}$; all other entries are two-term states $\pm\ket{cd}\
 \input{inputs/state_display.tex}
 \end{table*}
 
-The $60$ basis states fall into two sets.  The $48$ \emph{light} states $x\in L$ carry coefficients
-$\varepsilon_x/\sqrt{72}$, $\varepsilon_x=\pm1$; each has exactly two labels in $\{1,2\}$.  The $12$ \emph{officers}
-$x\in O$ carry $\sqrt2/\sqrt{72}=1/6$; their labels lie in $\{0,3,4,5\}$, exactly one of them $0$.
+Table~\ref{tab:state} has $36$ cells, one officer each.  The $12$ shaded cells are \emph{classical} officers: a single
+basis state with coefficient $\sqrt2/\sqrt{72}=1/6$.  The other $24$ are \emph{entangled} officers, each a
+superposition of two basis states with coefficients $\pm1/\sqrt{72}$.  The support of $\ket\psi$ thus has
+$12+2\cdot24=60$ basis states.  We write
+\[
+P=\{x:\psi_x=1/6\},\qquad E=\{x:\psi_x=\pm1/\sqrt{72}\}
+\]
+for the $12$ basis states of the classical officers and the $48$ of the entangled ones, and $\psi_x=\varepsilon_x/\sqrt{72}$ with $\varepsilon_x=\pm1$ for $x\in E$.  The states of $P$ have all labels in $\{0,3,4,5\}$, exactly one of them $0$; those
+of $E$ have exactly two labels in $\{1,2\}$.
 
 \begin{proposition}\label{prop:state}
 $\ket\psi$ is an AME$(4,6)$ state: six times each of its three reshapings is a real orthogonal 2-unitary matrix of
@@ -119,12 +124,12 @@ $\rho_{AB}=\mathbb I/36$ for all pairs of parties.
 \end{proof}
 
 All one- and two-party marginals have also been verified in exact arithmetic over $\mathbb Q(\sqrt2)$~\cite{repo};
-Fig.~\ref{fig:amplitudes} shows the three 2-unitaries.  In the language of Ref.~\cite{RBB22}, every row of a reshaping
-is the state of an officer.  In each reshaping, $12$ officers are classical, i.e.\ product basis states, and the other
-$24$ are Bell-type states $(\ket{kl}\pm\ket{k'l'})/\sqrt2$ of rank and regiment, $k\neq k'$, $l\neq l'$; in the golden
-solution all $36$ are entangled~\cite{RBB22}.  The classical officers also make $\ket\psi$ as close to a product
+Fig.~\ref{fig:amplitudes} shows the three 2-unitaries.  In each of the three reshapings the rows, the officers of
+Ref.~\cite{RBB22}, are again the $12$ classical officers, the basis states of $P$, and $24$ entangled officers, Bell-type
+states $(\ket{kl}\pm\ket{k'l'})/\sqrt2$ of rank and regiment with $k\neq k'$ and $l\neq l'$; in the golden solution all
+$36$ officers are entangled~\cite{RBB22}.  The classical officers also make $\ket\psi$ as close to a product
 state as an AME$(4,6)$ state can be: for every product state $\ket v=\ket{v_1v_2v_3v_4}$,
-$|\langle v|\psi\rangle|^2\le\langle v_1v_2|\rho_{12}|v_1v_2\rangle=1/36$, with equality at the $12$ officers.
+$|\langle v|\psi\rangle|^2\le\langle v_1v_2|\rho_{12}|v_1v_2\rangle=1/36$, with equality at the $12$ states of $P$.
 
 \begin{figure*}[t]
 \centering
@@ -184,61 +189,61 @@ $u^{\otimes4}$ has order $4$.
 % =========================================================================================================
 \section{Two families through the real state}\label{sec:families}
 
-Let $O'$ be the $12$ further basis states listed in Appendix~\ref{app:K}; like those of $O$, they have all labels in
-$\{0,3,4,5\}$, exactly one of them $0$.  The $72$ states $L\cup O\cup O'$ form the orthogonal array above.  In each
-bipartition they split into $18$ blocks of size $2\times2$: the $12$ blocks of $L$, and six blocks with two states of
-$O$ on one diagonal and two of $O'$ on the other.  Let $K\in\{0,\pm1\}^{72\times9}$ be the matrix of
+Let $P'$ be the $12$ further basis states listed in Appendix~\ref{app:K}; like those of $P$, they have all labels in
+$\{0,3,4,5\}$, exactly one of them $0$.  The $72$ states $E\cup P\cup P'$ form the orthogonal array above.  In each
+bipartition they split into $18$ blocks of size $2\times2$: the $12$ blocks of $E$, and six blocks with two states of
+$P$ on one diagonal and two of $P'$ on the other.  Let $K\in\{0,\pm1\}^{72\times9}$ be the matrix of
 Appendix~\ref{app:K} and $(K\theta)_x=\sum_jK_{xj}\theta_j$.  For $\delta\in[-1,1]$, $\theta\in\mathbb R^9$ and
 $\sigma=\pm1$ let
 \begin{multline}\label{eq:F72}
-\ket{\Psi_\sigma(\delta,\theta)}=\frac1{\sqrt{72}}\Big[\sum_{x\in L}\varepsilon_xe^{i(K\theta)_x}\ket x\\
-+\sqrt{1+\delta}\sum_{x\in O}e^{i(K\theta)_x}\ket x\\
-+i\sigma\sqrt{1-\delta}\sum_{x\in O'}e^{i(K\theta)_x}\ket x\Big],
+\ket{\Psi_\sigma(\delta,\theta)}=\frac1{\sqrt{72}}\Big[\sum_{x\in E}\varepsilon_xe^{i(K\theta)_x}\ket x\\
++\sqrt{1+\delta}\sum_{x\in P}e^{i(K\theta)_x}\ket x\\
++i\sigma\sqrt{1-\delta}\sum_{x\in P'}e^{i(K\theta)_x}\ket x\Big],
 \end{multline}
 and let
 \begin{multline}\label{eq:F60}
-\ket{\Phi(\theta,\theta_{10},\theta_{11})}=\frac1{\sqrt{72}}\sum_{x\in L}\varepsilon_xe^{i(K\theta)_x}\ket x\\
-+\frac16\sum_{x\in O}e^{i(K\theta)_x+i\theta_{10}[x=3505]+i\theta_{11}[x=5045]}\ket x ,
+\ket{\Phi(\theta,\theta_{10},\theta_{11})}=\frac1{\sqrt{72}}\sum_{x\in E}\varepsilon_xe^{i(K\theta)_x}\ket x\\
++\frac16\sum_{x\in P}e^{i(K\theta)_x+i\theta_{10}[x=3505]+i\theta_{11}[x=5045]}\ket x ,
 \end{multline}
 where $[\cdot]$ is the indicator.  Then $\ket\psi=\ket{\Phi(0)}=\ket{\Psi_\pm(1,0)}$.  At $\delta=\pm1$ twelve
-coefficients of Eq.~\eqref{eq:F72} vanish.  We call the AME states with support exactly $L\cup O$ or $L\cup O'$ the two
+coefficients of Eq.~\eqref{eq:F72} vanish.  We call the AME states with support exactly $E\cup P$ or $E\cup P'$ the two
 \emph{faces}: $\mathcal F_{60}$, described by Eq.~\eqref{eq:F60}, and $\mathcal F_{60}'$, reached at $\delta=-1$.  We
 write $\mathcal F_{72}^\pm$ for the states~\eqref{eq:F72} with $|\delta|<1$ and $\sigma=\pm1$.
 
 \begin{proposition}\label{prop:families}
 (a) Every $\ket{\Psi_\sigma(\delta,\theta)}$ is AME.  Up to diagonal local unitaries, every AME state with support
-exactly $L\cup O\cup O'$ lies in $\mathcal F_{72}^+$ or $\mathcal F_{72}^-$.  These are the two connected components of
+exactly $E\cup P\cup P'$ lies in $\mathcal F_{72}^+$ or $\mathcal F_{72}^-$.  These are the two connected components of
 that set; complex conjugation exchanges them, and they have $10$ parameters modulo local unitaries.\\
 (b) Every $\ket{\Phi(\theta,\theta_{10},\theta_{11})}$ is AME.  Up to diagonal local unitaries, every AME state with
-support exactly $L\cup O$ is of this form: the moduli are rigid and the phases form one $11$-dimensional torus.\\
+support exactly $E\cup P$ is of this form: the moduli are rigid and the phases form one $11$-dimensional torus.\\
 (c) $\ket{\Psi_\sigma(1,\theta)}=\ket{\Phi(\theta,0,0)}$, and a state of $\mathcal F_{60}$ is a limit of
 $\mathcal F_{72}^\pm$ if and only if $\theta_{10},\theta_{11}\in2\pi\mathbb Z$.  The states of $\mathcal F_{72}^\pm$
-that converge to $\ket\psi$ have one of exactly eight limiting phase patterns on $O'$, realized by the eight straight
+that converge to $\ket\psi$ have one of exactly eight limiting phase patterns on $P'$, realized by the eight straight
 branches $\delta\mapsto\ket{\Psi_\sigma(\delta,\theta)}$ of Table~\ref{tab:branches}, four in each component.\\
-(d) No AME state with support exactly $L\cup O\cup O'$ is real, even up to diagonal local unitaries.
+(d) No AME state with support exactly $E\cup P\cup P'$ is real, even up to diagonal local unitaries.
 \end{proposition}
 
 \begin{proof}[Proof sketch]
-Everything follows from Lemma~\ref{lem:blocks} by integer linear algebra.  On $L\cup O\cup O'$ the moduli equations
-have the one-parameter solution $s=1$, $1+\delta$, $1-\delta$ on $L$, $O$, $O'$.  The $54$ congruences have rank
+Everything follows from Lemma~\ref{lem:blocks} by integer linear algebra.  On $E\cup P\cup P'$ the moduli equations
+have the one-parameter solution $s=1$, $1+\delta$, $1-\delta$ on $E$, $P$, $P'$.  The $54$ congruences have rank
 $42$; their real kernel, of dimension $30$, is spanned by the columns of $K$ and $21$ independent diagonal local
 phases.  The Smith normal form has a single invariant factor $2$, so the solution set has two components, containing
-$\sigma=\pm1$.  On $L\cup O$ the officers are $1\times1$ blocks; the $36$ remaining congruences have a
-$32$-dimensional kernel and all invariant factors $1$.  For~(c), the $O'$-phases of a limit must solve the $54$
+$\sigma=\pm1$.  On $E\cup P$ the states of $P$ are $1\times1$ blocks; the $36$ remaining congruences have a
+$32$-dimensional kernel and all invariant factors $1$.  For~(c), the $P'$-phases of a limit must solve the $54$
 congruences with the face phases fixed, which constrains only $\theta_{10}$ and $\theta_{11}$; with the phases of
 $\ket\psi$ fixed, the $54\times12$ system has invariant factors $1^92^3$, hence exactly eight solutions, all with
-phases $\pm\pi/2$.  For~(d), the congruences on $L\cup O\cup O'$ have no solution over $\mathbb F_2$.  The AME property
+phases $\pm\pi/2$.  For~(d), the congruences on $E\cup P\cup P'$ have no solution over $\mathbb F_2$.  The AME property
 of Eqs.~\eqref{eq:F72} and~\eqref{eq:F60} for all parameters has also been checked symbolically~\cite{repo}.
 \end{proof}
 
 At $\delta=0$ each branch passes through a state with uniform amplitudes $1/\sqrt{72}$.  For $\theta=0$ its
-coefficients are $\varepsilon_x$, $1$ and $i\sigma$ on $L$, $O$ and $O'$, so in every reshaping $W=\sqrt2\,U$ has
+coefficients are $\varepsilon_x$, $1$ and $i\sigma$ on $E$, $P$ and $P'$, so in every reshaping $W=\sqrt2\,U$ has
 entries in $\{0,\pm1,\pm i\}$, two per row and column, and $WW^\dagger=2\,\mathbb I$: these are 2-unitary complex
-weighing matrices.  As $\delta$ grows to $1$, the weight of each entry of $O'$ moves to its partner in $O$ until
-the state becomes real at $\ket\psi$.  At $\delta=-1$ the roles of $O$ and $O'$ are exchanged, and each of the eight branches
+weighing matrices.  As $\delta$ grows to $1$, the weight of each entry of $P'$ moves to its partner in $P$ until
+the state becomes real at $\ket\psi$.  At $\delta=-1$ the roles of $P$ and $P'$ are exchanged, and each of the eight branches
 through $\ket\psi$ ends, up to diagonal local unitaries, at a real state of $\mathcal F_{60}'$; the simplest ends at
 \begin{equation}\label{eq:psiminus}
-\ket{\psi_-}=\frac1{\sqrt{72}}\sum_{x\in L}\varepsilon_x\ket x+\frac16\sum_{x\in O'}\ket x .
+\ket{\psi_-}=\frac1{\sqrt{72}}\sum_{x\in E}\varepsilon_x\ket x+\frac16\sum_{x\in P'}\ket x .
 \end{equation}
 No relabelling of parties and levels maps one face onto the other.
 
@@ -278,7 +283,7 @@ limits of $\mathcal F_{72}^\pm$; the other $3072$ real states lie only on the fa
 real state of $\mathcal C$ end at real states of $\mathcal C'$ only for the $128$ states of class~$1$ below, the class
 of $\ket\psi$ (at states of classes $9$ and $10$); for the other $384$ they end at non-real states~\cite{repo}.
 
-Equivalently, a real state of $\mathcal F_{60}$ is given by signs that solve the $36$ congruences of the $L$-blocks over
+Equivalently, a real state of $\mathcal F_{60}$ is given by signs that solve the $36$ congruences of the $E$-blocks over
 $\mathbb F_2$, and likewise for $\mathcal F_{60}'$: on each face there are $2^{32}$ such sign patterns, and modulo
 diagonal local unitaries they give the $2048$ real states.  Negating a coefficient $1/6$ keeps a state AME, since these are $1\times1$ blocks.  On each
 face, the level relabellings and party permutations that preserve the support and its officers form a group of order
@@ -286,7 +291,7 @@ $192$, with $16$ orbits on the real states of $\mathcal F_{60}$ (eight of size $
 those of $\mathcal F_{60}'$ (four of size $32$, $20$ of size $96$).
 
 \begin{theorem}\label{thm:classes}
-The $4096$ real AME$(4,6)$ states with support $L\cup O$ or $L\cup O'$ fall into exactly $20$ classes under local
+The $4096$ real AME$(4,6)$ states with support $E\cup P$ or $E\cup P'$ fall into exactly $20$ classes under local
 unitaries and permutations of the parties: eight on $\mathcal F_{60}$ and $12$ on $\mathcal F_{60}'$.  Their
 representatives are listed in Table~\ref{tab:classes}.
 \end{theorem}
@@ -385,13 +390,13 @@ Ref.~\cite{repo}.
 
 \appendix
 \section{Phase directions and branches}\label{app:K}
-The officer sets are
+The sets $P$ and $P'$ are
 \input{inputs/family_sets.tex}
 The columns of $K$ are listed in Table~\ref{tab:K}, the branches through $\ket\psi$ in Table~\ref{tab:branches}.
 
 \begin{table}[h]
 \caption{The phase directions: $\theta_j$ multiplies the listed basis states by $e^{\pm i\theta_j}$; superscripts
-mark states of $O$ and $O'$, unmarked states are in $L$.}
+mark states of $P$ and $P'$, unmarked states are in $E$.}
 \label{tab:K}
 \input{inputs/family_K.tex}
 \end{table}

@@ -45,11 +45,11 @@ officers and 24 officers in two-term Bell-type states.
 |---|---|---|---|
 | 1 | ψ is AME(4,6): all 1- and 2-party marginals are maximally mixed | `01_state_exact.py` | exact, ℚ(√2) |
 | 2 | Block structure above; 12 classical + 24 Bell-type officers in every reshaping (rows and columns); 12 product states with overlap 1/6, the maximum for any AME(4,6) state | `01` | exact |
-| 2b | The 72 states L ∪ O ∪ O′ form an orthogonal array OA(72,4,6,2) of index 2; per cut 12 L-blocks and 6 blocks with O on one diagonal and O′ on the other. The 10 (resp. 11) parameters of the families are independent modulo local unitaries; at ψ the 14 deformations are 11 face directions + 3 spanned by the branch tangents | `02` | exact; independence and 11 + 3 numerical |
+| 2b | The 72 states E ∪ P ∪ P′ form an orthogonal array OA(72,4,6,2) of index 2; per cut 12 E-blocks and 6 blocks with P on one diagonal and P′ on the other. The 10 (resp. 11) parameters of the families are independent modulo local unitaries; at ψ the 14 deformations are 11 face directions + 3 spanned by the branch tangents | `02` | exact; independence and 11 + 3 numerical |
 | 3 | **Support-72 family** Ψ_σ(δ, θ), δ ∈ [−1, 1], θ ∈ ℝ⁹, σ = ±1 (Eq. F72) consists of AME states. Up to diagonal local unitaries it contains every AME state with that support. It has two components, exchanged by complex conjugation, and 10 parameters modulo local unitaries | `02_families.py` | exact (Smith normal form) + numerical spot checks |
 | 4 | **Support-60 face** Φ(θ, θ₁₀, θ₁₁) (Eq. F60): AME, all AME states on supp ψ up to diagonal local unitaries, moduli rigid, one component; ψ = Φ(0) | `02` | exact + numerical |
 | 5 | The families meet exactly along the 9-torus C = {θ₁₀ = θ₁₁ = 0}. **Eight branches** of the support-72 family end at ψ, four in each component, with phases ±i on the 12 vanishing entries | `02` | exact |
-| 6a | At δ = −1 every branch ends at a **real** state of the opposite face (support L ∪ O′) up to local phases; the simplest ends at ψ₋ = (Σ_L ε\|x⟩)/√72 + (Σ_O′ \|x⟩)/6 | `02` | exact |
+| 6a | At δ = −1 every branch ends at a **real** state of the opposite face (support E ∪ P′) up to local phases; the simplest ends at ψ₋ = (Σ_E ε\|x⟩)/√72 + (Σ_P′ \|x⟩)/6 | `02` | exact |
 | 6 | No state with support exactly 72 is real, even up to local phases (GF(2)). At δ = 0 the states have uniform amplitudes: √2·6M has entries in {0, ±1, ±i} with W W† = 2I, a 2-unitary complex weighing matrix. A straight path of AME states joins the uniform state with 4 imaginary entries to ψ | `02` | exact; path numerical |
 | 7 | **Symmetry:** all 72 support points lie in the 360-dim −1 eigenspace of u^⊗4, u = diag(i, −1, −1, −i, −i, −i), so every state of both families (ψ included) satisfies u^⊗4\|φ⟩ = −\|φ⟩. Diagonal symmetry group of the support: Z₂ × Z₂ × Z₄ | `03_symmetry.py` | exact |
 | 8 | On each face, 2³² real sign patterns give **2048 real AME states** modulo local phases (512 on the gluing locus). The support automorphism group (party permutations × level relabellings, officers to officers) has order 192, with 16 orbits on ψ's face (8 × 64, 8 × 192) and 24 on the opposite face (4 × 32, 20 × 96). No monomial map relates the two faces | `04_real_points.py` | exact |
@@ -58,8 +58,8 @@ officers and 24 officers in two-term Bell-type states.
 | 11 | First-order deformation dimensions (LU invariant): ψ and the real classes on the gluing locus: 14; the other real classes and generic face points: 11; support-72 family: 10; golden state: 4; Bruzda–Życzkowski H(0): 3. So no state here is LU-equivalent to those | `06_deformations.py` | numerical (gap 10⁻¹⁵ vs 10⁻²); for the real classes the dimension is certified in `07` (as n(1/2) = 141 + dim) |
 | 12 | Discovery, step 0: of the order ≤ 6 local-symmetry classes, 204 pass the spectral test and 121 also the population LP; the order-4 class of u (eigenvalue −1, dimension 360) is one of them | `09_sector_filters.py` | exact |
 | 13 | Discovery, step 1: a random-start search in the 360-dim sector of u^⊗4 finds AME states within a few restarts; most hits have deformation dimension 10, like the family (about 1 in 8 lie on a different, 3-parameter family) | `08_sector_search.py` | stochastic demonstration |
-| 14 | Discovery, step 2: smoothed-L1 minimisation over commutant frames brings a dimension-10 hit to exactly 72 coefficients; after a Gauss–Newton polish it is an exact AME state whose support is L ∪ O ∪ O′ up to relabelling, with the moduli of the family | `10_sparsify.py` | numerical (seeded) |
-| 15 | The tables printed in the paper (the state as Table I, O and O′, K, branches, the class table) agree with the data; the complete block lists of the three reshapings are printed by `01` | `11_paper_tables.py`, `01` | exact |
+| 14 | Discovery, step 2: smoothed-L1 minimisation over commutant frames brings a dimension-10 hit to exactly 72 coefficients; after a Gauss–Newton polish it is an exact AME state whose support is E ∪ P ∪ P′ up to relabelling, with the moduli of the family | `10_sparsify.py` | numerical (seeded) |
+| 15 | The tables printed in the paper (the state as Table I, P and P′, K, branches, the class table) agree with the data; the complete block lists of the three reshapings are printed by `01` | `11_paper_tables.py`, `01` | exact |
 | 16 | **Where the real states lie.** Each face is a torus ℝ¹¹/Λ (origin ψ, resp. ψ₋); its real states are exactly the 2¹¹ points of order ≤ 2. Λ/2πℤ¹¹ ≅ ℤ₂³ (face +; hence θⱼ ∈ {0, π} reach only 256) and ℤ₂² (face −). The closures of the support-72 family meet the faces in 9-tori C, C′ whose 2⁹ = 512 order-2 points are the real limits; the other 3072 real states lie only on the faces. Branches from real points of C end at real states only for class 1 (at classes 9 and 10) | `12_real_locations.py` | exact |
 
 **Real classes** (data/real_classes.json). Face +: representative = ψ with the listed coefficients 1/6 negated.
@@ -90,15 +90,16 @@ Face −: representative = ψ₋ with the listed coefficients 1/6 negated.
 
 ## The closed forms
 
-With the sets L (48 states, coefficient ε = ±1 in ψ), O (the 12 states with coefficient 1/6) and O′ (12 further states; called N in the data files),
+With the sets E (the 48 states of the entangled officers, coefficient ε/√72, ε = ±1, in ψ), P (the 12 classical officers,
+coefficient 1/6) and P′ (12 further states); the data files call them L, O and N,
 and the integer phase matrix K (data/family.json):
 
 ```
-Ψ_σ(δ, θ) = (1/√72) [ Σ_L ε e^{i(Kθ)} |x>  +  √(1+δ) Σ_O e^{i(Kθ)} |x>  +  iσ √(1−δ) Σ_O′ e^{i(Kθ)} |x> ]
-Φ(θ, θ₁₀, θ₁₁) = (1/√72) Σ_L ε e^{i(Kθ)} |x>  +  (1/6) Σ_O e^{i(Kθ) + iθ₁₀[x=3505] + iθ₁₁[x=5045]} |x>
+Ψ_σ(δ, θ) = (1/√72) [ Σ_E ε e^{i(Kθ)} |x>  +  √(1+δ) Σ_P e^{i(Kθ)} |x>  +  iσ √(1−δ) Σ_P′ e^{i(Kθ)} |x> ]
+Φ(θ, θ₁₀, θ₁₁) = (1/√72) Σ_E ε e^{i(Kθ)} |x>  +  (1/6) Σ_P e^{i(Kθ) + iθ₁₀[x=3505] + iθ₁₁[x=5045]} |x>
 ```
 
-Here K′ is K restricted to L ∪ O plus two columns: θ₁₀ acts on |3505⟩ alone and θ₁₁ on |5045⟩ alone. Then
+Here K′ is K restricted to E ∪ P plus two columns: θ₁₀ acts on |3505⟩ alone and θ₁₁ on |5045⟩ alone. Then
 ψ = Φ(0) = Ψ_±(1, 0). On the support of ψ every reshaping splits into 1 × 1 and 2 × 2 blocks, so the AME
 conditions reduce to linear equations for the moduli and congruences φ_a − φ_b − φ_c + φ_e ≡ π (mod 2π) for the phases.
 Real solutions are the solutions of the same congruences over GF(2).
@@ -135,7 +136,7 @@ run.
 ```
 data/psi_terms.json             exact coefficients of √72 ψ ("+1", "-1", "+sqrt2")
 data/psi.npy                    ψ as a float64 vector (index = 216a + 36b + 6c + d)
-data/family.json                the 72 points (type L/O/N, sign ε, row of K), face columns, branch table, θ′
+data/family.json                the 72 points (type L/O/N = E/P/P′ of the paper, sign ε, row of K), face columns, branch table, θ′
 data/uniform_min_imag_terms.json  a uniform-amplitude member with only 4 imaginary entries (i^k / √72)
 data/real_classes.json          the 20 classes of real states (both faces)
 data/reference/                 golden 2-unitary of Rather et al. (numerical, support 112);

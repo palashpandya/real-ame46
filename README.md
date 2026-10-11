@@ -61,6 +61,7 @@ officers and 24 officers in two-term Bell-type states.
 | 14 | Discovery, step 2: smoothed-L1 minimisation over commutant frames brings a dimension-10 hit to exactly 72 coefficients; after a Gauss–Newton polish it is an exact AME state whose support is E ∪ P ∪ P′ up to relabelling, with the moduli of the family | `10_sparsify.py` | numerical (seeded) |
 | 15 | The tables printed in the paper (the state as Table I, P and P′, K, branches, the class table) agree with the data; the complete block lists of the three reshapings are printed by `01` | `11_paper_tables.py`, `01` | exact |
 | 16 | **Where the real states lie.** Each face is a torus ℝ¹¹/Λ (origin ψ, resp. ψ₋); its real states are exactly the 2¹¹ points of order ≤ 2. Λ/2πℤ¹¹ ≅ ℤ₂³ (face +; hence θⱼ ∈ {0, π} reach only 256) and ℤ₂² (face −). The closures of the support-72 family meet the faces in 9-tori C, C′ whose 2⁹ = 512 order-2 points are the real limits; the other 3072 real states lie only on the faces. Branches from real points of C end at real states only for class 1 (at classes 9 and 10) | `12_real_locations.py` | exact |
+| 17 | **Entangling power.** As two-quhex gates, 6ψ and every real state (all 4096, each of the 24 orderings of the parties) have the maximal entangling power e_p = (d−1)/(d+1) = 5/7, i.e. normalised e_p = 1: E(U) = E(US) = E(S) = 35/36. So each is a real orthogonal gate of maximal entangling power. Computed from Zanardi's formula and, independently, as the exact Haar average over product inputs; on the 36 basis inputs ψ gives 12 product outputs and 24 with linear entropy 1/2 | `13_entangling_power.py` | numerical (exact via the orthogonality proved in `01`) |
 
 **Real classes** (data/real_classes.json). Face +: representative = ψ with the listed coefficients 1/6 negated.
 Face −: representative = ψ₋ with the listed coefficients 1/6 negated.
@@ -124,11 +125,11 @@ Python ≥ 3.10 with `numpy` and `scipy`; `07_certify_classes.py` also needs `py
 
 ```bash
 pip install -r requirements.txt
-./run_all.sh            # runs 01–07 and 09–11, writes results/*.log (about 7 minutes); 08 is optional
+./run_all.sh            # runs 01–07 and 09–13, writes results/*.log (about 7 minutes); 08 is optional
 python scripts/08_sector_search.py 30 0
 ```
 
-Scripts 01–07 and 09–11 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a reference
+Scripts 01–07 and 09–13 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a reference
 run.
 
 ## Layout
@@ -144,7 +145,7 @@ data/reference/                 golden 2-unitary of Rather et al. (numerical, su
 ame46real/                      core (cuts, AME test, blocks), lattice (Smith form, GF(2)), family (closed forms),
                                 jacobian (deformations, LU-invariant spectrum), realpoints (real points, automorphisms of both faces),
                                 sector (search in the u-sector, support minimisation over commutant frames)
-scripts/01..11                  the verifications listed above
+scripts/01..13                  the verifications listed above
 wolfram/verify_families.wls     symbolic check of the closed forms
 ```
 
@@ -156,6 +157,9 @@ see `LICENSE-DATA.md` (which also lists the sources of `data/reference/`). The m
 ## References
 
 - D. Goyeneche et al., PRA 92, 032316 (2015): AME states and multi-unitary matrices.
+- P. Zanardi, C. Zalka, L. Faoro, PRA 62, 030301 (2000); P. Zanardi, PRA 63, 040304 (2001): entangling power and its
+  expression through operator entanglement.
+- S. A. Rather, S. Aravinda, A. Lakshminarayan, PRL 125, 070501 (2020): 2-unitaries are the gates of maximal entangling power.
 - S. A. Rather et al., PRL 128, 080507 (2022): the golden AME(4,6) state; conjecture in the Supplemental Material.
 - G. Rajchel-Mieldzioć et al., Rep. Prog. Phys. 89, 057601 (2026), arXiv:2508.04777: review, open problem (T2).
 - W. Bruzda, K. Życzkowski, arXiv:2401.01671: two-unitary complex Hadamard matrices of order 36 (H(0)).

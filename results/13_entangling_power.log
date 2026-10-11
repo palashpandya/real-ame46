@@ -1,0 +1,23 @@
+d = 6: E(S) = 35/36 = 0.972222, maximal entangling power (d-1)/(d+1) = 5/7 = 0.714286
+
+    psi, cut 12|34: E(U) = 0.972222222222, E(US) = 0.972222222222, e_p = 0.714285714286 (formula), 0.714285714286 (Haar average)
+    psi, cut 13|24: E(U) = 0.972222222222, E(US) = 0.972222222222, e_p = 0.714285714286 (formula), 0.714285714286 (Haar average)
+    psi, cut 14|23: E(U) = 0.972222222222, E(US) = 0.972222222222, e_p = 0.714285714286 (formula), 0.714285714286 (Haar average)
+[PASS] (1) psi: e_p = 5/7 along all three cuts, from the formula and from the exact Haar average  (max deviation 1.1e-16)
+[PASS] (1) psi: Monte Carlo average over 10^5 random product inputs agrees with 5/7 (within 4 s.e.)  (0.71438 +- 0.00007, normalised 1.00013)
+[PASS] (2) all 4096 real states x 24 orderings of the parties (98304 gates): normalised e_p = 1  (max |e_p / (5/7) - 1| = 1.1e-16)
+[PASS] (2) the 20 class representatives: exact Haar average = 5/7  (max deviation 0.0e+00)
+[PASS] (3) psi_sigma(delta, theta), random: normalised e_p = 1  (1.000000000000)
+[PASS] (3) psi_face(theta), random: normalised e_p = 1  (1.000000000000)
+[PASS] (3) golden 2-unitary (Rather et al. 2022): normalised e_p = 1  (1.000000000000)
+    Haar-random U(36): E(U) = 0.945809, E(US) = 0.944833, normalised e_p = 0.944661 (Haar average 0.944661)
+[PASS] (4) Haar-random U(36): formula = Haar average, e_p < 5/7
+    Haar-random O(36): E(U) = 0.948763, E(US) = 0.943948, normalised e_p = 0.946789 (Haar average 0.946789)
+[PASS] (4) Haar-random O(36): formula = Haar average, e_p < 5/7
+    SWAP: E(U) = 0.972222, E(US) = 0.000000, normalised e_p = 0.000000 (Haar average 0.000000)
+[PASS] (4) SWAP: formula = Haar average, e_p = 0
+    identity: E(U) = 0.000000, E(US) = 0.972222, normalised e_p = 0.000000 (Haar average 0.000000)
+[PASS] (4) identity: formula = Haar average, e_p = 0
+[PASS] (5) psi on the 36 basis inputs: 12 product outputs (E = 0) and 24 outputs with E = 1/2 (mean 1/3 < 5/7)  (12 + 24)
+
+ALL CHECKS PASSED

@@ -253,13 +253,25 @@ of Eqs.~\eqref{eq:F72} and~\eqref{eq:F60} for all parameters has also been check
 At $\delta=0$ each branch passes through a state with uniform amplitudes $1/\sqrt{72}$.  For $\theta=0$ its
 coefficients are $\varepsilon_x$, $1$ and $i\sigma$ on $E$, $P$ and $P'$, so in every reshaping $W=\sqrt2\,U$ has
 entries in $\{0,\pm1,\pm i\}$, two per row and column, and $WW^\dagger=2\,\mathbb I$: these are 2-unitary complex
-weighing matrices.  As $\delta$ grows to $1$, the weight of each entry of $P'$ moves to its partner in $P$ until
+weighing matrices.  Fig.~\ref{fig:amplitudes72} shows them for $\sigma=+1$; in block order they differ from
+Fig.~\ref{fig:amplitudes} only in the six blocks on $P\cup P'$.  As $\delta$ grows to $1$, the weight of each entry of $P'$ moves to its partner in $P$ until
 the state becomes real at $\ket\psi$.  At $\delta=-1$ the roles of $P$ and $P'$ are exchanged, and each of the eight branches
 through $\ket\psi$ ends, up to diagonal local unitaries, at a real state of $\mathcal F_{60}'$; the simplest ends at
 \begin{equation}\label{eq:psiminus}
 \ket{\psi_-}=\frac1{\sqrt{72}}\sum_{x\in E}\varepsilon_x\ket x+\frac16\sum_{x\in P'}\ket x .
 \end{equation}
 No permutation of the parties and of the basis states of each party maps one face onto the other.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/amplitudes72.pdf}
+\caption{The three reshapings of $\sqrt{72}\,\Psi_+(0,0)$, the uniform-amplitude state of $\mathcal F_{72}^+$, for the
+bipartitions $12|34$, $13|24$ and $14|23$.  Top: natural order.  Bottom: rows and columns permuted into $18$ blocks
+of size $2\times2$: six with the entries $+1$ of $P$ on the diagonal and $+i$ of $P'$ off it, then the twelve blocks
+of $E$, ordered as in Fig.~\ref{fig:amplitudes}.  As $\delta\to1$ the $P'$ entries vanish, the $P$ entries grow to
+$\sqrt2$, and the picture becomes Fig.~\ref{fig:amplitudes}.}
+\label{fig:amplitudes72}
+\end{figure*}
 
 The first-order deformations of an AME state, modulo the tangent space of its local-unitary orbit, form a
 local-unitary invariant.  Their dimension is $10$ for a generic member of $\mathcal F_{72}^\pm$, $11$ for a generic face

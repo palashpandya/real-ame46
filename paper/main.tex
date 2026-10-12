@@ -222,7 +222,8 @@ $t\in\mathbb F_2^S$.
 
 \begin{proof}
 The reduced state of parties $1,2$ is $\rho_{12}=UU^\dagger/36$, and that of parties $3,4$ is
-$\rho_{34}=\overline{U^\dagger U}/36$; likewise for $U^R$ and $U^\Gamma$.  Hence $\ket\psi$ is AME, i.e.\ all six
+$\rho_{34}=\overline{U^\dagger U}/36$, and $U^R$ and $U^\Gamma$ give $\rho_{13},\rho_{24}$ and $\rho_{14},\rho_{23}$ in
+the same way.  Hence $\ket\psi$ is AME, i.e.\ all six
 two-party reductions equal $\mathbb I/36$ (which includes $\braket{\psi}{\psi}=1$), if and only if $U$, $U^R$ and
 $U^\Gamma$ are unitary.
 
@@ -260,8 +261,8 @@ $\alpha_x$ ($x\in P$) and $\beta_x$ ($x\in P'$) let
 \ket{\Psi_\delta(\alpha,\beta)}=\frac1{\sqrt{72}}\Big[\sum_{x\in E}\varepsilon_x\ket x\\
 +\sqrt{1+\delta}\sum_{x\in P}e^{i\alpha_x}\ket x+\sqrt{1-\delta}\sum_{x\in P'}e^{i\beta_x}\ket x\Big].
 \end{multline}
-At $\delta=1$ the coefficients on $P'$ vanish, so the phases $\beta$ play no role and we write $\ket{\Psi_1(\alpha)}$;
-likewise, at $\delta=-1$ the phases $\alpha$ play no role and we write $\ket{\Psi_{-1}(\beta)}$.  A number in place of
+At $\delta=1$ the coefficients on $P'$ vanish and we write $\ket{\Psi_1(\alpha)}$, since the phases $\beta$ play no
+role; at $\delta=-1$ those on $P$ vanish and we write $\ket{\Psi_{-1}(\beta)}$.  A number in place of
 $\alpha$ or $\beta$ means that all phases on $P$, or all phases on $P'$, have that value.  Thus, the real state in Eq.~\ref{eq:state} is $\ket\psi=\ket{\Psi_1(0)}$,
 while the other end with all phases zero is a different real AME state,
 \begin{equation}\label{eq:psiminus}
@@ -277,8 +278,9 @@ mixed blocks, which read
 \begin{equation}\label{eq:mixed}
 \alpha_a+\alpha_b\equiv\beta_{a'}+\beta_{b'}+\pi\pmod{2\pi}.
 \end{equation}
-The $18$ pairs $\{a,b\}$ are the pairs of states within three quartets $P_1,P_2,P_3$ that partition $P$, each pair
-occurring in exactly one mixed block, and likewise the pairs $\{a',b'\}$ for three quartets $P'_1,P'_2,P'_3$ of $P'$:
+The $18$ pairs $\{a,b\}$ are the pairs of states within three quartets $P_1,P_2,P_3$ that partition $P$, the $18$
+pairs $\{a',b'\}$ are those within three quartets $P'_1,P'_2,P'_3$ that partition $P'$, and each pair occurs in exactly
+one mixed block:
 \begin{equation}\label{eq:quartets}
 \input{inputs/family_sets.tex}
 \end{equation}
@@ -324,10 +326,12 @@ $\mathcal F_{72}^+$ from a uniform state with four imaginary coefficients to $\k
 (a) Up to diagonal local unitaries, the AME states with support exactly $E\cup P\cup P'$ are the states
 $\ket{\Psi_\delta(\alpha,\beta)}$ with $|\delta|<1$ that satisfy Eq.~\eqref{eq:mixed}.  They form two components
 $\mathcal F_{72}^\pm\ni\ket{\Psi_\delta(0,\pm\pi/2)}$, exchanged by complex conjugation, with $10$ parameters each.\\
-(b) Likewise, those with support exactly $E\cup P$ are the states $\ket{\Psi_1(\alpha)}$, with $11$ parameters, and
-those with support exactly $E\cup P'$ the states $\ket{\Psi_{-1}(\beta)}$.\\
+(b) Up to diagonal local unitaries, the AME states with support exactly $E\cup P$ are the states
+$\ket{\Psi_1(\alpha)}$, with $11$ parameters, and those with support exactly $E\cup P'$ are the states
+$\ket{\Psi_{-1}(\beta)}$.\\
 (c) $\ket{\Psi_1(\alpha)}$ is a limit of $\mathcal F_{72}^\pm$ if and only if the sums of $\alpha$ over $P_1$, $P_2$
-and $P_3$ agree modulo $2\pi$; likewise for $\ket{\Psi_{-1}(\beta)}$.\\
+and $P_3$ agree modulo $2\pi$, and $\ket{\Psi_{-1}(\beta)}$ is one if and only if the sums of $\beta$ over $P'_1$,
+$P'_2$ and $P'_3$ agree.\\
 (d) No state of $\mathcal F_{72}^\pm$ is real, even up to diagonal local unitaries.
 \end{proposition}
 
@@ -435,8 +439,8 @@ limits of $\mathcal F_{72}^\pm$; the other $3072$ real states lie only on the fa
 real state of $\mathcal C$ end at real states of $\mathcal C'$ only for the $128$ states of class~$1$ below, the class
 of $\ket\psi$ (at states of classes $9$ and $10$); for the other $384$ they end at non-real states~\cite{repo}.
 
-Equivalently, a real state of $\mathcal F_{60}$ is given by signs that solve the $36$ congruences of the $E$-blocks over
-$\mathbb F_2$, and likewise for $\mathcal F_{60}'$: on each face there are $2^{32}$ such sign patterns, and modulo
+Equivalently, a real state of $\mathcal F_{60}$ or $\mathcal F_{60}'$ is given by signs that solve the $36$ congruences of
+the $E$-blocks over $\mathbb F_2$: on each face there are $2^{32}$ such sign patterns, and modulo
 diagonal local unitaries they give the $2048$ real states.  Negating a coefficient $1/6$ keeps a state AME, since these are $1\times1$ blocks.  On each
 face, the permutations of the parties and of the basis states $\ket0,\dots,\ket5$ of each party that preserve the support and its officers form a group of order
 $192$, with $16$ orbits on the real states of $\mathcal F_{60}$ (eight of size $64$, eight of size $192$) and $24$ on

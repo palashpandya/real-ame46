@@ -8,13 +8,8 @@
 \usepackage{amsthm}
 \usepackage{times}
 \usepackage{physics2}
-%\usepackage{textcomp}
 \usephysicsmodule{braket}
 \usepackage[hidelinks]{hyperref}
-%\newcommand{\ket}[1]{|#1\rangle}
-%\newcommand{\bra}[1]{\langle#1|}
-\newcommand{\AME}{\mathrm{AME}}
-\newcommand{\todo}[1]{\textcolor{red}{[#1]}}
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}{Lemma}
@@ -22,28 +17,22 @@
 
 \begin{document}
 \raggedbottom
-% Working title.  Alternatives:
-%   "Euler's thirty-six officers need no complex numbers"
-%   "Real absolutely maximally entangled states of four quhexes: families and classification"
-%\title{Real absolutely maximally entangled states of four quhexes: families and classification}
-\title{Euler's thirty-six officers need not all be entangled:\\ real AME(4,6), families and classification}
+\title{Euler's thirty-six officers need not all be entangled:\\ real \texorpdfstring{AME$(4,6)$}{AME(4,6)}, families and classification}
 \author{Palash Pandya}
 \affiliation{Center for Theoretical Physics, Polish Academy of Sciences, Aleja Lotnik\'{o}w 32/46, 02-668 Warsaw, Poland}
 \affiliation{Center for Quantum-Enabled Computing, Center for Theoretical Physics, Polish Academy of Sciences, Aleja Lotnik\'{o}w 32/46, 02-668 Warsaw, Poland}
 
 \begin{abstract}
 Absolutely maximally entangled states of four six-level systems, AME$(4,6)$, are the quantum solutions of Euler's
-problem of the thirty-six officers.  All solutions reported so far are complex, and it has been conjectured that no
+problem of the thirty-six officers.  Until recently all reported solutions were complex, and it was conjectured that no
 real orthogonal 2-unitary matrix of order $36$ exists.  We give real AME$(4,6)$ states with $60$ non-zero
 coefficients in $\{\pm1,\sqrt2\}/\sqrt{72}$.  They lie in the $-1$
-eigenspace of an order-$4$ local symmetry, and on its support the AME conditions become linear.  We derive two closed-form families of AME$(4,6)$ states: a $10$-parameter family that
-%contains 2-unitary complex weighing matrices and
-is supported on $72$ basis states, and an $11$-parameter family on $60$ basis states, that meet at the real state.  At each of its two ends the first family loses twelve coefficients, and the AME states on the remaining $60$ basis states
-form an $11$-parameter family: the second family at one end, and an analogous family at the other.  Together these two contain $4096$ real AME states up to local phases, $1024$ of which are limits of the first family.  They fall into exactly $20$ classes under local unitaries and permutations of the parties, and we certify their separation with interval arithmetic.
+eigenspace of an order-$4$ local symmetry, and on their support the AME conditions become linear.  We derive two closed-form families of AME$(4,6)$ states that meet at one of these states: a $10$-parameter family that
+is supported on $72$ basis states, and an $11$-parameter family on $60$ basis states.  At each of its two ends the first family loses $12$ coefficients, and the AME states on the remaining $60$ basis states
+form an $11$-parameter family: the second family at one end, and an analogous family at the other.  These two $60$-term families contain $4096$ real AME states up to diagonal local unitaries, $1024$ of which are limits of the first family.  They fall into exactly $20$ classes under local unitaries and permutations of the parties, and we certify their separation with interval arithmetic.
 \end{abstract}
 \maketitle
 
-% =========================================================================================================
 \section{Introduction}
 
 A pure state of $N$ parties with $d$ levels each is absolutely maximally entangled, AME$(N,d)$, if every reduction
@@ -69,19 +58,19 @@ tempting to conjecture that there exists no solution in the set $O(36)$ of ortho
 recent review lists the question as open problem (T2)~\cite{RBRLZ26}: ``Is there an AME(4,6) state with real
 coefficients? Equivalently, is there an orthogonal 2-unitary matrix of order 36?''
 
-We answer this question in the affirmative.  With the permutation solutions for $d\neq2,6$, it follows that a real
-AME$(4,d)$ state exists if and only if $d\ge3$, exactly when a complex one does. We present the following results in this work.
-In \autoref{sec:state} is our central result: an explicit real AME$(4,6)$ state with $60$ non-zero coefficients, the sparsest AME$(4,6)$ state we know of,
+This question has now been answered in the affirmative, independently, by Bruzda~\cite{Bru26},
+Rather~\cite{Rat26}, Hontarenko and \.Zyczkowski~\cite{HZ26}, and the present work.  With the permutation solutions for $d\neq2,6$, it follows that a real
+AME$(4,d)$ state exists if and only if $d\ge3$, exactly when a complex one does.  We present the following results in this work.
+Section~\ref{sec:state} presents our central result: an explicit real AME$(4,6)$ state with $60$ non-zero coefficients, the sparsest AME$(4,6)$ state we know of,
 whose 2-unitary representation consists of direct sums of $1\times1$ and $2\times2$ blocks.
-In \autoref{sec:symmetry} we describe its origin. It lies in the $-1$ eigenspace of the local symmetry
+Section~\ref{sec:symmetry} describes its origin.  It lies in the $-1$ eigenspace of the local symmetry
 $u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$, and we show that the AME conditions are linear on its support.
-In addition, \autoref{sec:families} two continuous families of AME$(4,6)$ states are presented in closed form, with supports on 72 and 60 basis states. The two families meet at the real state. In \autoref{sec:real} we show that the families allow a complete classification of the real AME states with the two sixty-term supports at the ends of the support-72 family: $4096$ states in exactly twenty classes under local unitaries and party permutations, all of them isolated (numerically).
-All statements are verified by self-contained scripts~\cite{repo}.
+In Sec.~\ref{sec:families} two continuous families of AME$(4,6)$ states are presented in closed form, with supports on $72$ and $60$ basis states.  The two families meet at the real state.  In Sec.~\ref{sec:real} we show that the families allow a complete classification of the real AME states with the two $60$-term supports at the ends of the $72$-term family: $4096$ states in exactly $20$ classes under local unitaries and party permutations, all of them isolated (numerically).
+All statements about our states are verified by self-contained scripts~\cite{repo}.
 
-% =========================================================================================================
-\section{A real AME(4,6) state}\label{sec:state}
+\section{A real \texorpdfstring{AME$(4,6)$}{AME(4,6)} state}\label{sec:state}
 
-If we index the basis states of each party as $\ket{i}$, where $i = 0,\dots,5$, then we can write the state as array of Euler's officers where the first two
+If we index the basis states of each party as $\ket{i}$, where $i = 0,\dots,5$, then we can write the state as an array of Euler's officers where the first two
 parties carry rank $a$ and regiment $b$, and the last two parties carry the state $\ket{\phi_{ab}}$ attached to them:
 \begin{equation}\label{eq:state}
 \ket\psi=\frac{1}{\sqrt{72}}\sum_{a,b=0}^{5}\ket{ab}\otimes\ket{\phi_{ab}}\,.
@@ -104,16 +93,14 @@ With $\psi_x=\braket{x}{\psi}$ we write
 P=\{x:\psi_x=1/6\},\qquad E=\{x:\psi_x=\pm1/\sqrt{72}\}
 \]
 for the $12$ basis states of the classical officers ($P$) and the $48$ of the entangled ones ($E$).
-%, and $\psi_x=\varepsilon_x/\sqrt{72}$ with $\varepsilon_x=\pm1$ for $x\in E$ and $\varepsilon_x=\sqrt{2}$ for $x\in P$.
 For $x\in P$ all four indices $x_j$ lie in $\{0,3,4,5\}$ and exactly one of them is $0$, e.g.\ $\ket{0344}$.
 For $x\in E$ exactly two of them lie in $\{1,2\}$, e.g.\ $\ket{0012}$.
 
 \begin{proposition}\label{prop:state}
-$\ket\psi$ is an AME$(4,6)$ state: The reshaped matrix $U_{(ij),(kl)} = 6(\ket\psi)_{ijkl}$ is a real orthogonal 2-unitary matrix of order $36$.
+$\ket\psi$ is an AME$(4,6)$ state: the reshaped matrix $U_{(ij),(kl)}=6\psi_{ijkl}$ is a real orthogonal 2-unitary matrix of order $36$.
 \end{proposition}
 
 \begin{proof}
-%Fix a bipartition and let $U$ be the corresponding reshaping of $6\psi$.
 We first show that $U$ is orthogonal, i.e.\ that the bipartition $12|34$ is maximally entangled:
 $\rho_{12}=UU^T/36=\mathbb I/36$.  The row $(a,b)$ of $U$ is the officer $\ket{\phi_{ab}}/\sqrt2$ of
 Table~\ref{tab:state}, written in the basis $\ket{x_3x_4}$ of parties $3,4$.  A classical officer gives a row with one
@@ -134,58 +121,53 @@ $\ket\psi$ is pure.  So $U$ is 2-unitary and $\ket\psi$ is AME.
 \end{proof}
 
 All one- and two-party marginals have also been verified in exact arithmetic over $\mathbb Q(\sqrt2)$~\cite{repo}.
-Fig.~\ref{fig:amplitudes} shows the three 2-unitaries.  In the golden AME solution all
+Fig.~\ref{fig:amplitudes} shows the three reshapings.  In the golden state all
 $36$ officers are entangled~\cite{RBB22}.  The classical officers also make $\ket\psi$ as close to a product
 state as an AME$(4,6)$ state can be: for every product state $\ket v=\ket{v_1v_2v_3v_4}$,
-$|\langle v|\psi\rangle|^2\le\langle v_1v_2|\rho_{12}|v_1v_2\rangle=1/36$, with equality at the $12$ states of $P$.
+$|\braket{v}{\psi}|^2\le\langle v_1v_2|\rho_{12}|v_1v_2\rangle=1/36$, so the overlap $|\braket{v}{\psi}|$ is at most $1/6$, with
+equality at the $12$ states of $P$.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/amplitudes.pdf}
-\caption{The three reshapings of $\sqrt{72}\,\ket\psi$, the real AME(4,6) state, for the bipartitions $12|34$, $13|24$ and $14|23$.  Top: natural
+\caption{The three reshapings of $\sqrt{72}\,\ket\psi$, the real AME$(4,6)$ state, for the bipartitions $12|34$, $13|24$ and $14|23$.  Top: natural
 order.  Bottom: rows and columns permuted so that the $12$ entries $\sqrt2$ form $1\times1$ blocks and the $48$
 entries $\pm1$ form $12$ blocks of size $2\times2$, each proportional to an orthogonal matrix.}
 \label{fig:amplitudes}
 \end{figure*}
 
-% =========================================================================================================
 \section{Symmetry and linearization}\label{sec:symmetry}
 
 The state was obtained as a byproduct of a search
-%that takes only $N=4$ and $d=6$ as input.  We looked
 for AME states in eigenspaces
 of local symmetries $u^{\otimes4}$, $u=VDV^\dagger$, with $V$ Haar random and $D$ diagonal of finite order.  Two
-necessary conditions restrict $D$ and the eigenvalue $\lambda$.  First, if $u^{\otimes4}\ket\psi=\lambda\ket\psi$, the
-reshaping of $\ket\psi$ along a cut $A|A^c$ connects the $\mu$-eigenspace of $u^{\otimes|A|}$ only with the
-$\lambda\bar\mu$-eigenspace of $u^{\otimes|A^c|}$.
-%For $|A|=2$ the reshaping is proportional to a unitary, so these
-%eigenspaces must have equal dimensions for every $\mu$; for $|A|=1$ the second must be at least as large.
-Second, in the eigenbasis of $u$ the populations $|\psi_x|^2$ must form a probability distribution on the basis states of the
+necessary conditions restrict $D$ and the eigenvalue $\lambda$.  First, if $u^{\otimes4}\ket\Phi=\lambda\ket\Phi$, the
+reshaping of $\ket\Phi$ along a cut $A|A^c$ connects the $\mu$-eigenspace of $u^{\otimes|A|}$ only with the
+$\lambda\bar\mu$-eigenspace of $u^{\otimes|A^c|}$.  For $|A|=2$ the reshaping is proportional to a unitary, so these
+eigenspaces must have equal dimensions for every $\mu$, and for $|A|=1$ the second must be at least as large.
+Second, in the eigenbasis of $u$ the populations $|\Phi_x|^2$ must form a probability distribution on the basis states of the
 eigenspace with uniform two-party marginals (these are the diagonals of $\rho_{jk}=\mathbb I/36$), which is formulated as a linear feasibility problem.
-%Up to order six,
-%$121$ of the $204$ symmetry classes that pass the first condition also pass the second~\cite{repo}.
 In particular, with complex unit $i$, take $V=\mathbb I$ and $u=D=\mathrm{diag}(i^{k_0},\dots,i^{k_5})$ with $k=(1,2,2,3,3,3)$.
 The $-1$ eigenspace of $u^{\otimes4}$ is spanned by the $360$ basis states $\ket{x_1x_2x_3x_4}$ with $k_{x_1}+\dots+k_{x_4}\equiv2\pmod4$, and a random-start optimization
 in it finds AME states within a few restarts.  Most of them have a $10$-dimensional space of first-order deformations
-modulo local unitaries (\autoref{sec:families}), the others a $3$-dimensional one.\footnote{A first-order deformation
-of an AME state $\ket\psi$ is a vector $\ket{\delta\psi}$ such that the two-party marginals of $\ket\psi+t\ket{\delta\psi}$
+modulo local unitaries (Sec.~\ref{sec:families}), the others a $3$-dimensional one.\footnote{A first-order deformation
+of an AME state $\ket\Phi$ is a vector $\ket{\delta\Phi}$ such that the two-party marginals of $\ket\Phi+t\ket{\delta\Phi}$
 remain $\mathbb I/36$ to first order in $t$.  For four parties it suffices to check $\rho_{12}$, $\rho_{13}$ and
 $\rho_{14}$.  These vectors form a real vector space.  It always contains the tangent space of the local-unitary orbit,
 spanned by the vectors $i(H_1\otimes\mathbb I\otimes\mathbb I\otimes\mathbb I+\dots+\mathbb I\otimes\mathbb I\otimes\mathbb
-I\otimes H_4)\ket\psi$ with Hermitian $H_j$, and the dimension of the quotient is invariant under local unitaries.  It
-is an upper bound on the number of parameters, modulo local unitaries, of any family of AME states through $\ket\psi$,
+I\otimes H_4)\ket\Phi$ with Hermitian $H_j$, and the dimension of the quotient is invariant under local unitaries.  It
+is an upper bound on the number of parameters, modulo local unitaries, of any family of AME states through $\ket\Phi$,
 with equality where the rank of the linearized conditions is locally constant.}
 Local unitaries that commute with $u$, namely $U(1)\times U(2)\times U(3)$ acting on the basis states
 $\ket0$; $\ket1,\ket2$; and $\ket3,\ket4,\ket5$ of each party, preserve the eigenspace.  Minimizing a smoothed $\ell_1$
-norm of the coefficients over such changes of local basis can bring a solution of the first kind to exactly $72$
+norm of the coefficients over such changes of local basis can bring a solution with a $10$-dimensional deformation space to exactly $72$
 non-zero coefficients. A subsequent Gauss--Newton optimization on that support makes it AME to machine precision~\cite{repo}.  These $72$ basis states form an orthogonal array of strength $2$ and index
-$2$~\cite{HSS1999}.%: for any two parties $j\neq k$ and any $m,m'\in\{0,\dots,5\}$, exactly two of the $72$ basis states
-%have $x_j=m$ and $x_k=m'$.
+$2$~\cite{HSS1999}.
 They consist of the $60$ basis states $E\cup P$ of the support of $\ket\psi$ and $12$ further ones, which we call $P'$
 (listed in Eq.~\eqref{eq:quartets}).  As for $P$, all four indices of each $x\in P'$ lie in $\{0,3,4,5\}$ and exactly one of them is
 $0$.  Altogether, the $72$ basis states lie in the $-1$ eigenspace ($\sum_jk_{x_j}\equiv2\pmod4$ for each), so every state supported on them, including
-$\ket\psi$ and both families of \autoref{sec:families}, satisfies $u^{\otimes4}\ket\psi=-\ket\psi$.  Modulo local
-phases, the diagonal local unitaries that act on this support as a scalar form the group
+$\ket\psi$ and both families of Sec.~\ref{sec:families}, is a $-1$ eigenvector of $u^{\otimes4}$.  Modulo an overall
+phase on each party, the diagonal local unitaries that act on this support as a scalar form the group
 $\mathbb Z_2\times\mathbb Z_2\times\mathbb Z_4$, in which $u^{\otimes4}$ has order $4$.
 
 In each of the three reshapings, the rows and the columns are labeled by the indices of two complementary pairs of
@@ -201,13 +183,13 @@ $1\times1$, and the proof of Proposition~\ref{prop:state} is this argument.  All
 following lemma.
 
 \begin{lemma}\label{lem:blocks}
-Let $\ket\psi=\sum_{x\in S}\psi_x\ket x$ with $\psi_x=\sqrt{s_x/72}\,e^{i\varphi_x}$, where $s_x>0$ and
-$\varphi_x\in\mathbb R$.  In each of the three reshapings $U$, $U^R$, $U^\Gamma$ of $6\ket\psi$, along $12|34$,
+Let $\ket\Phi=\sum_{x\in S}\Phi_x\ket x$ with $\Phi_x=\sqrt{s_x/72}\,e^{i\varphi_x}$, where $s_x>0$ and
+$\varphi_x\in\mathbb R$.  In each of the three reshapings $U$, $U^R$, $U^\Gamma$ of $6\ket\Phi$, along $12|34$,
 $13|24$ and $14|23$, the basis state $\ket x$ lies in the row labeled by its indices for the first pair of parties and
 in the column labeled by those for the second.  For $x\in S$ in row $r$ and column $c$ we write $s_{rc}=s_x$ and
 $\varphi_{rc}=\varphi_x$.  Suppose that in each reshaping the $36$ rows and the $36$ columns can be partitioned into
 sets $R_1,\dots,R_m$ and $C_1,\dots,C_m$ with $|R_k|=|C_k|\in\{1,2\}$ such that $S$ consists exactly of the basis
-states in $R_1\times C_1,\dots,R_m\times C_m$, the \emph{blocks} of $S$.  Then $\ket\psi$ is AME if and only if
+states in $R_1\times C_1,\dots,R_m\times C_m$, the \emph{blocks} of $S$.  Then $\ket\Phi$ is AME if and only if
 $s_x=2$ on every $1\times1$ block and every $2\times2$ block, with rows $r,r'$ and columns $c,c'$, satisfies
 \begin{equation}\label{eq:congruence}
 \begin{gathered}
@@ -223,8 +205,8 @@ $t\in\mathbb F_2^S$.
 \begin{proof}
 The reduced state of parties $1,2$ is $\rho_{12}=UU^\dagger/36$, and that of parties $3,4$ is
 $\rho_{34}=\overline{U^\dagger U}/36$, and $U^R$ and $U^\Gamma$ give $\rho_{13},\rho_{24}$ and $\rho_{14},\rho_{23}$ in
-the same way.  Hence $\ket\psi$ is AME, i.e.\ all six
-two-party reductions equal $\mathbb I/36$ (which includes $\braket{\psi}{\psi}=1$), if and only if $U$, $U^R$ and
+the same way.  Hence $\ket\Phi$ is AME, i.e.\ all six
+two-party reductions equal $\mathbb I/36$ (which includes $\braket{\Phi}{\Phi}=1$), if and only if $U$, $U^R$ and
 $U^\Gamma$ are unitary.
 
 Fix one reshaping $U$ and its blocks.  The entry of $U$ in row $r$ and column $c$ is $\sqrt{s_{rc}/2}\,e^{i\varphi_{rc}}$
@@ -251,7 +233,6 @@ if and only if all $\varphi_x\in\{0,\pi\}$.  Writing $\varphi_x=\pi t_x$ with $t
 $t_{rc}-t_{rc'}-t_{r'c}+t_{r'c'}\equiv1\pmod2$, which is the stated equation over $\mathbb F_2$.
 \end{proof}
 
-% =========================================================================================================
 \section{Two families through the real state}\label{sec:families}
 
 We now describe, up to diagonal local unitaries, all AME states with support exactly $E\cup P\cup P'$, $E\cup P$ or
@@ -263,23 +244,24 @@ $\alpha_x$ ($x\in P$) and $\beta_x$ ($x\in P'$) let
 \end{multline}
 At $\delta=1$ the coefficients on $P'$ vanish and we write $\ket{\Psi_1(\alpha)}$, since the phases $\beta$ play no
 role.  At $\delta=-1$ those on $P$ vanish, and we write $\ket{\Psi_{-1}(\beta)}$.  A number in place of
-$\alpha$ or $\beta$ means that all phases on $P$, or all phases on $P'$, have that value.  Thus, the real state in Eq.~\ref{eq:state} is $\ket\psi=\ket{\Psi_1(0)}$,
+$\alpha$ or $\beta$ means that all phases on $P$, or all phases on $P'$, have that value.  Thus, the real state in Eq.~\eqref{eq:state} is $\ket\psi=\ket{\Psi_1(0)}$,
 while the other end with all phases zero is a different real AME state,
 \begin{equation}\label{eq:psiminus}
 \ket{\psi_-}=\ket{\Psi_{-1}(0)}=\frac1{\sqrt{72}}\sum_{x\in E}\varepsilon_x\ket x+\frac16\sum_{x\in P'}\ket x ,
 \end{equation}
-with the twelve coefficients $1/6$ on $P'$ instead of $P$.  No local unitary and permutation of the parties maps
-$\ket\psi$ to $\ket{\psi_-}$ (Theorem~\ref{thm:classes}).  Each of the
-$18$ mixed blocks has two states $a,b\in P$ on one diagonal and two states $a',b'\in P'$ on
+with the $12$ coefficients $1/6$ on $P'$ instead of $P$.  No local unitary and permutation of the parties maps
+$\ket\psi$ to $\ket{\psi_-}$ (Theorem~\ref{thm:classes}), and no permutation of the parties and of the basis states
+of each party maps the support $E\cup P$ onto $E\cup P'$.  Each of the
+$18$ mixed blocks has two states $x,y\in P$ on one diagonal and two states $x',y'\in P'$ on
 the other.  For $|\delta|<1$ the moduli of Eq.~\eqref{eq:family} satisfy the moduli equations of
 Lemma~\ref{lem:blocks} on every block, and the $E$-blocks carry the coefficients of $\ket\psi$ which satisfy their respective
 phase congruences.  The only remaining AME conditions are therefore the phase congruences~\eqref{eq:congruence} of the
 mixed blocks, which read
 \begin{equation}\label{eq:mixed}
-\alpha_a+\alpha_b\equiv\beta_{a'}+\beta_{b'}+\pi\pmod{2\pi}.
+\alpha_x+\alpha_y\equiv\beta_{x'}+\beta_{y'}+\pi\pmod{2\pi}.
 \end{equation}
-The $18$ pairs $\{a,b\}$ are the pairs of states within three quartets $P_1,P_2,P_3$ that partition $P$, the $18$
-pairs $\{a',b'\}$ are those within three quartets $P'_1,P'_2,P'_3$ that partition $P'$, and each pair occurs in exactly
+The $18$ pairs $\{x,y\}$ are the pairs of states within three quartets $P_1,P_2,P_3$ that partition $P$, the $18$
+pairs $\{x',y'\}$ are those within three quartets $P'_1,P'_2,P'_3$ that partition $P'$, and each pair occurs in exactly
 one mixed block:
 \begin{equation}\label{eq:quartets}
 \input{inputs/family_sets.tex}
@@ -299,9 +281,9 @@ support $E\cup P\cup P'$ reach each face only along a $9$-dimensional subtorus.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/amplitudes72.pdf}
-\caption{The three reshapings of $\sqrt{72}\,\Psi_0(0,\pi/2)$, a uniform-amplitude state of $\mathcal F_{72}^+$, for the
+\caption{The three reshapings of $\sqrt{72}\,\ket{\Psi_0(0,\pi/2)}$, a uniform-amplitude state of $\mathcal F_{72}^+$, for the
 bipartitions $12|34$, $13|24$ and $14|23$.  Top: natural order.  Bottom: rows and columns permuted into $18$ blocks
-of size $2\times2$: six with the entries $+1$ of $P$ on the diagonal and $+i$ of $P'$ off it, then the twelve blocks
+of size $2\times2$: six with the entries $+1$ of $P$ on the diagonal and $+i$ of $P'$ off it, then the $12$ blocks
 of $E$, ordered as in Fig.~\ref{fig:amplitudes}.  As $\delta\to1$ the $P'$ entries vanish, the $P$ entries grow to
 $\sqrt2$, and the picture becomes Fig.~\ref{fig:amplitudes}.}
 \label{fig:amplitudes72}
@@ -338,8 +320,8 @@ $P'_2$ and $P'_3$ agree.\\
 \begin{proof}
 By Lemma~\ref{lem:blocks}, everything reduces to linear congruences in the phases.  The ranks and invariant factors
 quoted below are computed exactly in Ref.~\cite{repo}.  We use two facts.  (i) If a system of integer linear
-congruences in $n$ phases has rank $\rho$ and invariant factors $d_1,\dots,d_\rho$ (the non-zero entries of the Smith
-normal form of its matrix), its solutions, if any, form $d_1\cdots d_\rho$ disjoint $(n-\rho)$-dimensional tori.
+congruences in $n$ phases has rank $\nu$ and invariant factors $d_1,\dots,d_\nu$ (the non-zero entries of the Smith
+normal form of its matrix), its solutions, if any, form $d_1\cdots d_\nu$ disjoint $(n-\nu)$-dimensional tori.
 (ii) In each reshaping, a diagonal local unitary adds to $\varphi_x$ a function of the row of $x$ plus a function of
 its column, which cancels in every congruence~\eqref{eq:congruence}.
 
@@ -352,9 +334,9 @@ their congruences in the form~\eqref{eq:mixed} gives $2\omega\equiv\pi$: every A
 has $\omega\equiv\pm\pi/2$.  Diagonal local unitaries form a connected group that maps such states to such states, so
 they cannot change this discrete value, while complex conjugation reverses it.
 
-(a) The moduli equations of the $E$-blocks have rank $48$, so $s=1$ on $E$.  On a mixed block they give $s_a=s_b$,
-$s_{a'}=s_{b'}$ and $s_a+s_{a'}=2$.  Every pair within a quartet lies in a mixed block, so $s$ is constant on each
-quartet, and by Eq.~\eqref{eq:partition} every $P_k$ shares a mixed block with every $P'_l$, so $s(P_k)+s(P'_l)=2$.
+(a) The moduli equations of the $E$-blocks have rank $48$, so $s=1$ on $E$.  On a mixed block they give $s_x=s_y$,
+$s_{x'}=s_{y'}$ and $s_x+s_{x'}=2$.  Every pair within a quartet lies in a mixed block, so $s$ is constant on each
+quartet, and, as noted before Eq.~\eqref{eq:partition}, every $P_k$ shares a mixed block with every $P'_l$, so $s(P_k)+s(P'_l)=2$.
 Hence $s=1+\delta$ on $P$ and $1-\delta$ on $P'$, with $|\delta|<1$ as $s>0$.  The $36$ congruences of the
 $E$-blocks have rank $28$ in $48$ phases and invariant factors $1$, so by (i) their solutions form one $20$-dimensional
 torus.  By (ii) it contains the phases of $\ket\psi$ shifted by any diagonal local unitary, which also form a
@@ -375,11 +357,11 @@ $\ket{\Psi_1(\alpha)}$ for all $\alpha$, and the common phase leaves $11$ parame
 congruences~\eqref{eq:partition} gives $A_k\equiv B_l$, so $A_1\equiv A_2\equiv A_3$ on $\mathcal F_{72}^\pm$, and also
 on its limits, since $\ket{\Psi_{\delta_n}(\alpha_n,\beta_n)}\to\ket{\Psi_1(\alpha)}$ forces $\alpha_n\to\alpha$.
 Conversely, let $A_1\equiv A_2\equiv A_3$ and $P'_l=\{w,x,y,z\}$.  Each of its six pairs lies in one mixed block, so
-Eq.~\eqref{eq:mixed} prescribes the six pair sums $q_{wx}\equiv\beta_w+\beta_x$, and so on.  By
-Eq.~\eqref{eq:partition}, the sums of complementary pairs, $q_{wx}+q_{yz}$, $q_{wy}+q_{xz}$ and $q_{wz}+q_{xy}$, are
+Eq.~\eqref{eq:mixed} prescribes the six pair sums $\sigma_{wx}\equiv\beta_w+\beta_x$, and so on.  By
+Eq.~\eqref{eq:partition}, the sums of complementary pairs, $\sigma_{wx}+\sigma_{yz}$, $\sigma_{wy}+\sigma_{xz}$ and $\sigma_{wz}+\sigma_{xy}$, are
 $A_1$, $A_2$, $A_3$ in some order, hence equal.  Therefore the solutions on $P'_l$ are exactly
-$2\beta_w\equiv q_{wx}+q_{wy}-q_{xy}$ and $\beta_x\equiv q_{wx}-\beta_w$, $\beta_y\equiv q_{wy}-\beta_w$,
-$\beta_z\equiv q_{wz}-\beta_w$: two solutions, differing by $\pi$ on all of $P'_l$, and eight in total.  Adding $\pi$ on
+$2\beta_w\equiv \sigma_{wx}+\sigma_{wy}-\sigma_{xy}$ and $\beta_x\equiv \sigma_{wx}-\beta_w$, $\beta_y\equiv \sigma_{wy}-\beta_w$,
+$\beta_z\equiv \sigma_{wz}-\beta_w$: two solutions, differing by $\pi$ on all of $P'_l$, and eight in total.  Adding $\pi$ on
 one quartet changes $\omega$ by $3\pi$, so four of the eight lie in each component, and for each of them
 $\ket{\Psi_\delta(\alpha,\beta)}\to\ket{\Psi_1(\alpha)}$ as $\delta\to1$.  At $\delta=-1$ the same holds with $\alpha$
 and $\beta$ exchanged.
@@ -388,7 +370,7 @@ and $\beta$ exchanged.
 have $\omega\in\{0,\pi\}$.  But it is AME with support $E\cup P\cup P'$, so $\omega\equiv\pm\pi/2$.
 \end{proof}
 
-\emph{Branches through the real state.}  At $\alpha=0$ all pair sums in the proof of (c) are $q\equiv\pi$, so $\beta$
+\emph{Branches through the real state.}  At $\alpha=0$ all pair sums in the proof of (c) are $\sigma\equiv\pi$, so $\beta$
 is constant on each quartet $P'_l$ with $2\beta\equiv\pi$, i.e.\ $\beta=\eta_l\pi/2$ with $\eta_l=\pm1$.  The eight
 straight lines $\delta\mapsto\ket{\Psi_\delta(0,\beta)}$ are the \emph{branches} through $\ket\psi=\ket{\Psi_1(0)}$.
 Since $\omega=3(\eta_1+\eta_2+\eta_3)\pi/2\equiv\eta_1\eta_2\eta_3\pi/2$, four lie in $\mathcal F_{72}^+$ and four in
@@ -398,14 +380,14 @@ $\ket{\Psi_{-1}(\beta)}$ on the opposite face.  A common phase on $P'$, which a 
 changing the coefficients on $E$, makes this state real, and for constant $\beta$ it becomes $\ket{\psi_-}$.  Up to diagonal
 local unitaries, the eight branches thus end at four real states, each reached by one branch from each component:
 $\ket{\psi_-}$ and the three states obtained from it by negating the coefficients on $P'_1$, $P'_2$ or $P'_3$ (classes
-$9$, $9$, $10$, $9$ of Theorem~\ref{thm:classes}).  No permutation of the parties and of the basis states of each party
-maps one face onto the other.
+$9$, $9$, $10$, $9$ of Theorem~\ref{thm:classes}).
 
 \emph{Uniform states.}  Halfway along a branch, at $\delta=0$, all $72$ coefficients have modulus $1/\sqrt{72}$.  For
 constant $\beta=\pm\pi/2$ they are $\varepsilon_x$, $1$ and $\pm i$ times $1/\sqrt{72}$ on $E$, $P$ and $P'$.  In every
 reshaping $W=\sqrt2\,U$ then has two entries from $\{\pm1,\pm i\}$ in each row and column and $WW^\dagger=2\,\mathbb I$:
-a 2-unitary complex weighing matrix (Fig.~\ref{fig:amplitudes72}).  These uniform states are new, since the AME$(4,6)$
-states reported before have at least $112$ non-zero coefficients (Sec.~\ref{sec:discussion}).  Other uniform states of
+a 2-unitary complex weighing matrix (Fig.~\ref{fig:amplitudes72}).  These uniform states are new: the AME$(4,6)$
+states reported earlier have at least $112$ non-zero coefficients, and the real states of Refs.~\cite{Bru26,HZ26} have
+$60$ and $96$ (Sec.~\ref{sec:discussion}).  Other uniform states of
 $\mathcal F_{72}^+$ are almost real: up to a diagonal local unitary, $\mathcal F_{72}^+$ contains a uniform state with
 coefficients $\pm1/\sqrt{72}$ except for $\pm i/\sqrt{72}$ on the four states of $P'_1$, and a path of AME states in
 $\mathcal F_{72}^+$ joins it to $\ket\psi$ (Fig.~\ref{fig:families})~\cite{repo}.  Four imaginary coefficients are the
@@ -420,21 +402,20 @@ state, and $14$ at $\ket\psi$: $11$ directions along the face and $3$ spanned by
 with gaps of $10^{-15}$ against $10^{-2}$).  The real state is thus a singular point of the AME conditions, where the
 $11$-dimensional face and both $10$-dimensional components meet (Fig.~\ref{fig:families}).
 
-% =========================================================================================================
 \section{Classification of the real states}\label{sec:real}
 
-\emph{Where the real states lie.}  None of them lies in $\mathcal F_{72}^\pm$
+\emph{Where the real states lie.}  None of the real states lies in $\mathcal F_{72}^\pm$
 (Proposition~\ref{prop:families}(d)), so they all lie on the two faces.  Up to diagonal local unitaries, $\mathcal F_{60}$ is
 the $11$-torus of the phases $\alpha$ modulo a common phase and the sign change of $P_3$, which a diagonal local
 unitary with entries $\pm1$ performs without changing the coefficients on $E$.  Its origin is $\ket\psi$.  By
 Lemma~\ref{lem:blocks}, a face state is real up to diagonal local unitaries if and only if its phases are $0$ or $\pi$
-modulo local phases, i.e.\ if and only if it is a point of order at most two of this torus.  The real states of
+up to a diagonal local unitary, i.e.\ if and only if it is a point of order at most two of this torus.  The real states of
 $\mathcal F_{60}$ are therefore exactly its $2^{11}=2048$ points of order at most two: $1024$ with all
 $\alpha_x\in\{0,\pi\}$, and $1024$ with $\alpha_x=\pm\pi/2$ on $P_3$ and $\alpha_x\in\{0,\pi\}$ on $P_1\cup P_2$.  On
 $\mathcal F_{60}'$, with origin $\ket{\psi_-}$, the phases $\beta$ are determined modulo a common phase alone, and its
 $2048$ real states are those with all $\beta_x\in\{0,\pi\}$.  The closures of $\mathcal F_{72}^\pm$ meet
 $\mathcal F_{60}$ only in the $9$-torus $\mathcal C$ on which the quartet sums of $\alpha$ agree
-(Proposition~\ref{prop:families}(c)), and $\mathcal F_{60}'$ only in the corresponding $9$-torus $\mathcal C'$.  The $2^9=512$ points of order two of each are the real states that are
+(Proposition~\ref{prop:families}(c)), and $\mathcal F_{60}'$ only in the corresponding $9$-torus $\mathcal C'$.  The $2^9=512$ points of order at most two of each are the real states that are
 limits of $\mathcal F_{72}^\pm$.  The other $3072$ real states lie only on the faces.  The eight straight branches through a
 real state of $\mathcal C$ end at real states of $\mathcal C'$ only for the $128$ states of class~$1$ below, the class
 of $\ket\psi$ (at states of classes $9$ and $10$), and for the other $384$ they end at non-real states~\cite{repo}.
@@ -442,60 +423,60 @@ of $\ket\psi$ (at states of classes $9$ and $10$), and for the other $384$ they 
 Equivalently, a real state of $\mathcal F_{60}$ or $\mathcal F_{60}'$ is given by signs that solve the $36$ congruences of
 the $E$-blocks over $\mathbb F_2$: on each face there are $2^{32}$ such sign patterns, and modulo
 diagonal local unitaries they give the $2048$ real states.  Negating a coefficient $1/6$ keeps a state AME, since these are $1\times1$ blocks.  On each
-face, the permutations of the parties and of the basis states $\ket0,\dots,\ket5$ of each party that preserve the support and its officers form a group of order
-$192$, with $16$ orbits on the real states of $\mathcal F_{60}$ (eight of size $64$, eight of size $192$) and $24$ on
-those of $\mathcal F_{60}'$ (four of size $32$, $20$ of size $96$).
+face, the permutations of the parties and of the basis states $\ket0,\dots,\ket5$ of each party that map the support onto itself, and each officer (one or two basis states) onto an officer, form a
+group of order $192$, with $16$ orbits on the real states of $\mathcal F_{60}$ ($8$ of size $64$, $8$ of size $192$) and
+$24$ on those of $\mathcal F_{60}'$ ($4$ of size $32$, $20$ of size $96$).
 
 \begin{theorem}\label{thm:classes}
 The $4096$ real AME$(4,6)$ states with support $E\cup P$ or $E\cup P'$ fall into exactly $20$ classes under local
-unitaries and permutations of the parties: eight on $\mathcal F_{60}$ and $12$ on $\mathcal F_{60}'$.  Their
+unitaries and permutations of the parties: $8$ on $\mathcal F_{60}$ and $12$ on $\mathcal F_{60}'$.  Their
 representatives are listed in Table~\ref{tab:classes}.
 \end{theorem}
 
 \begin{proof}
 \emph{At most $20$.}  States in one orbit are related by monomial local unitaries and party permutations.  On each
 face, orbits are further joined by the real local orthogonal map $H_{12}^{\otimes4}$, a $2\times2$ Hadamard rotation of
-the basis states $\ket1,\ket2$ of every party, followed by a monomial map.  This leaves eight classes on $\mathcal F_{60}$ and
+the basis states $\ket1,\ket2$ of every party, followed by a monomial map.  This leaves $8$ classes on $\mathcal F_{60}$ and
 $12$ on $\mathcal F_{60}'$~\cite{repo}.\\
-\emph{At least $20$.}  Let $J$ be the real Jacobian of the map $\psi\mapsto(\rho_A)_{|A|=2}$ to all six two-party
+\emph{At least $20$.}  Let $J$ be the real Jacobian of the map $\Phi\mapsto(\rho_A)_{|A|=2}$ to all six two-party
 marginals, and $n(t)$ the number of eigenvalues of $72J^TJ$ below $t$.  A local unitary acts orthogonally on the state
 and on each marginal, and a party permutation permutes the marginals, so the spectrum of $J^TJ$, and hence $n(t)$, is
 invariant under both.  The pairs $\bigl(n(149/8),n(3/2)\bigr)$ of the $20$ representatives are pairwise different
 (Table~\ref{tab:classes}).  To certify them, note that $72J^TJ$ has entries in $\mathbb Z[\sqrt2]$ and splits into
-blocks of size at most $160$.  For each block $G$ we form $X=V^T(G-t\mathbb I)V$ in ball arithmetic~\cite{Arb2017},
+blocks of size at most $160$.  For each block $G$ we form $X=V^T(G-t\mathbb I)V$ in interval (ball) arithmetic~\cite{Arb2017},
 with $V$ the numerical eigenvectors of $G$, and check that every Gershgorin interval of $X$ excludes $0$.  By
 Sylvester's law of inertia, the number of negative intervals is then the number of eigenvalues of $G$ below $t$.
 \end{proof}
 
 \begin{table*}[t]
-\caption{The $20$ classes of Theorem~\ref{thm:classes}.  Face $+$: $\ket\psi$ with the listed coefficients $1/6$
-negated.  Face $-$: the same for $\ket{\psi_-}$, Eq.~\eqref{eq:psiminus}.  Limit: limits of $\mathcal F_{72}^\pm$.
+\caption{The $20$ classes of Theorem~\ref{thm:classes}.  Face $\mathcal F_{60}$: $\ket\psi$ with the listed coefficients $1/6$
+negated.  Face $\mathcal F_{60}'$: the same for $\ket{\psi_-}$, Eq.~\eqref{eq:psiminus}.  Limit: limits of $\mathcal F_{72}^\pm$.
 Dim: first-order deformations modulo local unitaries (numerical).  $n(t)$: the certified invariants of the proof.}
 \label{tab:classes}
 \begin{ruledtabular}
 \begin{tabular}{clcccccc}
 class & face & flipped & states & limit & dim & $n(149/8)$ & $n(3/2)$\\
 \hline
-1 & $+$ & -- & $128$ & yes & $14$ & $1048$ & $157$\\
-2 & $+$ & $0344$, $3505$ & $384$ & yes & $14$ & $1046$ & $157$\\
-3 & $+$ & $5303$ & $128$ & no & $11$ & $1050$ & $153$\\
-4 & $+$ & $5430$ & $128$ & no & $11$ & $1044$ & $152$\\
-5 & $+$ & $5045$ & $128$ & no & $11$ & $1053$ & $153$\\
-6 & $+$ & $0533$ & $384$ & no & $11$ & $1055$ & $153$\\
-7 & $+$ & $0455$ & $384$ & no & $11$ & $1052$ & $153$\\
-8 & $+$ & $0344$ & $384$ & no & $11$ & $1052$ & $152$\\
-9 & $-$ & -- & $288$ & yes & $14$ & $1021$ & $157$\\
-10 & $-$ & $0434$, $3055$ & $96$ & yes & $14$ & $1029$ & $173$\\
-11 & $-$ & $0434$, $5340$ & $96$ & yes & $14$ & $1025$ & $159$\\
-12 & $-$ & $0353$, $4044$ & $32$ & yes & $14$ & $985$ & $155$\\
-13 & $-$ & $0353$ & $288$ & no & $11$ & $1004$ & $152$\\
-14 & $-$ & $0434$ & $288$ & no & $11$ & $1032$ & $160$\\
-15 & $-$ & $0545$ & $288$ & no & $11$ & $1022$ & $152$\\
-16 & $-$ & $3055$ & $288$ & no & $11$ & $1026$ & $152$\\
-17 & $-$ & $0434$, $5405$ & $96$ & no & $11$ & $1038$ & $168$\\
-18 & $-$ & $5033$ & $96$ & no & $11$ & $1020$ & $152$\\
-19 & $-$ & $5340$ & $96$ & no & $11$ & $1012$ & $152$\\
-20 & $-$ & $5405$ & $96$ & no & $11$ & $1030$ & $152$\\
+1 & $\mathcal F_{60}$ & -- & $128$ & yes & $14$ & $1048$ & $157$\\
+2 & $\mathcal F_{60}$ & $0344$, $3505$ & $384$ & yes & $14$ & $1046$ & $157$\\
+3 & $\mathcal F_{60}$ & $5303$ & $128$ & no & $11$ & $1050$ & $153$\\
+4 & $\mathcal F_{60}$ & $5430$ & $128$ & no & $11$ & $1044$ & $152$\\
+5 & $\mathcal F_{60}$ & $5045$ & $128$ & no & $11$ & $1053$ & $153$\\
+6 & $\mathcal F_{60}$ & $0533$ & $384$ & no & $11$ & $1055$ & $153$\\
+7 & $\mathcal F_{60}$ & $0455$ & $384$ & no & $11$ & $1052$ & $153$\\
+8 & $\mathcal F_{60}$ & $0344$ & $384$ & no & $11$ & $1052$ & $152$\\
+9 & $\mathcal F_{60}'$ & -- & $288$ & yes & $14$ & $1021$ & $157$\\
+10 & $\mathcal F_{60}'$ & $0434$, $3055$ & $96$ & yes & $14$ & $1029$ & $173$\\
+11 & $\mathcal F_{60}'$ & $0434$, $5340$ & $96$ & yes & $14$ & $1025$ & $159$\\
+12 & $\mathcal F_{60}'$ & $0353$, $4044$ & $32$ & yes & $14$ & $985$ & $155$\\
+13 & $\mathcal F_{60}'$ & $0353$ & $288$ & no & $11$ & $1004$ & $152$\\
+14 & $\mathcal F_{60}'$ & $0434$ & $288$ & no & $11$ & $1032$ & $160$\\
+15 & $\mathcal F_{60}'$ & $0545$ & $288$ & no & $11$ & $1022$ & $152$\\
+16 & $\mathcal F_{60}'$ & $3055$ & $288$ & no & $11$ & $1026$ & $152$\\
+17 & $\mathcal F_{60}'$ & $0434$, $5405$ & $96$ & no & $11$ & $1038$ & $168$\\
+18 & $\mathcal F_{60}'$ & $5033$ & $96$ & no & $11$ & $1020$ & $152$\\
+19 & $\mathcal F_{60}'$ & $5340$ & $96$ & no & $11$ & $1012$ & $152$\\
+20 & $\mathcal F_{60}'$ & $5405$ & $96$ & no & $11$ & $1030$ & $152$\\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -509,14 +490,14 @@ Within the families of Sec.~\ref{sec:families} the real states are therefore iso
 
 The deformation dimensions also separate our states from the known solutions: $14$ and $11$ for the real classes and
 $10$ for $\mathcal F_{72}^\pm$, against $4$ for the golden state of Ref.~\cite{RBB22} and $3$ for the 2-unitary Hadamard
-matrix $H(0)$ of Ref.~\cite{BZ24}.  None of our states is locally equivalent to those (numerical ranks, with gaps of
-$10^{-15}$ against $10^{-2}$).
+matrix $H(0)$ of Ref.~\cite{BZ24}.  None of our states is locally equivalent to those (numerical ranks, with the same gaps as above).
 
-% =========================================================================================================
 \section{Discussion}\label{sec:discussion}
 
-The real states have $60$ non-zero coefficients, against $112$ for the golden state~\cite{RBB22,RRKL23}, the sparsest
-previously reported, whose representation of minimal R\'enyi-2 decomposition entropy has $144$~\cite{Ram25}.  The
+The real states have $60$ non-zero coefficients.  Until the announcements of Refs.~\cite{Bru26,Rat26,HZ26} the sparsest
+reported AME$(4,6)$ state was the golden state with $112$~\cite{RBB22,RRKL23}, whose representation of minimal R\'enyi-2
+decomposition entropy has $144$~\cite{Ram25}.  Of the real states announced in parallel, that of Ref.~\cite{HZ26} has
+$96$ and that of Ref.~\cite{Bru26} also $60$.  The
 argument of Sec.~\ref{sec:state} also bounds the support of any AME$(4,6)$ state from below.  A coefficient of modulus
 $1/6$ exhausts the norm of its row and column in every reshaping, so the classical officers form a code of length $4$
 and minimum distance $3$ over six symbols.  Such a code has at most $34$ codewords: $36$ would be a pair of orthogonal
@@ -524,22 +505,46 @@ Latin squares of order six, and $35$ complete uniquely to $36$.  Every other row
 support is at least $72-t\ge38$, where $t$ is the number of classical officers.  Whether the gap between $38$ and $60$
 can be closed is open.
 
-Further questions remain.  Are there real AME$(4,6)$ states outside these families, and do the real states admit a
-form with all amplitudes of modulus $1/36$, i.e.\ a real-equivalent 2-unitary Hadamard matrix?  Such a form would have
+\emph{Other real solutions.}  Bruzda's real state~\cite{Bru26} is locally equivalent to $\ket\psi$.  Its variant with
+one coefficient negated~\cite{HZ26} is $\ket\psi$ with the classical officer $0455$ negated, the representative of
+class~$7$, and the one-parameter phase family of Ref.~\cite{HZ26} is a curve in $\mathcal F_{60}$.  The 96-term real
+state of Ref.~\cite{HZ26}, invariant under a simultaneous cyclic shift of all four parties, is of a different kind.
+The degree-8 invariant $K$ of Ref.~\cite{HZ26}, evaluated on the tensor $6\Phi_{ijkl}$, the entries of the 2-unitary of a
+state $\ket\Phi$, is $108$ for it, while it is $72$
+on classes $1$--$2$, $40$ on classes $3$--$8$ and at most $0$ on classes $9$--$20$, so that state is not equivalent
+to any of our real states.  ($K$ takes only $10$ distinct values on our $20$ classes.)  Its deformation dimension
+is $3$, while every state of our families has at least $10$, so it lies outside both families.  It also has no
+classical officer in any local basis: its overlap with every product state is below $0.98/6$, so by the
+argument above each of its local representatives has at least $72$ non-zero coefficients (both numerical).  The
+statements about the states of Refs.~\cite{Bru26,HZ26} themselves were checked with the tools of Ref.~\cite{repo} but are
+not among its scripts, which cover our states and the values of $K$ on them.  Real
+coefficients alone therefore do not produce classical officers.  In our states they come from the faces $\mathcal F_{60}$ and $\mathcal F_{60}'$.
+
+Further questions remain.  Real AME$(4,6)$ states outside these families exist~\cite{HZ26}.  Whether other real states
+have classical officers is open.  Do our real states admit a form with all amplitudes of modulus $1/36$, i.e.\ a
+real-equivalent 2-unitary Hadamard matrix?  Such a form would have
 to keep the $12$ product states of maximal overlap $1/6$.  The eigenspace of $u^{\otimes4}$ also contains AME states
 outside the families: about one in eight search hits lies on a $3$-parameter family of complex AME states with $348$
 of the $360$ coefficients non-zero and deformation dimension $3$, which we could not bring to a sparse or real form
-(numerical).  Whether it is related to the Hadamard family of Ref.~\cite{BZ24} is open.  Finally, a real 2-unitary of
+(numerical).  Whether it is related to the Hadamard family of Ref.~\cite{BZ24} or to the real state of
+Ref.~\cite{HZ26} is open.  Both $H(0)$ and that state also have deformation dimension $3$.  Finally, a real 2-unitary of
 order $36$ is a real perfect tensor: a real dual-unitary gate, and a building block of holographic codes with real
 amplitudes~\cite{PYHP2015,BKP2019}.
 
 \begin{acknowledgments}
-This work was supported by the QuantERA II Programme (VERIqTAS project), which has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 101017733. We also acknowledge funding from the European Union’s Horizon Europe research and innovation programme under Grant Agreement No. 101080086 (NeQST). We thank Wojciech Bruzda, Remigiusz Augusiak for many fruitful discussions and guidance.
+This work was supported by the QuantERA II Programme (VERIqTAS project), which has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 101017733. We also acknowledge funding from the European Union’s Horizon Europe research and innovation programme under Grant Agreement No. 101080086 (NeQST). We thank Wojciech Bruzda and Remigiusz Augusiak for many fruitful discussions and guidance.  We are grateful to
+Wojciech Bruzda, and to Mykhailo Hontarenko and Karol \.Zyczkowski, for sharing their independent real solutions with
+us before publication, which made the comparison in Sec.~\ref{sec:discussion} possible.
 \end{acknowledgments}
 
 \paragraph*{Data and code availability.}  The state, the families and the class representatives, scripts that verify
 every statement about them, and scripts that reproduce the two steps of the search are available in
 Ref.~\cite{repo}.
+
+\paragraph*{Use of AI tools.}  Anthropic's Claude models (Opus 5.5 and Fable 5.1) were used as assistants throughout this
+work: for writing and checking the code of Ref.~\cite{repo}, for generating the tables and figures from the data, and for
+drafting and editing the text.  Every statement in the paper is verified by those scripts, and the author has reviewed all
+content and takes full responsibility for it.
 
 \twocolumngrid
 \bibliography{references}

@@ -76,33 +76,34 @@ Section, proposition, table and figure numbers refer to the current draft in `pa
 | 18 | Discovery, step 2: smoothed-L1 minimisation over commutant frames brings a dimension-10 hit to exactly 72 coefficients; after a Gauss–Newton polish it is an exact AME state whose support is E ∪ P ∪ P′ up to relabelling, with the moduli of the family | Sec. III | `10_sparsify.py` | numerical (seeded) |
 | 19 | The tables in `paper/inputs/` and the class table agree with the data: the state (Table I), the quartets of P and P′, the class table (Table II), and the K and branch tables of the θ coordinates; the complete block lists of the three reshapings are printed by `01` | Tables I, II | `11_paper_tables.py`, `01` | exact |
 | 20 | **Entangling power.** As two-quhex gates, 6ψ and every real state (all 4096, each of the 24 orderings of the parties) have the maximal entangling power e_p = (d−1)/(d+1) = 5/7, i.e. normalised e_p = 1: E(U) = E(US) = E(S) = 35/36. So each is a real orthogonal gate of maximal entangling power. Computed from Zanardi's formula and, independently, as the exact Haar average over product inputs; on the 36 basis inputs ψ gives 12 product outputs and 24 with linear entropy 1/2 | – | `13_entangling_power.py` | numerical (exact via the orthogonality proved in `01`) |
+| 21 | **Klein invariant K** of Hontarenko and Życzkowski, the degree-8 contraction of four copies of T = 6ψ with four conjugate copies whose indices are matched by the Klein four-group (invariant under local unitaries and party permutations): on the 20 class representatives K = 72 (classes 1–2), 40 (3–8), and −16, −48, −32, 0, −40, −72, −56, −56, −88, −40, −40, −56 (9–20), ten distinct values. The value 108 reported for their 96-term real state is none of them, so that state is not equivalent to any of the 4096 real states | Sec. VI | `15_klein_invariant.py` | exact, ℤ[√2]; invariance numerical |
 
-**Real classes** (Table II; data/real_classes.json). Face + (F₆₀): representative = ψ with the listed coefficients 1/6
-negated. Face − (F₆₀′): representative = ψ₋ with the listed coefficients 1/6 negated. "Limit" marks the classes that
+**Real classes** (Table II; data/real_classes.json). Face F₆₀ (key "+" in the data file): representative = ψ with the listed coefficients 1/6
+negated. Face F₆₀′ (key "-"): representative = ψ₋ with the listed coefficients 1/6 negated. "Limit" marks the classes that
 are limits of F₇₂^± (i.e. lie on C or C′).
 
 | class | face | flipped | states | automorphism orbits | limit | deformation dim | n(149/8) | n(3/2) |
 |---|---|---|---|---|---|---|---|---|
-| 1 | + | – | 128 | 64 + 64 | yes | 14 | 1048 | 157 |
-| 2 | + | 0344, 3505 | 384 | 192 + 192 | yes | 14 | 1046 | 157 |
-| 3 | + | 5303 | 128 | 64 + 64 | no | 11 | 1050 | 153 |
-| 4 | + | 5430 | 128 | 64 + 64 | no | 11 | 1044 | 152 |
-| 5 | + | 5045 | 128 | 64 + 64 | no | 11 | 1053 | 153 |
-| 6 | + | 0533 | 384 | 192 + 192 | no | 11 | 1055 | 153 |
-| 7 | + | 0455 | 384 | 192 + 192 | no | 11 | 1052 | 153 |
-| 8 | + | 0344 | 384 | 192 + 192 | no | 11 | 1052 | 152 |
-| 9 | - | – | 288 | 96 + 96 + 96 | yes | 14 | 1021 | 157 |
-| 10 | - | 0434, 3055 | 96 | 32 + 32 + 32 | yes | 14 | 1029 | 173 |
-| 11 | - | 0434, 5340 | 96 | 96 | yes | 14 | 1025 | 159 |
-| 12 | - | 0353, 4044 | 32 | 32 | yes | 14 | 985 | 155 |
-| 13 | - | 0353 | 288 | 96 + 96 + 96 | no | 11 | 1004 | 152 |
-| 14 | - | 0434 | 288 | 96 + 96 + 96 | no | 11 | 1032 | 160 |
-| 15 | - | 0545 | 288 | 96 + 96 + 96 | no | 11 | 1022 | 152 |
-| 16 | - | 3055 | 288 | 96 + 96 + 96 | no | 11 | 1026 | 152 |
-| 17 | - | 0434, 5405 | 96 | 96 | no | 11 | 1038 | 168 |
-| 18 | - | 5033 | 96 | 96 | no | 11 | 1020 | 152 |
-| 19 | - | 5340 | 96 | 96 | no | 11 | 1012 | 152 |
-| 20 | - | 5405 | 96 | 96 | no | 11 | 1030 | 152 |
+| 1 | F₆₀ | – | 128 | 64 + 64 | yes | 14 | 1048 | 157 |
+| 2 | F₆₀ | 0344, 3505 | 384 | 192 + 192 | yes | 14 | 1046 | 157 |
+| 3 | F₆₀ | 5303 | 128 | 64 + 64 | no | 11 | 1050 | 153 |
+| 4 | F₆₀ | 5430 | 128 | 64 + 64 | no | 11 | 1044 | 152 |
+| 5 | F₆₀ | 5045 | 128 | 64 + 64 | no | 11 | 1053 | 153 |
+| 6 | F₆₀ | 0533 | 384 | 192 + 192 | no | 11 | 1055 | 153 |
+| 7 | F₆₀ | 0455 | 384 | 192 + 192 | no | 11 | 1052 | 153 |
+| 8 | F₆₀ | 0344 | 384 | 192 + 192 | no | 11 | 1052 | 152 |
+| 9 | F₆₀′ | – | 288 | 96 + 96 + 96 | yes | 14 | 1021 | 157 |
+| 10 | F₆₀′ | 0434, 3055 | 96 | 32 + 32 + 32 | yes | 14 | 1029 | 173 |
+| 11 | F₆₀′ | 0434, 5340 | 96 | 96 | yes | 14 | 1025 | 159 |
+| 12 | F₆₀′ | 0353, 4044 | 32 | 32 | yes | 14 | 985 | 155 |
+| 13 | F₆₀′ | 0353 | 288 | 96 + 96 + 96 | no | 11 | 1004 | 152 |
+| 14 | F₆₀′ | 0434 | 288 | 96 + 96 + 96 | no | 11 | 1032 | 160 |
+| 15 | F₆₀′ | 0545 | 288 | 96 + 96 + 96 | no | 11 | 1022 | 152 |
+| 16 | F₆₀′ | 3055 | 288 | 96 + 96 + 96 | no | 11 | 1026 | 152 |
+| 17 | F₆₀′ | 0434, 5405 | 96 | 96 | no | 11 | 1038 | 168 |
+| 18 | F₆₀′ | 5033 | 96 | 96 | no | 11 | 1020 | 152 |
+| 19 | F₆₀′ | 5340 | 96 | 96 | no | 11 | 1012 | 152 |
+| 20 | F₆₀′ | 5405 | 96 | 96 | no | 11 | 1030 | 152 |
 
 ## The closed forms
 
@@ -171,12 +172,12 @@ Python ≥ 3.10 with `numpy` and `scipy`; `07_certify_classes.py` also needs `py
 
 ```bash
 pip install -r requirements.txt
-./run_all.sh                          # runs 01–07 and 09–14, writes results/*.log (about 7 minutes)
+./run_all.sh                          # runs 01–07 and 09–15, writes results/*.log (about 7 minutes)
 python scripts/08_sector_search.py 30 0                 # optional: the stochastic search demonstration
 python wolfram/make_wls.py && wolframscript -file wolfram/verify_families.wls   # optional: symbolic check
 ```
 
-Scripts 01–07 and 09–14 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a
+Scripts 01–07 and 09–15 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a
 reference run (including `08` and the Mathematica check).
 
 ## Layout
@@ -192,7 +193,7 @@ data/reference/                   golden 2-unitary of Rather et al. (numerical, 
 ame46real/                        core (cuts, AME test, blocks), lattice (Smith form, GF(2)), family (closed forms),
                                   jacobian (deformations, LU-invariant spectrum), realpoints (real points, automorphisms of both faces),
                                   sector (search in the u-sector, support minimisation over commutant frames)
-scripts/01..14                    the verifications listed above
+scripts/01..15                    the verifications listed above
 wolfram/make_wls.py               generates verify_families.wls from data/family.json
 wolfram/verify_families.wls       symbolic check of the closed forms
 results/                          logs of a reference run
@@ -220,6 +221,13 @@ Code (`ame46real/`, `scripts/`, `wolfram/`, `run_all.sh`): MIT, see `LICENSE`. D
 see `LICENSE-DATA.md` (which also lists the sources of `data/reference/`). The manuscript in `paper/` is not covered.
 Copyright (c) 2026 Palash Pandya.
 
+## AI assistance
+
+Anthropic's Claude models (Opus 5.5 and Fable 5.1) were used as assistants throughout this work: for writing and
+checking the code in this repository, for generating the tables and figures from the data, and for drafting and
+editing the paper and this README. Every statement in the paper is verified by the scripts here, and the author has
+reviewed all content and takes full responsibility for it.
+
 ## References
 
 - D. Goyeneche et al., PRA 92, 032316 (2015): AME states and multi-unitary matrices.
@@ -231,3 +239,4 @@ Copyright (c) 2026 Palash Pandya.
 - W. Bruzda, K. Życzkowski, arXiv:2401.01671: two-unitary complex Hadamard matrices of order 36 (H(0)).
 - A. S. Hedayat, N. J. A. Sloane, J. Stufken, *Orthogonal Arrays: Theory and Applications* (Springer, 1999).
 - F. Johansson, IEEE Trans. Comput. 66, 1281 (2017): Arb, the ball arithmetic used by `07_certify_classes.py`.
+- M. Hontarenko, K. Życzkowski, unpublished (announced October 2026): the invariant K of `15_klein_invariant.py`.

@@ -9,7 +9,7 @@
 \usepackage{times}
 \usepackage{physics2}
 \usephysicsmodule{braket}
-\usepackage[hidelinks]{hyperref}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}{Lemma}
@@ -26,7 +26,8 @@
 Absolutely maximally entangled states of four six-level systems, AME$(4,6)$, are the quantum solutions of Euler's
 problem of the thirty-six officers.  Until recently all reported solutions were complex, and it was conjectured that no
 real orthogonal 2-unitary matrix of order $36$ exists.  We give real AME$(4,6)$ states with $60$ non-zero
-coefficients in $\{\pm1,\sqrt2\}/\sqrt{72}$.  They lie in the $-1$
+coefficients in $\{\pm1,\sqrt2\}/\sqrt{72}$.  Of their thirty-six officers, $12$ are classical, as some must be whenever
+fewer than $72$ coefficients are non-zero.  They lie in the $-1$
 eigenspace of an order-$4$ local symmetry, and on their support the AME conditions become linear.  We derive two closed-form families of AME$(4,6)$ states that meet at one of these states: a $10$-parameter family that
 is supported on $72$ basis states, and an $11$-parameter family on $60$ basis states.  At each of its two ends the first family loses $12$ coefficients, and the AME states on the remaining $60$ basis states
 form an $11$-parameter family: the second family at one end, and an analogous family at the other.  These two $60$-term families contain $4096$ real AME states up to diagonal local unitaries, $1024$ of which are limits of the first family.  They fall into exactly $20$ classes under local unitaries and permutations of the parties, and we certify their separation with interval arithmetic.
@@ -62,7 +63,8 @@ This question has now been answered in the affirmative, independently, by Bruzda
 Rather~\cite{Rat26}, Hontarenko and \.Zyczkowski~\cite{HZ26}, and the present work.  With the permutation solutions for $d\neq2,6$, it follows that a real
 AME$(4,d)$ state exists if and only if $d\ge3$, exactly when a complex one does.  We present the following results in this work.
 Section~\ref{sec:state} presents our central result: an explicit real AME$(4,6)$ state with $60$ non-zero coefficients, the sparsest AME$(4,6)$ state we know of,
-whose 2-unitary representation consists of direct sums of $1\times1$ and $2\times2$ blocks.
+whose 2-unitary representation consists of direct sums of $1\times1$ and $2\times2$ blocks.  Of its $36$ officers, $12$ are
+classical, as some must be in any AME$(4,6)$ state with fewer than $72$ non-zero coefficients (Sec.~\ref{sec:discussion}).
 Section~\ref{sec:symmetry} describes its origin.  It lies in the $-1$ eigenspace of the local symmetry
 $u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$, and we show that the AME conditions are linear on its support.
 In Sec.~\ref{sec:families} two continuous families of AME$(4,6)$ states are presented in closed form, with supports on $72$ and $60$ basis states.  The two families meet at the real state.  In Sec.~\ref{sec:real} we show that the families allow a complete classification of the real AME states with the two $60$-term supports at the ends of the $72$-term family: $4096$ states in exactly $20$ classes under local unitaries and party permutations, all of them isolated (numerically).
@@ -504,8 +506,10 @@ argument of Sec.~\ref{sec:state} also bounds the support of any AME$(4,6)$ state
 $1/6$ exhausts the norm of its row and column in every reshaping, so the classical officers form a code of length $4$
 and minimum distance $3$ over six symbols.  Such a code has at most $34$ codewords~\cite{Parker1975}: $36$ would be a pair of orthogonal
 Latin squares of order six, and $35$ complete uniquely to $36$.  Every other row needs at least two entries, so the
-support is at least $72-t\ge38$, where $t$ is the number of classical officers.  Whether the gap between $38$ and $60$
-can be closed is open.
+support is at least $72-t\ge38$, where $t$ is the number of classical officers.  Conversely, a state with $s<72$ non-zero
+coefficients has at least $72-s$ classical officers.  All $36$ officers can be entangled only from support $72$ on, as in the
+uniform states of Sec.~\ref{sec:families}, and the $12$ classical officers of our $60$-term states are the minimum for their
+support.  Whether the gap between $38$ and $60$ can be closed is open.
 
 \emph{Other real solutions.}  Bruzda's real state~\cite{Bru26} is locally equivalent to $\ket\psi$.  Its variant with
 one coefficient negated~\cite{HZ26} is $\ket\psi$ with the classical officer $0455$ negated, the representative of
@@ -543,10 +547,8 @@ us before publication, which made the comparison in Sec.~\ref{sec:discussion} po
 every statement about them, and scripts that reproduce the two steps of the search are available in
 Ref.~\cite{repo}.
 
-\paragraph*{Use of AI tools.}  Anthropic's Claude models (Opus 5.5 and Fable 5.1) were used as assistants throughout this
-work: for writing and checking the code of Ref.~\cite{repo}, for generating the tables and figures from the data, and for
-drafting and editing the text.  Every statement in the paper is verified by those scripts, and the author has reviewed all
-content and takes full responsibility for it.
+\paragraph*{Use of AI tools.}  Anthropic's Claude models were used as assistants throughout this
+work: for writing and checking the code of Ref.~\cite{repo}, for generating the tables and figures from the data, and for drafting and editing the text.  Every statement in the paper is verified by those scripts, and the author has reviewed all content and takes full responsibility for it.
 
 \twocolumngrid
 \bibliography{references}

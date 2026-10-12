@@ -209,8 +209,8 @@ Please cite the article (reference to be added on publication) and, for the code
 ```bibtex
 @misc{pandya2026realame46,
   author       = {Palash Pandya},
-  title        = {Companion code and data: real {AME}(4,6) states},
-  howpublished = {\url{https://github.com/palashpandya/real-ame46}},
+  title        = {Companion code and data: real {AME}(4,6) states, version 1.0},
+  howpublished = {\url{https://github.com/palashpandya/real-ame46/tree/v1.0}},
   year         = {2026}
 }
 ```

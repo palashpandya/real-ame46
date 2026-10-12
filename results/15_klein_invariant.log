@@ -1,0 +1,30 @@
+[PASS] K is invariant under all 24 party permutations and Haar-random local unitaries (numerical)  (max deviation 1.7e-13)
+[PASS] K(6 psi) is an integer on each of the 20 representatives (exact, Z[sqrt2])  (2404 and 2916 surviving terms on the two supports)
+[PASS] exact values agree with the dense floating-point contraction  (max deviation 2.1e-14)
+[PASS] K = 72 on classes 1-2, 40 on classes 3-8, K <= 0 on classes 9-20
+[PASS] K takes 10 distinct values on the 20 classes  ([72, 40, 0, -16, -32, -40, -48, -56, -72, -88])
+[PASS] K = 108 (the 96-term real state of Hontarenko and Zyczkowski) is not among them
+
+class face  flipped        K(6 psi)
+    1  +    -                    72
+    2  +    0344 3505            72
+    3  +    5303                 40
+    4  +    5430                 40
+    5  +    5045                 40
+    6  +    0533                 40
+    7  +    0455                 40
+    8  +    0344                 40
+    9  -    -                   -16
+   10  -    0434 3055           -48
+   11  -    0434 5340           -32
+   12  -    0353 4044             0
+   13  -    0353                -40
+   14  -    0434                -72
+   15  -    0545                -56
+   16  -    3055                -56
+   17  -    0434 5405           -88
+   18  -    5033                -40
+   19  -    5340                -40
+   20  -    5405                -56
+
+ALL CHECKS PASSED

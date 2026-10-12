@@ -43,7 +43,8 @@ $U$ is \emph{2-unitary}: $U$, its realignment $U^R$ and its partial transpose $U
 unitary~\cite{GALRZ15}.  Up to permutations of rows and columns, these three matrices are the reshapings of
 $d\,\psi$ along the three bipartitions $12|34$, $13|24$ and $14|23$.
 
-A pair of orthogonal Latin squares of order $d$ gives a 2-unitary permutation matrix.  Such pairs exist for every
+A pair of orthogonal Latin squares of order $d$ gives a 2-unitary permutation matrix, the classical case of the quantum
+combinatorial designs of Refs.~\cite{GALRZ15,GRMZ2018}.  Such pairs exist for every
 $d\ge3$ except $d=6$~\cite{BSP1960}: Euler's problem of the $36$ officers has no
 solution~\cite{Euler1782,Tarry1900}.  AME$(4,2)$ states do not exist at all~\cite{HS2000}.  An AME$(4,6)$ state, a
 quantum solution of Euler's problem, was found by Rather \emph{et al.}~\cite{RBB22}.  Further solutions include
@@ -52,12 +53,11 @@ from biunimodular vectors~\cite{Rat24} and hand-made solutions~\cite{GG25}.  No 
 exists~\cite{WMBA26,Cha26}, and every quantum solution requires entanglement: mutually orthogonal quantum Latin
 squares of order six without entanglement do not exist~\cite{BS26}.
 
-All of these solutions are complex.  In the Supplemental Material of Ref.~\cite{RBB22} the authors write:
+All of these solutions are given with complex coefficients.  In the Supplemental Material of Ref.~\cite{RBB22} the authors write:
 ``Further numerical results suggest that any 2-unitary matrix $U_{36}$ has complex entries.  Therefore, it is
 tempting to conjecture that there exists no solution in the set $O(36)$ of orthogonal matrices of this size.''  A
 recent review lists the question as open problem (T2)~\cite{RBRLZ26}: ``Is there an AME(4,6) state with real
 coefficients? Equivalently, is there an orthogonal 2-unitary matrix of order 36?''
-
 This question has now been answered in the affirmative, independently, by Bruzda~\cite{Bru26},
 Rather~\cite{Rat26}, Hontarenko and \.Zyczkowski~\cite{HZ26}, and the present work.  With the permutation solutions for $d\neq2,6$, it follows that a real
 AME$(4,d)$ state exists if and only if $d\ge3$, exactly when a complex one does.  We present the following results in this work.
@@ -170,8 +170,9 @@ $\ket\psi$ and both families of Sec.~\ref{sec:families}, is a $-1$ eigenvector o
 phase on each party, the diagonal local unitaries that act on this support as a scalar form the group
 $\mathbb Z_2\times\mathbb Z_2\times\mathbb Z_4$, in which $u^{\otimes4}$ has order $4$.
 
-In each of the three reshapings, the rows and the columns are labeled by the indices of two complementary pairs of
-parties, so strength $2$ and index $2$ mean that every row and every column has exactly two non-zero entries.
+An irredundant orthogonal array of index $1$ gives an AME state as the uniform superposition of its rows~\cite{GZ2014}.
+With index $2$ the phases must also cancel.  In each of the three reshapings, the rows and the columns are labeled by the
+indices of two complementary pairs of parties, so strength $2$ and index $2$ mean that every row and every column has exactly two non-zero entries.
 Moreover, two rows that share a column share both of their columns, so after permuting rows and columns each reshaping
 is a direct sum of $18$ full $2\times2$ blocks~\cite{repo}: the $12$ blocks of $E$ (the \emph{$E$-blocks}) from the
 proof of Proposition~\ref{prop:state}, and six \emph{mixed} blocks with two states of $P$ on one diagonal and two of
@@ -397,7 +398,7 @@ requires an odd number among the $18$ states of $P\cup P'$ with $x_1\neq0$.  The
 the six quartets~\cite{repo}.
 
 The first-order deformations of an AME state, modulo the tangent space of its local-unitary orbit, form a
-local-unitary invariant.  Their dimension is $10$ for a generic member of $\mathcal F_{72}^\pm$, $11$ for a generic face
+local-unitary invariant, in the spirit of the defect of a unitary matrix~\cite{TZ2008}.  Their dimension is $10$ for a generic member of $\mathcal F_{72}^\pm$, $11$ for a generic face
 state, and $14$ at $\ket\psi$: $11$ directions along the face and $3$ spanned by the eight branches (numerical ranks,
 with gaps of $10^{-15}$ against $10^{-2}$).  The real state is thus a singular point of the AME conditions, where the
 $11$-dimensional face and both $10$-dimensional components meet (Fig.~\ref{fig:families}).
@@ -438,7 +439,8 @@ representatives are listed in Table~\ref{tab:classes}.
 face, orbits are further joined by the real local orthogonal map $H_{12}^{\otimes4}$, a $2\times2$ Hadamard rotation of
 the basis states $\ket1,\ket2$ of every party, followed by a monomial map.  This leaves $8$ classes on $\mathcal F_{60}$ and
 $12$ on $\mathcal F_{60}'$~\cite{repo}.\\
-\emph{At least $20$.}  Let $J$ be the real Jacobian of the map $\Phi\mapsto(\rho_A)_{|A|=2}$ to all six two-party
+\emph{At least $20$.}  Local-unitary invariants have been used to separate AME states and their phase
+families~\cite{RAL2022,RL2025}.  We use the spectrum of a Jacobian.  Let $J$ be the real Jacobian of the map $\Phi\mapsto(\rho_A)_{|A|=2}$ to all six two-party
 marginals, and $n(t)$ the number of eigenvalues of $72J^TJ$ below $t$.  A local unitary acts orthogonally on the state
 and on each marginal, and a party permutation permutes the marginals, so the spectrum of $J^TJ$, and hence $n(t)$, is
 invariant under both.  The pairs $\bigl(n(149/8),n(3/2)\bigr)$ of the $20$ representatives are pairwise different
@@ -495,12 +497,12 @@ matrix $H(0)$ of Ref.~\cite{BZ24}.  None of our states is locally equivalent to 
 \section{Discussion}\label{sec:discussion}
 
 The real states have $60$ non-zero coefficients.  Until the announcements of Refs.~\cite{Bru26,Rat26,HZ26} the sparsest
-reported AME$(4,6)$ state was the golden state with $112$~\cite{RBB22,RRKL23}, whose representation of minimal R\'enyi-2
+reported AME$(4,6)$ state was the golden state with $112$~\cite{RBB22,RRKL23}, whose representation of numerically minimized R\'enyi-2
 decomposition entropy has $144$~\cite{Ram25}.  Of the real states announced in parallel, that of Ref.~\cite{HZ26} has
 $96$ and that of Ref.~\cite{Bru26} also $60$.  The
 argument of Sec.~\ref{sec:state} also bounds the support of any AME$(4,6)$ state from below.  A coefficient of modulus
 $1/6$ exhausts the norm of its row and column in every reshaping, so the classical officers form a code of length $4$
-and minimum distance $3$ over six symbols.  Such a code has at most $34$ codewords: $36$ would be a pair of orthogonal
+and minimum distance $3$ over six symbols.  Such a code has at most $34$ codewords~\cite{Parker1975}: $36$ would be a pair of orthogonal
 Latin squares of order six, and $35$ complete uniquely to $36$.  Every other row needs at least two entries, so the
 support is at least $72-t\ge38$, where $t$ is the number of classical officers.  Whether the gap between $38$ and $60$
 can be closed is open.

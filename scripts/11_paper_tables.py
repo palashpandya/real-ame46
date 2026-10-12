@@ -23,7 +23,9 @@ check("displayed state (officer table) = data/psi_terms.json", terms == dict(cor
 st = read("inputs/family_sets.tex")
 O = sorted(core.lab(fam.POINTS[q]) for q in fam.S72 if fam.TYPE[q] == "O")
 Nn = sorted(core.lab(fam.POINTS[q]) for q in fam.S72 if fam.TYPE[q] == "N")
-check("sets P and P' (data: O and N)", sorted(re.findall(r"\d{4}", st.split("P'&")[0])) == O and sorted(re.findall(r"\d{4}", st.split("P'&")[1])) == Nn)
+quart = {(prime, k): re.findall(r"\d{4}", body) for prime, k, body in re.findall(r"P('?)_(\d)&=\\\{(.*?)\\\}", st)}
+check("sets P and P' (data: O and N)", sorted(sum((v for (p, _), v in quart.items() if not p), [])) == O
+      and sorted(sum((v for (p, _), v in quart.items() if p), [])) == Nn and len(quart) == 6)
 
 Kd = {}
 for j, plus, minus in re.findall(r"\$\\theta_\{(\d)\}\$ & (.*?) & (.*?)\\\\", read("inputs/family_K.tex")):

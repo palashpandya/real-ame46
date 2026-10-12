@@ -1,7 +1,7 @@
-"""Write paper/figures/amplitudes72.pdf: the three 2-unitaries of the uniform support-72 state Psi_+(0, 0).
+"""Write paper/figures/amplitudes72.pdf: the three 2-unitaries of the uniform support-72 state Psi_0(0, pi/2).
 
-Companion of figures/amplitudes.pdf (the real state psi, support 60).  At delta = 0, theta = 0 the entries of
-sqrt72 Psi_+ are eps_x = +-1 on E, +1 on P and +i on P'.  Top row: the 36 x 36 reshapings for 12|34, 13|24, 14|23 in
+Companion of figures/amplitudes.pdf (the real state psi, support 60).  At delta = 0, alpha = 0, beta = pi/2 the entries of
+sqrt72 Psi are eps_x = +-1 on E, +1 on P and +i on P'.  Top row: the 36 x 36 reshapings for 12|34, 13|24, 14|23 in
 natural order.  Bottom row: rows and columns permuted into the 18 blocks of size 2 x 2 -- first the six P/P' blocks,
 with P on the main diagonal (they become the twelve 1 x 1 blocks of psi at delta = 1), then the twelve E blocks in
 the order used for psi.  Colours: -1 and +1 as in amplitudes.pdf; +i amber (dataviz validate_palette.js,
@@ -115,7 +115,7 @@ order = ("-1", "+1", "+i")
 handles = [Rectangle((0, 0), 1, 1, facecolor=COLOR[k], edgecolor="none") for k in order]
 handles.append(Rectangle((0, 0), 1, 1, facecolor=SURFACE, edgecolor=GRID, lw=0.6))
 fig.legend(handles, [LABEL[k] for k in order] + [r"$0$"], loc="lower center", ncol=4,
-           frameon=False, fontsize=8, title=r"entries of $\sqrt{72}\,\Psi_+(0,0)$", title_fontsize=8,
+           frameon=False, fontsize=8, title=r"entries of $\sqrt{72}\,\Psi_0(0,\pi/2)$", title_fontsize=8,
            handlelength=1.1, handleheight=1.1, columnspacing=1.6, bbox_to_anchor=(0.5, -0.005))
 fig.subplots_adjust(left=0.08, right=0.99, top=0.95, bottom=0.17, wspace=0.36, hspace=0.38)
 fig.savefig(os.path.join(HERE, "figures", "amplitudes72.pdf"))

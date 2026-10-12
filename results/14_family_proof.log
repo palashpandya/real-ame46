@@ -1,0 +1,22 @@
+[PASS] quartets of the paper partition P (data: O) and P' (data: N)
+[PASS] E u P u P': each cut = 12 full 2x2 E-blocks + 6 full mixed blocks (P on one diagonal, P' on the other)
+[PASS] E u P: each cut = 12 full 2x2 E-blocks + 12 blocks 1x1
+[PASS] E u P': each cut = 12 full 2x2 E-blocks + 12 blocks 1x1
+[PASS] moduli equations of the 36 E-blocks: 108 equations of rank 48 (only solution s = 1 on E)
+[PASS] E-congruences: rank 28, all invariant factors 1
+[PASS] diagonal local phases on E: rank 20, and they solve the homogeneous E-congruences
+[PASS] every pair within a quartet lies in exactly one mixed block
+[PASS] for every (k, l) exactly two mixed blocks contain states of P_k and P'_l; their pairs partition P_k and P'_l
+[PASS] partner pairs have the same first indices; each quartet has one state with each first index 0, 3, 4, 5
+[PASS] mixed congruences: rank 14, invariant factors 1^13 2
+[PASS] the 9 mixed blocks without first index 0 contain each x with x_1 != 0 exactly twice, no other state
+[PASS] omega is unchanged by diagonal local phases
+[PASS] omega(Psi(0, +pi/2)) = +pi/2 and omega(Psi(0, -pi/2)) = -pi/2
+[PASS] E-fixing diagonal gauge on P u P': circle of common phases and the sign change of P_3 u P'
+[PASS] equal quartet sums of alpha: exactly 8 solutions beta (2 per quartet, differing by pi), 4 in each component; unequal sums: none
+[PASS] the same with alpha and beta exchanged
+[PASS] the mixed congruences have no solution over GF(2)
+[PASS] Psi_1(0) = psi
+[PASS] Psi_delta(alpha, beta) is AME at random points of both components  (max error 1.4e-16)
+
+ALL CHECKS PASSED

@@ -13,8 +13,12 @@ Checks:
       psi_minus.
   (4) The eight straight branches delta -> psi_sigma(delta, theta) through a real point of C end, at delta = -1, at
       real points of C' on face "-".  The bipartite graph of real points of C and C' joined by branches is printed.
+      The eight branches through psi end at psi_minus and at psi_minus with P'_1, P'_2 or P'_3 negated (classes 9, 9,
+      10, 9), each reached by one branch from each component.
 """
 import itertools
+import os
+import re
 from fractions import Fraction
 
 import numpy as np
@@ -142,4 +146,11 @@ for st, v in ends.items():
 deg_end = sorted({len(v) for v in inc.values()})
 print(f"    branch graph: {len(ends)} real points of C, {len(inc)} real points of C' reached; distinct ends per start "
       f"{deg_start}; starts per end {deg_end}")
+st = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "paper", "inputs", "family_sets.tex")).read()
+QP = [re.findall(r"\d{4}", b) for pr, k, b in re.findall(r"P('?)_(\d)&=\\\{(.*?)\\\}", st) if pr]
+psi_ends = set(ends[Fp.key(Fp.flips([]))])
+want = [Fm.key(Fm.flips(xs)) for xs in [[]] + QP]
+check("(4) the 8 branches through psi end, up to diagonal local unitaries, at psi_minus and at psi_minus with the "
+      "coefficients on P'_1, P'_2 or P'_3 negated (classes 9, 9, 10, 9)",
+      len(QP) == 3 and psi_ends == set(want) and [cls_of[("-", k)] for k in want] == [9, 9, 10, 9])
 done()

@@ -16,6 +16,9 @@
 [PASS] equal quartet sums of alpha: exactly 8 solutions beta (2 per quartet, differing by pi), 4 in each component; unequal sums: none
 [PASS] the same with alpha and beta exchanged
 [PASS] the mixed congruences have no solution over GF(2)
+[PASS] (10) stored uniform state: support E u P u P', imaginary exactly on P'_1, all 54 congruences hold (AME)
+[PASS] (10) it lies in F72^+ (omega = +pi/2), and a diagonal local unitary gives it the coefficients of psi on E
+[PASS] (10) at least 4 imaginary coefficients (even on every block, odd on the 18 states with x_1 != 0); the sets of 4 are exactly the six quartets
 [PASS] Psi_1(0) = psi
 [PASS] Psi_delta(alpha, beta) is AME at random points of both components  (max error 1.4e-16)
 

@@ -31,7 +31,6 @@
 \affiliation{Center for Theoretical Physics, Polish Academy of Sciences, Aleja Lotnik\'{o}w 32/46, 02-668 Warsaw, Poland}
 \affiliation{Center for Quantum-Enabled Computing, Center for Theoretical Physics, Polish Academy of Sciences, Aleja Lotnik\'{o}w 32/46, 02-668 Warsaw, Poland}
 
-
 \begin{abstract}
 Absolutely maximally entangled states of four six-level systems, AME$(4,6)$, are the quantum solutions of Euler's
 problem of the thirty-six officers.  All solutions reported so far are complex, and it has been conjectured that no
@@ -283,10 +282,43 @@ occurring in exactly one mixed block, and likewise the pairs $\{a',b'\}$ for thr
 \begin{equation}\label{eq:quartets}
 \input{inputs/family_sets.tex}
 \end{equation}
+The mixed blocks join the quartets in a regular way: for all $k$ and $l$, exactly two of them contain states of $P_k$
+and $P'_l$, and their pairs split $P_k$ into two pairs $p,\bar p$ and $P'_l$ into two pairs $q,\bar q$, where partner
+pairs have the same first indices~\cite{repo}.  With $\alpha(p)$ the sum of $\alpha$ over $p$, Eq.~\eqref{eq:mixed}
+for these two blocks reads
+\begin{equation}\label{eq:partition}
+\alpha(p)\equiv\beta(q)+\pi,\qquad\alpha(\bar p)\equiv\beta(\bar q)+\pi.
+\end{equation}
 We call the AME states with support exactly $E\cup P$ or $E\cup P'$ the two \emph{faces},
 $\mathcal F_{60}$ and $\mathcal F_{60}'$.  Eq.~\eqref{eq:family} covers both faces at $\delta=\pm1$, but a face is more
 than the set of limits of the states with $|\delta|<1$: by Proposition~\ref{prop:families}(c), the AME states with
 support $E\cup P\cup P'$ reach each face only along a $9$-dimensional subtorus.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/amplitudes72.pdf}
+\caption{The three reshapings of $\sqrt{72}\,\Psi_0(0,\pi/2)$, a uniform-amplitude state of $\mathcal F_{72}^+$, for the
+bipartitions $12|34$, $13|24$ and $14|23$.  Top: natural order.  Bottom: rows and columns permuted into $18$ blocks
+of size $2\times2$: six with the entries $+1$ of $P$ on the diagonal and $+i$ of $P'$ off it, then the twelve blocks
+of $E$, ordered as in Fig.~\ref{fig:amplitudes}.  As $\delta\to1$ the $P'$ entries vanish, the $P$ entries grow to
+$\sqrt2$, and the picture becomes Fig.~\ref{fig:amplitudes}.}
+\label{fig:amplitudes72}
+\end{figure*}
+
+\begin{figure}[tb]
+\centering
+\input{inputs/family_figure.tex}
+\caption{The families of Proposition~\ref{prop:families}; $\delta$ runs vertically.  The faces $\mathcal F_{60}$
+($\delta=1$) and $\mathcal F_{60}'$ ($\delta=-1$) are $11$-dimensional phase tori.  The components $\mathcal F_{72}^+$
+(front) and $\mathcal F_{72}^-$ (back) are $10$-dimensional and complex conjugate to each other.  Both join the
+$9$-torus $\mathcal C\subset\mathcal F_{60}$, on which the sums of $\alpha$ over $P_1$, $P_2$ and $P_3$ agree, to the
+corresponding $9$-torus $\mathcal C'\subset\mathcal F_{60}'$.  The eight branches through $\ket\psi$, four in each
+component, cross the slice $\delta=0$ of uniform amplitudes (dashed).  Up to diagonal local unitaries they end at four
+real states, each reached by one branch from each component: $\ket{\psi_-}$ and the states obtained from it by negating
+the coefficients on $P'_1$, $P'_2$ or $P'_3$ (numbers: their classes, Theorem~\ref{thm:classes}).  Dotted: a path in
+$\mathcal F_{72}^+$ from a uniform state with four imaginary coefficients to $\ket\psi$.}
+\label{fig:families}
+\end{figure}
 
 \begin{proposition}\label{prop:families}
 (a) Up to diagonal local unitaries, the AME states with support exactly $E\cup P\cup P'$ are the states
@@ -300,126 +332,89 @@ and $P_3$ agree modulo $2\pi$; likewise for $\ket{\Psi_{-1}(\beta)}$.\\
 \end{proposition}
 
 \begin{proof}
-Phases are taken in $\mathbb T=\mathbb R/2\pi\mathbb Z$, and the ranks, invariant factors and block structures used
-below are verified in exact arithmetic in Ref.~\cite{repo}.  We use two facts.  (i) If an integer matrix $M$ with $n$
-columns has rank $\rho$ and invariant factors $d_1,\dots,d_\rho$, the solutions $\theta\in\mathbb T^n$ of $M\theta=c$,
-if there are any, form $d_1\cdots d_\rho$ disjoint translates of an $(n-\rho)$-dimensional torus.  Indeed, the Smith
-normal form $M=A\,\mathrm{diag}(d_1,\dots,d_\rho,0,\dots,0)\,B$ has $A$ and $B$ invertible over $\mathbb Z$, so they
-act as automorphisms of the tori.  (ii) A diagonal local unitary adds to the phase $\varphi_x$ of each coefficient a
-sum $\lambda^{(1)}_{x_1}+\dots+\lambda^{(4)}_{x_4}$ of local phases.  In each reshaping this is a function of the row of
-$x$ plus a function of its column, so it cancels in every congruence~\eqref{eq:congruence}.
+By Lemma~\ref{lem:blocks}, everything reduces to linear congruences in the phases; the ranks and invariant factors
+quoted below are computed exactly in Ref.~\cite{repo}.  We use two facts.  (i) If a system of integer linear
+congruences in $n$ phases has rank $\rho$ and invariant factors $d_1,\dots,d_\rho$ (the non-zero entries of the Smith
+normal form of its matrix), its solutions, if any, form $d_1\cdots d_\rho$ disjoint $(n-\rho)$-dimensional tori.
+(ii) In each reshaping, a diagonal local unitary adds to $\varphi_x$ a function of the row of $x$ plus a function of
+its column, which cancels in every congruence~\eqref{eq:congruence}.
 
-Lemma~\ref{lem:blocks} applies to all three supports: on $E\cup P\cup P'$ each reshaping is the direct sum of $12$
-$E$-blocks and $6$ mixed blocks, and on $E\cup P$ or $E\cup P'$ each mixed block splits into two $1\times1$ blocks.
-For all $k,l$, exactly two mixed blocks contain states of $P_k$ and $P'_l$, and their pairs are a partition
-$\{p,\bar p\}$ of $P_k$ and a partition $\{q,\bar q\}$ of $P'_l$; partner pairs have the same first indices.  For these
-two blocks Eq.~\eqref{eq:mixed} reads
-\begin{equation}\label{eq:partition}
-\alpha(p)\equiv\beta(q)+\pi,\qquad\alpha(\bar p)\equiv\beta(\bar q)+\pi,
-\end{equation}
-where $\alpha(p)$ is the sum of $\alpha$ over $p$.  The nine mixed blocks without a state of first index $0$ together
-contain every $x\in P\cup P'$ with $x_1\neq0$ exactly twice, and no other state.  Adding their congruences in the form
-of Eq.~\eqref{eq:mixed}, with the phases $\varphi_x$ in place of $\alpha$ and $\beta$, therefore gives $2\omega\equiv\pi$
-for
+To tell the two components apart we use
 \[
-\omega=\sum_{x\in P',\,x_1\neq0}\varphi_x-\sum_{x\in P,\,x_1\neq0}\varphi_x,
+\omega=\sum_{x\in P',\,x_1\neq0}\varphi_x-\sum_{x\in P,\,x_1\neq0}\varphi_x .
 \]
-so that $\omega\equiv\pm\pi/2$ for every AME state with support $E\cup P\cup P'$.  By (ii), a diagonal local unitary
-leaves $2\omega$ unchanged; the change of $\omega$ is linear in the local phases, so it vanishes as well.  Complex
-conjugation reverses the sign of $\omega$.
+The nine mixed blocks without a state of first index $0$ contain each of these $18$ states exactly twice, so adding
+their congruences in the form~\eqref{eq:mixed} gives $2\omega\equiv\pi$: every AME state with support $E\cup P\cup P'$
+has $\omega\equiv\pm\pi/2$.  Diagonal local unitaries form a connected group that maps such states to such states, so
+they cannot change this discrete value; complex conjugation reverses it.
 
-(a) Let $\ket\Phi$ be AME with support $E\cup P\cup P'$.  The $108$ moduli equations of the $E$-blocks have rank $48$,
-so $s_x=1$ on $E$.  On a mixed block they read $s_a=s_b$, $s_{a'}=s_{b'}$ and $s_a+s_{a'}=2$.  Every pair within a
-quartet lies in a mixed block, so $s$ is constant on each quartet, and $s(P_k)+s(P'_l)=2$ for all $k,l$.  Hence
-$s=1+\delta$ on $P$ and $s=1-\delta$ on $P'$, with $|\delta|<1$ because $s>0$.  The $36$ congruences of the $E$-blocks in
-the $48$ phases on $E$ have rank $28$ and all invariant factors $1$.  By (i), their solutions form a single
-$20$-dimensional torus, which contains the phases of $\ket\psi$.  By (ii), the phases that diagonal local unitaries add
-on $E$ solve the homogeneous system, and they form a torus of dimension $20$, the rank of their integer matrix, so they
-make up all of its solutions.  Hence a diagonal local unitary $D$ gives $D\ket\Phi$ the coefficients of $\ket\psi$ on
-$E$, so $D\ket\Phi=\ket{\Psi_\delta(\alpha,\beta)}$ for some $\alpha,\beta$.  The remaining conditions of
-Lemma~\ref{lem:blocks} are Eq.~\eqref{eq:mixed}.  Conversely, every $\ket{\Psi_\delta(\alpha,\beta)}$ with $|\delta|<1$
-that satisfies Eq.~\eqref{eq:mixed} is AME with support $E\cup P\cup P'$.
+(a) The moduli equations of the $E$-blocks have rank $48$, so $s=1$ on $E$.  On a mixed block they give $s_a=s_b$,
+$s_{a'}=s_{b'}$ and $s_a+s_{a'}=2$.  Every pair within a quartet lies in a mixed block, so $s$ is constant on each
+quartet, and by Eq.~\eqref{eq:partition} every $P_k$ shares a mixed block with every $P'_l$, so $s(P_k)+s(P'_l)=2$.
+Hence $s=1+\delta$ on $P$ and $1-\delta$ on $P'$, with $|\delta|<1$ as $s>0$.  The $36$ congruences of the
+$E$-blocks have rank $28$ in $48$ phases and invariant factors $1$, so by (i) their solutions form one $20$-dimensional
+torus.  By (ii) it contains the phases of $\ket\psi$ shifted by any diagonal local unitary, which also form a
+$20$-dimensional torus, so the two coincide.  Hence a diagonal local unitary brings every AME state with this support to some
+$\ket{\Psi_\delta(\alpha,\beta)}$, and such a state is AME if and only if Eq.~\eqref{eq:mixed} holds.  This system has
+rank $14$ in $24$ phases and invariant factors $1,\dots,1,2$, so by (i) its solutions form two disjoint
+$10$-dimensional tori.  At $(\alpha,\beta)=(0,\pm\pi/2)$, $\omega=\pm9\pi/2\equiv\pm\pi/2$, so $\omega$ tells the two
+tori apart; together with $\delta$ they give $\mathcal F_{72}^\pm$, on which $\omega\equiv\pm\pi/2$.  Complex
+conjugation, $(\alpha,\beta)\mapsto(-\alpha,-\beta)$, exchanges them, and no diagonal local unitary does.  A diagonal
+local unitary that maps a state of the family to another must fix the coefficients on $E$; on $P\cup P'$ it then acts
+by a common phase, possibly combined with the sign change of $P_3\cup P'$.  The common phase removes one of the $10$
+phase dimensions, leaving $9$ parameters besides $\delta$.
 
-Eq.~\eqref{eq:mixed} has rank $14$ and invariant factors $1,\dots,1,2$, so by (i) its solutions
-$(\alpha,\beta)\in\mathbb T^{24}$ form two disjoint translates of a $10$-dimensional torus.  For a state
-$\ket{\Psi_\delta(\alpha,\beta)}$, $\omega$ is the sum of $\beta$ minus the sum of $\alpha$ over the states with
-$x_1\neq0$.  It is continuous, and $\omega=\pm9\pi/2\equiv\pm\pi/2$ at $(0,\pm\pi/2)$, so it separates the two
-translates.  Since the coefficients determine $\delta$, $\alpha$ and $\beta$, the interval $|\delta|<1$ times either translate
-parametrizes one of the two components $\mathcal F_{72}^\pm$, on which $\omega\equiv\pm\pi/2$.  Complex conjugation maps
-$\ket{\Psi_\delta(\alpha,\beta)}$ to $\ket{\Psi_\delta(-\alpha,-\beta)}$ and reverses $\omega$, so it exchanges
-$\mathcal F_{72}^+$ and $\mathcal F_{72}^-$; since $\omega$ is invariant, no diagonal local unitary does.  A diagonal
-local unitary maps one state of the family to another only if it fixes the coefficients on $E$.  Such unitaries act on
-$P\cup P'$ by a common phase, possibly combined with the sign change of $P_3\cup P'$.  The common phases form a circle
-that acts freely on each component, which leaves $10-1=9$ phase parameters besides $\delta$.
-
-(b) On $E\cup P$ the $1\times1$ blocks force $s=2$ on $P$ and impose no phase condition, and the $E$-blocks are
-treated as in~(a).  So, up to diagonal local unitaries, the AME states with support $E\cup P$ are the states
-$\ket{\Psi_1(\alpha)}$ with arbitrary $\alpha\in\mathbb T^{12}$.  The diagonal local unitaries that fix the
-coefficients on $E$ act on them by a common phase and the sign change of $P_3$, which leaves $11$ parameters.  On $E\cup
-P'$ the same argument gives the states $\ket{\Psi_{-1}(\beta)}$.
+(b) On $E\cup P$ the $1\times1$ blocks give $s=2$ on $P$ and no phase condition, so the states are
+$\ket{\Psi_1(\alpha)}$ for all $\alpha$; the common phase leaves $11$ parameters.  The same holds on $E\cup P'$.
 
 (c) Let $A_k$ and $B_l$ be the sums of $\alpha$ over $P_k$ and of $\beta$ over $P'_l$.  Adding the two
-congruences~\eqref{eq:partition} gives $A_k\equiv B_l$, so $A_1\equiv A_2\equiv A_3$ on $\mathcal F_{72}^\pm$.  If states
-$\ket{\Psi_{\delta_n}(\alpha_n,\beta_n)}$ of $\mathcal F_{72}^\pm$ converge to $\ket{\Psi_1(\alpha)}$, then $\delta_n\to1$
-and $\alpha_n\to\alpha$, so $\alpha$ satisfies this closed condition as well.  Conversely, let $A_1\equiv A_2\equiv A_3$
-and $P'_l=\{w,x,y,z\}$.  The three partitions of $P'_l$ into two pairs occur in Eq.~\eqref{eq:partition} with
-$k=1,2,3$, since each pair of $P'_l$ lies in exactly one mixed block.  So Eq.~\eqref{eq:mixed} prescribes the six sums
-$q_{wx}\equiv\beta_w+\beta_x$, \dots, and $q_{wx}+q_{yz}$, $q_{wy}+q_{xz}$ and $q_{wz}+q_{xy}$ are congruent to
-$A_1,A_2,A_3$ in some order, hence to each other.  Using this, one checks that the solutions of the six congruences
-are exactly $\beta_x\equiv q_{wx}-\beta_w$, $\beta_y\equiv q_{wy}-\beta_w$, $\beta_z\equiv q_{wz}-\beta_w$ with
-$2\beta_w\equiv q_{wx}+q_{wy}-q_{xy}$.  These are two solutions, which differ by $\pi$ on all of $P'_l$, so
-Eq.~\eqref{eq:mixed} has eight solutions $\beta$.  Adding $\pi$ on
-one quartet changes $\omega$ by $3\pi$, so four of them lie in each component, and
-$\ket{\Psi_\delta(\alpha,\beta)}\to\ket{\Psi_1(\alpha)}$ as $\delta\to1$.  The structure of the mixed blocks is
-symmetric in $P$ and $P'$, so the same argument applies at $\delta=-1$.
+congruences~\eqref{eq:partition} gives $A_k\equiv B_l$, so $A_1\equiv A_2\equiv A_3$ on $\mathcal F_{72}^\pm$, and also
+on its limits, since $\ket{\Psi_{\delta_n}(\alpha_n,\beta_n)}\to\ket{\Psi_1(\alpha)}$ forces $\alpha_n\to\alpha$.
+Conversely, let $A_1\equiv A_2\equiv A_3$ and $P'_l=\{w,x,y,z\}$.  Each of its six pairs lies in one mixed block, so
+Eq.~\eqref{eq:mixed} prescribes the six pair sums $q_{wx}\equiv\beta_w+\beta_x$, and so on.  By
+Eq.~\eqref{eq:partition}, the sums of complementary pairs, $q_{wx}+q_{yz}$, $q_{wy}+q_{xz}$ and $q_{wz}+q_{xy}$, are
+$A_1$, $A_2$, $A_3$ in some order, hence equal.  Therefore the solutions on $P'_l$ are exactly
+$2\beta_w\equiv q_{wx}+q_{wy}-q_{xy}$ and $\beta_x\equiv q_{wx}-\beta_w$, $\beta_y\equiv q_{wy}-\beta_w$,
+$\beta_z\equiv q_{wz}-\beta_w$: two solutions, differing by $\pi$ on all of $P'_l$, and eight in total.  Adding $\pi$ on
+one quartet changes $\omega$ by $3\pi$, so four of the eight lie in each component, and for each of them
+$\ket{\Psi_\delta(\alpha,\beta)}\to\ket{\Psi_1(\alpha)}$ as $\delta\to1$.  At $\delta=-1$ the same holds with $\alpha$
+and $\beta$ exchanged.
 
-(d) If $D\ket\Phi$ were real for a state $\ket\Phi$ of $\mathcal F_{72}^\pm$ and a diagonal local unitary $D$, then
-$D\ket\Phi$ would be AME with support $E\cup P\cup P'$ and all $\varphi_x\in\{0,\pi\}$, so $\omega\in\{0,\pi\}$,
-contradicting $\omega\equiv\pm\pi/2$.
+(d) If $D\ket\Phi$ were real for some $\ket\Phi$ in $\mathcal F_{72}^\pm$ and a diagonal local unitary $D$, it would
+have $\omega\in\{0,\pi\}$; but it is AME with support $E\cup P\cup P'$, so $\omega\equiv\pm\pi/2$.
 \end{proof}
 
-The states of $\mathcal F_{72}^\pm$ that converge to $\ket\psi$ have one of eight limiting phase patterns on $P'$.
-Every pair within a quartet lies in a mixed block, so Eq.~\eqref{eq:mixed} with $\alpha=0$ makes $\beta$ constant on
-each quartet $P'_k$, with $2\beta_x\equiv\pi$: $\beta=\eta_k\pi/2$ with $\eta\in\{\pm1\}^3$.  Each pattern is realized
-by a straight branch $\delta\mapsto\ket{\Psi_\delta(0,\beta)}$, which lies in $\mathcal F_{72}^{\eta_1\eta_2\eta_3}$
-since $\omega=3(\eta_1+\eta_2+\eta_3)\pi/2\equiv\eta_1\eta_2\eta_3\pi/2$.
-At $\delta=0$ each branch passes through a state with uniform amplitudes $1/\sqrt{72}$.  For $\beta=\pm\pi/2$ its
-coefficients are $\varepsilon_x$, $1$ and $\pm i$ on $E$, $P$ and $P'$, so in every reshaping $W=\sqrt2\,U$ has
-entries in $\{0,\pm1,\pm i\}$, two per row and column, and $WW^\dagger=2\,\mathbb I$: these are 2-unitary complex
-weighing matrices.  Fig.~\ref{fig:amplitudes72} shows them for $\beta=\pi/2$; in block order they differ from
-Fig.~\ref{fig:amplitudes} only in the six blocks on $P\cup P'$.
-As $\delta$ grows to $1$, the weight of each entry of $P'$ moves to its partner in $P$ until
-the state becomes real at $\ket\psi$.  At $\delta=-1$ the roles of $P$ and $P'$ are exchanged.  Each of the eight
-branches through $\ket\psi$ ends at $\ket{\Psi_{-1}(\beta)}$ with $\beta=\pm\pi/2$ on each quartet, which is real up to
-a common phase on $P'$; for constant $\beta$ it is $\ket{\psi_-}$ up to this phase.  No permutation of the parties and of the basis states of each party maps one face onto the other.
+\emph{Branches through the real state.}  At $\alpha=0$ all pair sums in the proof of (c) are $q\equiv\pi$, so $\beta$
+is constant on each quartet $P'_l$ with $2\beta\equiv\pi$, i.e.\ $\beta=\eta_l\pi/2$ with $\eta_l=\pm1$.  The eight
+straight lines $\delta\mapsto\ket{\Psi_\delta(0,\beta)}$ are the \emph{branches} through $\ket\psi=\ket{\Psi_1(0)}$;
+since $\omega=3(\eta_1+\eta_2+\eta_3)\pi/2\equiv\eta_1\eta_2\eta_3\pi/2$, four lie in $\mathcal F_{72}^+$ and four in
+$\mathcal F_{72}^-$.  Along a branch only the moduli change: as $\delta$ decreases from $1$ to $-1$, the coefficients on
+$P$ shrink from $1/6$ to $0$ and those on $P'$ grow from $0$ to $1/6$.  At $\delta=-1$ a branch ends at
+$\ket{\Psi_{-1}(\beta)}$ on the opposite face.  A common phase on $P'$, which a diagonal local unitary applies without
+changing the coefficients on $E$, makes this state real; for constant $\beta$ it becomes $\ket{\psi_-}$.  Up to diagonal
+local unitaries, the eight branches thus end at four real states, each reached by one branch from each component:
+$\ket{\psi_-}$ and the three states obtained from it by negating the coefficients on $P'_1$, $P'_2$ or $P'_3$ (classes
+$9$, $9$, $10$, $9$ of Theorem~\ref{thm:classes}).  No permutation of the parties and of the basis states of each party
+maps one face onto the other.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/amplitudes72.pdf}
-\caption{The three reshapings of $\sqrt{72}\,\Psi_0(0,\pi/2)$, a uniform-amplitude state of $\mathcal F_{72}^+$, for the
-bipartitions $12|34$, $13|24$ and $14|23$.  Top: natural order.  Bottom: rows and columns permuted into $18$ blocks
-of size $2\times2$: six with the entries $+1$ of $P$ on the diagonal and $+i$ of $P'$ off it, then the twelve blocks
-of $E$, ordered as in Fig.~\ref{fig:amplitudes}.  As $\delta\to1$ the $P'$ entries vanish, the $P$ entries grow to
-$\sqrt2$, and the picture becomes Fig.~\ref{fig:amplitudes}.}
-\label{fig:amplitudes72}
-\end{figure*}
+\emph{Uniform states.}  Halfway along a branch, at $\delta=0$, all $72$ coefficients have modulus $1/\sqrt{72}$; for
+constant $\beta=\pm\pi/2$ they are $\varepsilon_x$, $1$ and $\pm i$ times $1/\sqrt{72}$ on $E$, $P$ and $P'$.  In every
+reshaping $W=\sqrt2\,U$ then has two entries from $\{\pm1,\pm i\}$ in each row and column and $WW^\dagger=2\,\mathbb I$:
+a 2-unitary complex weighing matrix (Fig.~\ref{fig:amplitudes72}).  These uniform states are new, since the AME$(4,6)$
+states reported before have at least $112$ non-zero coefficients (Sec.~\ref{sec:discussion}).  Other uniform states of
+$\mathcal F_{72}^+$ are almost real: up to a diagonal local unitary, $\mathcal F_{72}^+$ contains a uniform state with
+coefficients $\pm1/\sqrt{72}$ except for $\pm i/\sqrt{72}$ on the four states of $P'_1$, and a path of AME states in
+$\mathcal F_{72}^+$ joins it to $\ket\psi$ (Fig.~\ref{fig:families})~\cite{repo}.  Four imaginary coefficients are the
+minimum.  If all coefficients of an AME state with support $E\cup P\cup P'$ lie in $\{\pm1,\pm i\}/\sqrt{72}$, then by
+Eq.~\eqref{eq:congruence} every block contains an even number of imaginary coefficients, while $\omega\equiv\pm\pi/2$
+requires an odd number among the $18$ states of $P\cup P'$ with $x_1\neq0$.  The smallest sets with both properties are
+the six quartets~\cite{repo}.
 
 The first-order deformations of an AME state, modulo the tangent space of its local-unitary orbit, form a
 local-unitary invariant.  Their dimension is $10$ for a generic member of $\mathcal F_{72}^\pm$, $11$ for a generic face
 state, and $14$ at $\ket\psi$: $11$ directions along the face and $3$ spanned by the eight branches (numerical ranks,
 with gaps of $10^{-15}$ against $10^{-2}$).  The real state is thus a singular point of the AME conditions, where the
 $11$-dimensional face and both $10$-dimensional components meet (Fig.~\ref{fig:families}).
-
-\begin{figure*}[t]
-\centering
-\resizebox{0.9\textwidth}{!}{\input{inputs/family_figure.tex}}
-\caption{The families of Proposition~\ref{prop:families}.  The face $\mathcal F_{60}$ (top) is an $11$-dimensional
-phase torus.  The components $\mathcal F_{72}^\pm$, complex conjugate to each other, are $10$-dimensional and attach
-to the face along the $9$-torus $\mathcal C$ on which the sums of $\alpha$ over $P_1$, $P_2$ and $P_3$ agree; $\delta$
-runs vertically.  Eight straight branches start at the real state $\ket\psi\in\mathcal C$, cross the uniform-amplitude slice
-$\delta=0$ and end at real states of the opposite face $\delta=-1$.}
-\label{fig:families}
-\end{figure*}
 
 % =========================================================================================================
 \section{Classification of the real states}\label{sec:real}
@@ -503,7 +498,6 @@ class & face & flipped & states & limit & dim & $n(149/8)$ & $n(3/2)$\\
 
 Simpler invariants do not separate the classes: the power traces $\mathrm{Tr}(J^TJ)^k$, $k\le8$, are equal on
 classes $3$--$8$ (numerical).
-
 The real states are isolated: modulo local orthogonal maps, no continuous family of real AME states passes through
 any of them.  Most orbits have no real first-order deformation; for the remaining six (two on $\mathcal F_{60}$, four
 on $\mathcal F_{60}'$) the two real first-order deformations are obstructed at second order (numerical)~\cite{repo}.
@@ -536,14 +530,12 @@ order $36$ is a real perfect tensor: a real dual-unitary gate, and a building bl
 amplitudes~\cite{PYHP2015,BKP2019}.
 
 \begin{acknowledgments}
-\todo{Acknowledgments.}
+This work was supported by the QuantERA II Programme (VERIqTAS project), which has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 101017733. We also acknowledge funding from the European Union’s Horizon Europe research and innovation programme under Grant Agreement No. 101080086 (NeQST). We thank Wojciech Bruzda, Remigiusz Augusiak for many fruitful discussions and guidance.
 \end{acknowledgments}
 
-\onecolumngrid
 \paragraph*{Data and code availability.}  The state, the families and the class representatives, scripts that verify
 every statement about them, and scripts that reproduce the two steps of the search are available in
 Ref.~\cite{repo}.
-
 
 \twocolumngrid
 \bibliography{references}

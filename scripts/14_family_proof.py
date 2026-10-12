@@ -20,6 +20,11 @@ Exact (integer / rational arithmetic):
       quartet P'_l (differing by pi on P'_l), 4 with omega = +pi/2 and 4 with -pi/2; for unequal sums none.  The same
       with alpha and beta exchanged.
   (9) no solution over GF(2) of the mixed congruences (no real state with support E u P u P').
+  (10) uniform states: the stored state data/uniform_min_imag_terms.json (coefficients +-1/sqrt72, and +-i/sqrt72 on
+      the quartet P'_1) is AME with support E u P u P' and lies in F72^+ (omega = +pi/2); up to a diagonal local
+      unitary it is a state Psi_0(alpha, beta).  Four imaginary coefficients are the minimum for coefficients in
+      {+-1, +-i}/sqrt72: the sets that are even on every block and odd on the 18 states with x_1 != 0 have at least 4
+      elements, and those with 4 are exactly the six quartets.
 Numerical: Psi_delta(alpha, beta) is AME at random points of both components, and Psi_1(0) = psi.
 """
 import itertools
@@ -32,7 +37,7 @@ import numpy as np
 
 from _common import check, done
 from ame46real import core, family as fam
-from ame46real.lattice import all_solutions_mod1, gf2_solvable, invariant_factors, snf
+from ame46real.lattice import all_solutions_mod1, gf2_nullspace, gf2_solvable, invariant_factors, snf, solve_mod1
 
 rng = random.Random(7)
 st = open(os.path.join(core.DATA, os.pardir, "paper", "inputs", "family_sets.tex")).read()
@@ -188,6 +193,28 @@ check("the same with alpha and beta exchanged", ok8)
 
 # ---- (9) GF(2) ------------------------------------------------------------------------------------------------------
 check("the mixed congruences have no solution over GF(2)", not gf2_solvable(MM % 2, np.ones(18, dtype=np.int64)))
+
+
+# ---- (10) uniform states -----------------------------------------------------------------------------------------
+uni = {core.tup(x): {"+1": Fr(0), "-1": Fr(1, 2), "+i": Fr(1, 4), "-i": Fr(3, 4)}[c]
+       for x, c in core.load_json("uniform_min_imag_terms.json")["terms"]}
+imag = sorted(x for x, t in uni.items() if t.denominator == 4)
+cong = all((uni[a] - uni[b] - uni[c] + uni[e]) % 1 == Fr(1, 2) for _, _, _, (a, b, c, e) in B72)
+check("(10) stored uniform state: support E u P u P', imaginary exactly on P'_1, all 54 congruences hold (AME)",
+      set(uni) == set(S72) and imag == sorted(QK[0]) and cong)
+eps = {fam.POINTS[q]: fam.EPS[q] for q in fam.S72}
+lam = solve_mod1(LE.tolist(), [((Fr(0) if eps[x] > 0 else Fr(1, 2)) - uni[x]) % 1 for x in E])
+check("(10) it lies in F72^+ (omega = +pi/2), and a diagonal local unitary gives it the coefficients of psi on E",
+      om([uni[x] for x in PP + QQ]) == Fr(1, 4) and lam is not None)
+Bm = np.array([[int(x in p | q) for x in PP + QQ] for p, q in pairs], dtype=np.int64)
+Nm = gf2_nullspace(Bm)
+odd = [v for v in ((np.array(bits) @ Nm) % 2 for bits in itertools.product([0, 1], repeat=len(Nm)))
+       if (v @ np.abs(w)) % 2 == 1]
+wmin = min(int(v.sum()) for v in odd)
+minimal = sorted(sorted(core.lab((PP + QQ)[i]) for i in np.flatnonzero(v)) for v in odd if v.sum() == wmin)
+check("(10) at least 4 imaginary coefficients (even on every block, odd on the 18 states with x_1 != 0); "
+      "the sets of 4 are exactly the six quartets",
+      wmin == 4 and minimal == sorted(sorted(core.lab(x) for x in Qk) for Qk in PK + QK))
 
 
 # ---- numerical -------------------------------------------------------------------------------------------------------

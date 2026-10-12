@@ -9,5 +9,6 @@
     real branch ends on C': {9: 192, 10: 64} (class: count)
 [PASS] (4) branch ends are either all real or all non-real; the real ones lie on C'
     branch graph: 512 real points of C, 257 real points of C' reached; distinct ends per start [1, 4]; starts per end [2, 384]
+[PASS] (4) the 8 branches through psi end, up to diagonal local unitaries, at psi_minus and at psi_minus with the coefficients on P'_1, P'_2 or P'_3 negated (classes 9, 9, 10, 9)
 
 ALL CHECKS PASSED

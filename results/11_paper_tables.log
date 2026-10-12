@@ -1,5 +1,5 @@
 [PASS] displayed state (officer table) = data/psi_terms.json  (60 terms)
-[PASS] sets O and N
+[PASS] sets P and P' (data: O and N)
 [PASS] table of K
 [PASS] branch table
 [PASS] class table of Theorem 1 (Table II) = data/real_classes.json  (20 rows)

@@ -1,5 +1,10 @@
 # Real AME(4,6) states: families, symmetry, and the classification of the real points
 
+[![Software Heritage](https://archive.softwareheritage.org/badge/swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3/)](https://archive.softwareheritage.org/swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3)
+[![release](https://img.shields.io/github/v/release/palashpandya/real-ame46)](https://github.com/palashpandya/real-ame46/releases/tag/v1.0)
+[![code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
+[![data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey)](LICENSE-DATA.md)
+
 Companion code and data for the article
 
 > **Euler's thirty-six officers need not all be entangled: real AME(4,6), families and classification**
@@ -178,7 +183,8 @@ python wolfram/make_wls.py && wolframscript -file wolfram/verify_families.wls   
 ```
 
 Scripts 01–07 and 09–15 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a
-reference run (including `08` and the Mathematica check).
+reference run (including `08` and the Mathematica check), and `results/environment.txt` records the Python and
+package versions behind them (`run_all.sh` rewrites it on every run).
 
 ## Layout
 
@@ -211,9 +217,16 @@ Please cite the article (reference to be added on publication) and, for the code
   author       = {Palash Pandya},
   title        = {Companion code and data: real {AME}(4,6) states, version 1.0},
   howpublished = {\url{https://github.com/palashpandya/real-ame46/tree/v1.0}},
+  note         = {archived as \url{https://archive.softwareheritage.org/swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3}},
   year         = {2026}
 }
 ```
+
+Version 1.0 (tag `v1.0`, commit `1f591ae`) is archived in Software Heritage. Its identifiers are
+`swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3` (the tag) and
+`swh:1:dir:6695ce9630e5ced8ad497862eb57ba0680389319` (its directory). Either one, appended to
+`https://archive.softwareheritage.org/`, opens the archived copy. The same identifiers are listed on the
+[GitHub release](https://github.com/palashpandya/real-ame46/releases/tag/v1.0).
 
 ## Licence
 

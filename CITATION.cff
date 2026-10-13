@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below, together with the article."
+type: software
+title: "Companion code and data: real AME(4,6) states"
+authors:
+  - family-names: Pandya
+    given-names: Palash
+    affiliation: "Center for Theoretical Physics, Polish Academy of Sciences, Warsaw, Poland"
+version: "1.0"
+date-released: "2026-10-12"
+repository-code: "https://github.com/palashpandya/real-ame46"
+url: "https://github.com/palashpandya/real-ame46/tree/v1.0"
+license:
+  - MIT
+  - CC-BY-4.0
+identifiers:
+  - type: swh
+    value: "swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3"
+    description: "Software Heritage identifier of the v1.0 tag"
+  - type: swh
+    value: "swh:1:dir:6695ce9630e5ced8ad497862eb57ba0680389319"
+    description: "Software Heritage identifier of the v1.0 source tree"
+  - type: url
+    value: "https://github.com/palashpandya/real-ame46/releases/tag/v1.0"
+    description: "GitHub release v1.0"
+keywords:
+  - absolutely maximally entangled states
+  - AME(4,6)
+  - 2-unitary matrices
+  - Euler's thirty-six officers
+  - quantum combinatorial designs
+abstract: >-
+  Scripts, data and results that verify every statement of the article
+  "Euler's thirty-six officers need not all be entangled: real AME(4,6),
+  families and classification": a real AME(4,6) state with 60 non-zero
+  coefficients and 12 classical officers, two closed-form 60-term families
+  of AME(4,6) states, and the certified classification of their real points
+  into 20 classes under local unitaries and party permutations.

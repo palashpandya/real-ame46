@@ -37,9 +37,9 @@ bt = read("inputs/family_branches.tex")
 th = [("0",) * 9] + [tuple(m.split(",")) for m in re.findall(r"\\pi\(([\d,]+)\)", bt)]
 check("branch table", {(s, t) for t in th for s in (1, -1)} == {(b["sigma"], tuple(b["theta_over_pi"])) for b in fam.F["branches"]})
 
-rows = re.findall(r"^(\d+) & \$([+-])\$ & (.*?) & \$(\d+)\$ & (yes|no) & \$(\d+)\$ & \$(\d+)\$ & \$(\d+)\$\\\\", read("main.tex"), re.M)
+rows = re.findall(r"^(\d+) & \$\\mathcal F_\{60\}('?)\$ & (.*?) & \$(\d+)\$ & (yes|no) & \$(\d+)\$ & \$(\d+)\$ & \$(\d+)\$\\\\", read("main.tex"), re.M)
 data = {(c["cls"], c["face"], tuple(c["flip"]), c["states"], c["on_gluing_locus"], c["deformation_dim"], c["N_149_8"], c["N_3_2"])
         for c in core.load_json("real_classes.json")["classes"]}
-tex = {(int(a), f, tuple(re.findall(r"\d{4}", fl)), int(s), y == "yes", int(dm), int(n1), int(n2)) for a, f, fl, s, y, dm, n1, n2 in rows}
+tex = {(int(a), "-" if f else "+", tuple(re.findall(r"\d{4}", fl)), int(s), y == "yes", int(dm), int(n1), int(n2)) for a, f, fl, s, y, dm, n1, n2 in rows}  # face F60 = "+", F60' = "-" in the data file
 check("class table of Theorem 1 (Table II) = data/real_classes.json", tex == data, f"{len(tex)} rows")
 done()

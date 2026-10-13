@@ -2,8 +2,8 @@ order 1: 1 new classes pass the spectral test (0 s)
 order 2: 6 new classes pass the spectral test (0 s)
 order 3: 15 new classes pass the spectral test (0 s)
 order 4: 22 new classes pass the spectral test (1 s)
-order 5: 13 new classes pass the spectral test (4 s)
-order 6: 147 new classes pass the spectral test (48 s)
+order 5: 13 new classes pass the spectral test (3 s)
+order 6: 147 new classes pass the spectral test (34 s)
 [PASS] 204 classes pass the spectral test, 121 of them the population LP  (204, 121)
 [PASS] the order-4 class (1,2,2,3,3,3)^4, eigenvalue w^2 = -1, passes both, with sector dimension 360
 

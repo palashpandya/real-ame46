@@ -1,14 +1,14 @@
 # Real AME(4,6) states: families, symmetry, and the classification of the real points
 
-[![Software Heritage](https://archive.softwareheritage.org/badge/swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3/)](https://archive.softwareheritage.org/swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3)
-[![release](https://img.shields.io/github/v/release/palashpandya/real-ame46)](https://github.com/palashpandya/real-ame46/releases/tag/v1.0)
+[![Software Heritage](https://archive.softwareheritage.org/badge/swh:1:rel:a8882f1f23fce64d3dae259f84daf120522b9604/)](https://archive.softwareheritage.org/swh:1:rel:a8882f1f23fce64d3dae259f84daf120522b9604)
+[![release](https://img.shields.io/github/v/release/palashpandya/real-ame46)](https://github.com/palashpandya/real-ame46/releases/tag/v1.1)
 [![code: MIT](https://img.shields.io/badge/code-MIT-blue)](LICENSE)
 [![data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey)](LICENSE-DATA.md)
 
 Companion code and data for the article
 
 > **Euler's thirty-six officers need not all be entangled: real AME(4,6), families and classification**
-> Palash Pandya (in preparation, 2026; the reference will be added here once it is available)
+> Palash Pandya, [arXiv:2610.16673](https://arxiv.org/abs/2610.16673) (2026), submitted to Physical Review A
 
 **Author.** Palash Pandya
 Center for Theoretical Physics, Polish Academy of Sciences, Aleja Lotników 32/46, 02-668 Warsaw, Poland
@@ -219,23 +219,25 @@ paper/                            the manuscript (main.tex, references.bib, inpu
 
 ## How to cite
 
-Please cite the article (reference to be added on publication) and, for the code and data:
+Please cite the article ([arXiv:2610.16673](https://arxiv.org/abs/2610.16673)) and, for the code and data:
 
 ```bibtex
 @misc{pandya2026realame46,
   author       = {Palash Pandya},
-  title        = {Companion code and data: real {AME}(4,6) states, version 1.0},
-  howpublished = {\url{https://github.com/palashpandya/real-ame46/tree/v1.0}},
-  note         = {archived as \url{https://archive.softwareheritage.org/swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3}},
+  title        = {Companion code and data: real {AME}(4,6) states, version 1.1},
+  howpublished = {\url{https://github.com/palashpandya/real-ame46/tree/v1.1}},
+  note         = {archived as \url{https://archive.softwareheritage.org/swh:1:rel:a8882f1f23fce64d3dae259f84daf120522b9604}},
   year         = {2026}
 }
 ```
 
-Version 1.0 (tag `v1.0`, commit `1f591ae`) is archived in Software Heritage. Its identifiers are
-`swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3` (the tag) and
-`swh:1:dir:6695ce9630e5ced8ad497862eb57ba0680389319` (its directory). Either one, appended to
+Version 1.1 (tag `v1.1`, commit `959d7e7`), the version cited in the submitted manuscript, is archived in
+Software Heritage. Its identifiers are
+`swh:1:rel:a8882f1f23fce64d3dae259f84daf120522b9604` (the tag) and
+`swh:1:dir:5648b8357de1b035a0643e7252dfe60eec64cc67` (its directory). Either one, appended to
 `https://archive.softwareheritage.org/`, opens the archived copy. The same identifiers are listed on the
-[GitHub release](https://github.com/palashpandya/real-ame46/releases/tag/v1.0).
+[GitHub release](https://github.com/palashpandya/real-ame46/releases/tag/v1.1). The earlier version 1.0 (tag `v1.0`,
+before the exact isolation proof) is `swh:1:rel:16ff6cb9d2a327de3a649e4c0fa36485de63f5b3`.
 
 ## Licence
 

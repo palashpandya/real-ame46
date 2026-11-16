@@ -9,8 +9,9 @@ Exact:
       group of order 192 on each face, with 16 orbits on face "+" (8 x 64, 8 x 192) and 24 on face "-"
       (4 x 32, 20 x 96); the two faces are not related by any such monomial map.
 Numerical:
-  (4) the real states are isolated modulo local orthogonal maps: at every orbit representative there is either no
-      real first-order deformation, or all of them are obstructed at second order.
+  (4) at every chosen diagonal-LU orbit representative there is either no real first-order deformation,
+      or all of them are obstructed at second order. This numerical check alone does not transfer
+      real isolation through the diagonal-LU quotient; 16 verifies orthogonal coverage exactly.
 """
 from _common import check, done
 from ame46real import realpoints as rp

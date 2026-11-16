@@ -7,8 +7,8 @@
 \usepackage{colortbl}
 \usepackage{amsthm}
 \usepackage{times}
-\usepackage{physics2}
-\usephysicsmodule{braket}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\braket}[2]{\langle #1\vert #2\rangle}
 \usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}
@@ -67,7 +67,7 @@ whose 2-unitary representation consists of direct sums of $1\times1$ and $2\time
 classical, as some must be in any AME$(4,6)$ state with fewer than $72$ non-zero coefficients (Sec.~\ref{sec:discussion}).
 Section~\ref{sec:symmetry} describes its origin.  It lies in the $-1$ eigenspace of the local symmetry
 $u^{\otimes4}$, $u=\mathrm{diag}(i,-1,-1,-i,-i,-i)$, and we show that the AME conditions are linear on its support.
-In Sec.~\ref{sec:families} two continuous families of AME$(4,6)$ states are presented in closed form, with supports on $72$ and $60$ basis states.  The two families meet at the real state.  In Sec.~\ref{sec:real} we show that the families allow a complete classification of the real AME states with the two $60$-term supports at the ends of the $72$-term family: $4096$ states in exactly $20$ classes under local unitaries and party permutations, all of them isolated (numerically).
+In Sec.~\ref{sec:families} two continuous families of AME$(4,6)$ states are presented in closed form, with supports on $72$ and $60$ basis states.  The two families meet at the real state.  In Sec.~\ref{sec:real} we show that the families allow a complete classification of the real AME states with the two $60$-term supports at the ends of the $72$-term family: $4096$ states in exactly $20$ classes under local unitaries and party permutations, and we prove that each of them is isolated among real AME states modulo local orthogonal maps.
 All statements about our states are verified by self-contained scripts~\cite{repo}.
 
 \section{A real \texorpdfstring{AME$(4,6)$}{AME(4,6)} state}\label{sec:state}
@@ -399,11 +399,13 @@ Eq.~\eqref{eq:congruence} every block contains an even number of imaginary coeff
 requires an odd number among the $18$ states of $P\cup P'$ with $x_1\neq0$.  The smallest sets with both properties are
 the six quartets~\cite{repo}.
 
-The first-order deformations of an AME state, modulo the tangent space of its local-unitary orbit, form a
+The first-order deformations of an AME state in the complex state space, modulo the tangent space of its local-unitary orbit, form a
 local-unitary invariant, in the spirit of the defect of a unitary matrix~\cite{TZ2008}.  Their dimension is $10$ for a generic member of $\mathcal F_{72}^\pm$, $11$ for a generic face
 state, and $14$ at $\ket\psi$: $11$ directions along the face and $3$ spanned by the eight branches (numerical ranks,
 with gaps of $10^{-15}$ against $10^{-2}$).  The real state is thus a singular point of the AME conditions, where the
 $11$-dimensional face and both $10$-dimensional components meet (Fig.~\ref{fig:families}).
+Since these deformations are complex, they say nothing about real ones; the real states are isolated
+(Proposition~\ref{prop:real-isolation}).
 
 \section{Classification of the real states}\label{sec:real}
 
@@ -455,7 +457,8 @@ Sylvester's law of inertia, the number of negative intervals is then the number 
 \begin{table*}[t]
 \caption{The $20$ classes of Theorem~\ref{thm:classes}.  Face $\mathcal F_{60}$: $\ket\psi$ with the listed coefficients $1/6$
 negated.  Face $\mathcal F_{60}'$: the same for $\ket{\psi_-}$, Eq.~\eqref{eq:psiminus}.  Limit: limits of $\mathcal F_{72}^\pm$.
-Dim: first-order deformations modulo local unitaries (numerical).  $n(t)$: the certified invariants of the proof.}
+Dim: first-order complex deformations modulo local unitaries (numerical, Sec.~\ref{sec:families}).
+$n(t)$: the certified invariants of the proof.}
 \label{tab:classes}
 \begin{ruledtabular}
 \begin{tabular}{clcccccc}
@@ -487,10 +490,58 @@ class & face & flipped & states & limit & dim & $n(149/8)$ & $n(3/2)$\\
 
 Simpler invariants do not separate the classes: the power traces $\mathrm{Tr}(J^TJ)^k$, $k\le8$, are equal on
 classes $3$--$8$ (numerical).
-The real states are isolated: modulo local orthogonal maps, no continuous family of real AME states passes through
-any of them.  Most orbits have no real first-order deformation.  For the remaining six (two on $\mathcal F_{60}$, four
-on $\mathcal F_{60}'$), the two real first-order deformations are obstructed at second order (numerical)~\cite{repo}.
+\begin{proposition}\label{prop:real-isolation}
+Every real AME$(4,6)$ state $\ket\Phi$ with support $E\cup P$ or $E\cup P'$ is isolated among real AME states modulo
+local orthogonal transformations: every real AME state close enough to $\ket\Phi$ is $(O_1\otimes O_2\otimes
+O_3\otimes O_4)\ket\Phi$ for some $O_j\in O(6)$.
+\end{proposition}
+
+\begin{proof}
+\emph{Reduction to $512$ states.}  The count of $4096$ real states is up to diagonal local unitaries, which may be
+complex.  Here only real orthogonal maps are allowed, so we count the real states again.  On each face the
+sign patterns of the real states form an affine space of dimension $32$ over $\mathbb F_2$, and two of them are related
+by a diagonal local unitary if and only if they differ by an element of a $21$-dimensional subspace.  The sign changes
+of single basis states of single parties, the real diagonal local unitaries, span only an $18$-dimensional part of it on
+$\mathcal F_{60}$ and a $17$-dimensional part on $\mathcal F_{60}'$, so each of the $2048$ points of a face splits into
+$2^3=8$, respectively $2^4=16$, classes under local sign changes.  We take one sign pattern from each of the $16$ and $24$
+orbits of the support symmetry group of order $192$ and add the $8$, respectively $16$, coset representatives.  This
+gives $16\cdot8+24\cdot16=512$ real states, and every real state on either face is mapped to one of them by local sign
+changes, permutations of the basis states of each party and permutations of the parties~\cite{repo}.  These maps are
+orthogonal, so it suffices to prove the claim for the $512$ states.
+
+\emph{Linearization.}  Let $v=\sqrt{72}\,\ket\Phi\in\mathbb R^{1296}$, so that $v=a+\sqrt2\,b$ with integer vectors $a$
+and $b$ supported on $E$ and on the classical officers.  Let $F(v)$ collect the upper triangles of $V V^T$ for the three
+reshapings $V$ of $v$, $1998$ entries in all; then $\ket\Phi$ is AME if and only if $F(v)=F_0$, with $F_0$ the upper
+triangles of $2\,\mathbb I_{36}$.  Since $F$ is quadratic, $F(v+h)=F(v)+Jh+F(h)$ exactly, with $J$ the derivative of
+$F$ at $v$, a $1998\times1296$ matrix with entries in $\mathbb Z[\sqrt2]$.  The generators of $O(6)^{\times4}$ give $60$
+vectors $T$ with $JT=0$, as identities in $\mathbb Z[\sqrt2]$.  To obtain ranks we reduce modulo the primes
+$p=2^{31}-1$ and $p=2^{31}-105$, both $\equiv7\pmod 8$, so that $2$ is a square modulo $p$ and $\mathbb Z[\sqrt2]$ maps
+to $\mathbb F_p$.  A rank modulo $p$ is a lower bound for the rank over $\mathbb Q(\sqrt2)$, and exact kernel vectors give
+upper bounds.  This shows that $T$ has rank $60$ at all $512$ states.  At $400$ of them ($112$ on $\mathcal F_{60}$, $288$
+on $\mathcal F_{60}'$), $J$ has rank $1236=1296-60$, so $\ker J$ is spanned by $T$.  At the other $112$ ($16$ and $96$),
+$J$ has rank $1234$, and $\ker J$ is spanned by $T$ and two integer vectors $w_1,w_2$ supported on the $12$ states of
+$P'$, respectively $P$, that $\ket\Phi$ does not use.  For these we also verify that $F(w_1+w_2)=F(w_1)+F(w_2)$ and that
+$[J\,|\,F(w_1)\,|\,F(w_2)]$ has rank $1236$, so the classes of $F(w_1)$ and $F(w_2)$ in the cokernel of $J$ are
+linearly independent~\cite{repo}.
+
+\emph{Isolation.}  Let $N\subset\mathbb R^{1296}$ be a complement of the span of $T$ that contains $w_1,w_2$ when they
+exist.  The derivative of $(g,h)\mapsto g(v+h)$ on $O(6)^{\times4}\times N$ at $(\mathbb I,0)$ is onto, so every real
+state near $v$ is $g(v+h)$ with $g$ near $\mathbb I$ and $h\in N$ small.  It is therefore enough to show that $h=0$ is
+an isolated solution of $Jh+F(h)=0$ in $N$.  If $J$ is injective on $N$, this holds because $|Jh|\ge c|h|$ and
+$|F(h)|\le C|h|^2$.  Otherwise, since the solutions form a real algebraic set, a non-isolated solution would give a real
+analytic arc $h(t)=t^mu+O(t^{m+1})$ of solutions in $N$, with $m\ge1$ and $u\ne0$ (curve selection lemma~\cite{Milnor1968}).  The order $t^m$
+gives $Ju=0$, so $u=c_1w_1+c_2w_2$.  Projecting onto the cokernel of $J$ removes $Jh$, and the order $t^{2m}$ gives
+$c_1^2[F(w_1)]+c_2^2[F(w_2)]=0$.  By the independence above, $c_1=c_2=0$, a contradiction.
+\end{proof}
+
 Within the families of Sec.~\ref{sec:families} the real states are therefore isolated points of complex continua.
+
+The same computation bounds the local stabilizers.  At each of the $512$ states, the real symmetric generators of
+$\mathfrak u(6)^{\oplus4}$, multiplied by $i$, give $84$ vectors of rank $81$ (the identity of each party acts as
+$i\ket\Phi$), certified as above.  Together with the $60$ real vectors $T$, the local-unitary orbit has dimension $141$,
+and $140=\dim PU(6)^{\times4}$ projectively.  The stabilizer of $\ket\Phi$ in $PU(6)^{\times4}$ is therefore finite.
+Unlike Proposition~\ref{prop:real-isolation}, this is a property of the local-unitary class, and so it holds for all
+states of the $20$ classes.
 
 The deformation dimensions also separate our states from the known solutions: $14$ and $11$ for the real classes and
 $10$ for $\mathcal F_{72}^\pm$, against $4$ for the golden state of Ref.~\cite{RBB22} and $3$ for the 2-unitary Hadamard
@@ -498,10 +549,10 @@ matrix $H(0)$ of Ref.~\cite{BZ24}.  None of our states is locally equivalent to 
 
 \section{Discussion}\label{sec:discussion}
 
-The real states have $60$ non-zero coefficients.  Until the announcements of Refs.~\cite{Bru26,Rat26,HZ26} the sparsest
+The real states have $60$ non-zero coefficients.  Until Refs.~\cite{Bru26,Rat26,HZ26} the sparsest
 reported AME$(4,6)$ state was the golden state with $112$~\cite{RBB22,RRKL23}, whose representation of numerically minimized R\'enyi-2
-decomposition entropy has $144$~\cite{Ram25}.  Of the real states announced in parallel, that of Ref.~\cite{HZ26} has
-$96$ and that of Ref.~\cite{Bru26} also $60$.  The
+decomposition entropy has $144$~\cite{Ram25}.  Of the real states found in parallel, that of Ref.~\cite{HZ26} has
+$96$, and those of Refs.~\cite{Bru26,Rat26} also $60$.  The
 argument of Sec.~\ref{sec:state} also bounds the support of any AME$(4,6)$ state from below.  A coefficient of modulus
 $1/6$ exhausts the norm of its row and column in every reshaping, so the classical officers form a code of length $4$
 and minimum distance $3$ over six symbols.  Such a code has at most $34$ codewords~\cite{Parker1975}: $36$ would be a pair of orthogonal
@@ -511,7 +562,10 @@ coefficients has at least $72-s$ classical officers.  All $36$ officers can be e
 uniform states of Sec.~\ref{sec:families}, and the $12$ classical officers of our $60$-term states are the minimum for their
 support.  Whether the gap between $38$ and $60$ can be closed is open.
 
-\emph{Other real solutions.}  Bruzda's real state~\cite{Bru26} is locally equivalent to $\ket\psi$.  Its variant with
+\emph{Other real solutions.}  Bruzda's real state~\cite{Bru26} is locally equivalent to $\ket\psi$.  Rather's two
+$60$-term real 2-unitaries~\cite{Rat26} are mapped by permutations of the parties and of the basis states onto real
+states of $\mathcal F_{60}$ and $\mathcal F_{60}'$ in classes $1$ and $9$, so they are locally equivalent to
+$\ket\psi$ and $\ket{\psi_-}$.  Its variant with
 one coefficient negated~\cite{HZ26} is $\ket\psi$ with the classical officer $0455$ negated, the representative of
 class~$7$, and the one-parameter phase family of Ref.~\cite{HZ26} is a curve in $\mathcal F_{60}$.  The 96-term real
 state of Ref.~\cite{HZ26}, invariant under a simultaneous cyclic shift of all four parties, is of a different kind.
@@ -522,14 +576,18 @@ to any of our real states.  ($K$ takes only $10$ distinct values on our $20$ cla
 is $3$, while every state of our families has at least $10$, so it lies outside both families.  It also has no
 classical officer in any local basis: its overlap with every product state is below $0.98/6$, so by the
 argument above each of its local representatives has at least $72$ non-zero coefficients (both numerical).  The
-statements about the states of Refs.~\cite{Bru26,HZ26} themselves were checked with the tools of Ref.~\cite{repo} but are
+statements about the states of Refs.~\cite{Bru26,Rat26,HZ26} themselves were checked with the tools of Ref.~\cite{repo} but are
 not among its scripts, which cover our states and the values of $K$ on them.  Real
 coefficients alone therefore do not produce classical officers.  In our states they come from the faces $\mathcal F_{60}$ and $\mathcal F_{60}'$.
 
-Further questions remain.  Real AME$(4,6)$ states outside these families exist~\cite{HZ26}.  Whether other real states
+Further questions remain.  Proposition~\ref{prop:real-isolation} concerns the real states on the two supports.  A
+complex local unitary can map a real state to another real state without being orthogonal, so whether every real state
+of the $20$ classes is isolated modulo $O(6)^{\times4}$ is open.
+Real AME$(4,6)$ states outside these families exist~\cite{HZ26}.  Whether other real states
 have classical officers is open.  Do our real states admit a form with all amplitudes of modulus $1/36$, i.e.\ a
-real-equivalent 2-unitary Hadamard matrix?  Such a form would have
-to keep the $12$ product states of maximal overlap $1/6$.  The eigenspace of $u^{\otimes4}$ also contains AME states
+real-equivalent 2-unitary Hadamard matrix?  Such a form would still have product states of overlap $1/6$, the local
+images of the $12$ states of $P$.
+The eigenspace of $u^{\otimes4}$ also contains AME states
 outside the families: about one in eight search hits lies on a $3$-parameter family of complex AME states with $348$
 of the $360$ coefficients non-zero and deformation dimension $3$, which we could not bring to a sparse or real form
 (numerical).  Whether it is related to the Hadamard family of Ref.~\cite{BZ24} or to the real state of

@@ -72,9 +72,9 @@ Section, proposition, table and figure numbers refer to the current draft in `pa
 | 9 | **Proof of Proposition 2**, every computational fact it uses: the block structure on the three supports; the 108 E-moduli equations have rank 48; the 36 E-congruences have rank 28, all invariant factors 1, and are solved by the diagonal local phases (rank 20); the quartet structure of the mixed blocks; the 18 mixed congruences have rank 14 and invariant factors 1¹³ 2; ω is gauge invariant with ω(Ψ(0, ±π/2)) = ±π/2; the E-fixing diagonal gauge is a common phase and the sign change of P₃ ∪ P′; equal quartet sums of α give exactly 8 limiting β (4 per component), unequal sums none; the uniform state with 4 imaginary coefficients and the minimality of 4 | Prop. 2 (proof) | `14` | exact + numerical spot check |
 | 10 | **Symmetry:** all 72 support points lie in the 360-dim −1 eigenspace of u^⊗4, u = diag(i, −1, −1, −i, −i, −i), so every state of both families (ψ included) satisfies u^⊗4\|φ⟩ = −\|φ⟩. Diagonal symmetry group of the support: Z₂ × Z₂ × Z₄ | Sec. III | `03_symmetry.py` | exact |
 | 11 | On each face, 2³² real sign patterns give **2048 real AME states** modulo local phases (512 on the gluing locus). The support automorphism group (party permutations × level relabellings, officers to officers) has order 192, with 16 orbits on F₆₀ (8 × 64, 8 × 192) and 24 on F₆₀′ (4 × 32, 20 × 96). No monomial map relates the two faces | Sec. V | `04_real_points.py` | exact |
-| 12 | The real states are **isolated** modulo local orthogonal maps. Most orbits have no real first-order deformation; at the others (2 + 4 orbits), the 2-dim space of real first-order deformations is obstructed at second order | Sec. V | `04` | numerical (obstruction ≥ 0.35, noise ~10⁻¹⁵) |
+| 12 | Every real state on either 60-term support is **isolated among all real AME states modulo O(6)⁴**. Verified orthogonal coverage expands the 16 + 24 diagonal-LU orbit representatives by 8 / 16 real gauge cosets to 128 + 384 candidates. Of these, 400 (112 + 288) have no real first-order deformation modulo O(6)⁴; the other 112 (16 + 96) have two, both obstructed at second order. Perturbations may leave the support | Sec. V, Prop. 3 | `16_real_isolation.py` (exact); `04` (numerical discovery at 40 representatives) | **exact**, ℤ[√2] identities, finite-field rank certificates, and verified orthogonal coverage |
 | 13 | **Exactly 20 classes** under local unitaries and party permutations (8 + 12). Upper bound: H₁₂^⊗4 plus a monomial map merges orbits of the same face. Lower bound: the pair (n(149/8), n(3/2)), n(t) = number of eigenvalues below t of 72·JᵀJ (J = Jacobian of the six 2-party marginals), takes 20 distinct values | Thm. 1, Table II | `05_lu_classes.py`, `07_certify_classes.py` | upper bound exact; lower bound **rigorous** (Arb interval arithmetic + Sylvester inertia) |
-| 14 | First-order deformation dimensions (LU invariant): ψ and the real classes on the gluing locus: 14; the other real classes and generic face points: 11; F₇₂^±: 10; golden state: 4; Bruzda–Życzkowski H(0): 3. So no state here is LU-equivalent to those | Secs. IV, V | `06_deformations.py` | numerical (gap 10⁻¹⁵ vs 10⁻²); for the real classes the dimension is certified in `07` (as n(1/2) = 141 + dim) |
+| 14 | First-order deformation dimensions allowing complex perturbations (real dimensions, LU invariant): ψ and the real classes on the gluing locus: 14; the other real classes and generic face points: 11; F₇₂^±: 10; golden state: 4; Bruzda–Życzkowski H(0): 3. So no state here is LU-equivalent to those | Secs. IV, V | `06_deformations.py` | numerical (gap 10⁻¹⁵ vs 10⁻²); `07` certifies n(1/2) = 141 + dim, a sub-threshold eigenvalue count, which does not by itself certify the kernel dimension |
 | 15 | **Where the real states lie.** Each face is an 11-torus (origin ψ, resp. ψ₋) and its real states are exactly its 2¹¹ points of order ≤ 2. The closures of F₇₂^± meet the faces in the 9-tori C, C′, whose 2⁹ = 512 order-2 points are the real limits; the other 3072 real states lie only on the faces. Branches from real points of C end at real states only for class 1 (at classes 9 and 10); the eight branches through ψ end, up to diagonal local unitaries, at ψ₋ and at ψ₋ with P′₁, P′₂ or P′₃ negated (classes 9, 9, 10, 9), one branch from each component at each. In the code coordinates θ (below) the face tori are ℝ¹¹/Λ with Λ/2πℤ¹¹ ≅ ℤ₂³ (F₆₀; hence θⱼ ∈ {0, π} reach only 256) and ℤ₂² (F₆₀′) | Sec. V | `12_real_locations.py` | exact |
 | 16 | Discovery, step 0: of the order ≤ 6 local-symmetry classes, 204 pass the spectral test and 121 also the population LP; the order-4 class of u (eigenvalue −1, dimension 360) is one of them | Sec. III | `09_sector_filters.py` | exact |
 | 17 | Discovery, step 1: a random-start search in the 360-dim sector of u^⊗4 finds AME states within a few restarts; most hits have deformation dimension 10, like F₇₂^± (about 1 in 8 lie on a different, 3-parameter family) | Secs. III, VI | `08_sector_search.py` | stochastic demonstration |
@@ -82,6 +82,10 @@ Section, proposition, table and figure numbers refer to the current draft in `pa
 | 19 | The tables in `paper/inputs/` and the class table agree with the data: the state (Table I), the quartets of P and P′, the class table (Table II), and the K and branch tables of the θ coordinates; the complete block lists of the three reshapings are printed by `01` | Tables I, II | `11_paper_tables.py`, `01` | exact |
 | 20 | **Entangling power.** As two-quhex gates, 6ψ and every real state (all 4096, each of the 24 orderings of the parties) have the maximal entangling power e_p = (d−1)/(d+1) = 5/7, i.e. normalised e_p = 1: E(U) = E(US) = E(S) = 35/36. So each is a real orthogonal gate of maximal entangling power. Computed from Zanardi's formula and, independently, as the exact Haar average over product inputs; on the 36 basis inputs ψ gives 12 product outputs and 24 with linear entropy 1/2 | – | `13_entangling_power.py` | numerical (exact via the orthogonality proved in `01`) |
 | 21 | **Klein invariant K** of Hontarenko and Życzkowski, the degree-8 contraction of four copies of T = 6ψ with four conjugate copies whose indices are matched by the Klein four-group (invariant under local unitaries and party permutations): on the 20 class representatives K = 72 (classes 1–2), 40 (3–8), and −16, −48, −32, 0, −40, −72, −56, −56, −88, −40, −40, −56 (9–20), ten distinct values. The value 108 reported for their 96-term real state is none of them, so that state is not equivalent to any of the 4096 real states | Sec. VI | `15_klein_invariant.py` | exact, ℤ[√2]; invariance numerical |
+| 22 | **Effective projective local stabilisers are finite.** At all 512 expanded candidates, the 84 real-symmetric local action columns have rank 81 and the 60 real-skew columns rank 60. Thus the vector LU orbit rank is 141 (projective rank 140); the stabiliser Lie algebra vanishes after removing per-party scalars. This transfers under arbitrary LU maps; finite group orders are not asserted | Sec. V | `16` | **exact**, ℤ[√2] and modular ranks |
+
+Real isolation here concerns the given real representatives and every real sign pattern on the two supports.
+Whether every real form reached by arbitrary complex local unitaries is isolated modulo O(6)⁴ remains open.
 
 **Real classes** (Table II; data/real_classes.json). Face F₆₀ (key "+" in the data file): representative = ψ with the listed coefficients 1/6
 negated. Face F₆₀′ (key "-"): representative = ψ₋ with the listed coefficients 1/6 negated. "Limit" marks the classes that
@@ -177,12 +181,17 @@ Python ≥ 3.10 with `numpy` and `scipy`; `07_certify_classes.py` also needs `py
 
 ```bash
 pip install -r requirements.txt
-./run_all.sh                          # runs 01–07 and 09–15, writes results/*.log (about 7 minutes)
+./run_all.sh                          # runs 01–07 and 09–16, writes results/*.log
+python -I scripts/16_real_isolation.py --workers 4      # exact real isolation, also run by run_all.sh
 python scripts/08_sector_search.py 30 0                 # optional: the stochastic search demonstration
 python wolfram/make_wls.py && wolframscript -file wolfram/verify_families.wls   # optional: symbolic check
 ```
 
-Scripts 01–07 and 09–15 print `[PASS]/[FAIL]` lines and exit non-zero on failure. `results/` holds the logs of a
+Scripts 01–07 and 09–16 print `[PASS]/[FAIL]` lines and exit non-zero on failure. Script 16 uses no sympy,
+defaults to four single-threaded workers, permits at most 15 workers plus the parent, and prints its runtime
+(about two minutes on the reference machine). It writes deterministic certificate records to
+`results/16_real_isolation.jsonl`. The runner invokes 16 with `-I`; older scripts retain their existing
+script-directory imports and invocation. `results/` holds the logs of a
 reference run (including `08` and the Mathematica check), and `results/environment.txt` records the Python and
 package versions behind them (`run_all.sh` rewrites it on every run).
 
@@ -199,7 +208,7 @@ data/reference/                   golden 2-unitary of Rather et al. (numerical, 
 ame46real/                        core (cuts, AME test, blocks), lattice (Smith form, GF(2)), family (closed forms),
                                   jacobian (deformations, LU-invariant spectrum), realpoints (real points, automorphisms of both faces),
                                   sector (search in the u-sector, support minimisation over commutant frames)
-scripts/01..15                    the verifications listed above
+scripts/01..16                    the verifications listed above
 wolfram/make_wls.py               generates verify_families.wls from data/family.json
 wolfram/verify_families.wls       symbolic check of the closed forms
 results/                          logs of a reference run
